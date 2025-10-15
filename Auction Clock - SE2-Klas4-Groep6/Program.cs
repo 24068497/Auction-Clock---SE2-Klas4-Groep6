@@ -1,30 +1,29 @@
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
+using Auction_Clock___SE2_Klas4_Groep6.Models;
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
+ 
+//Voeg DbContext toe met connectiestring
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+ 
 builder.Services.AddControllers();
-builder.Services.AddRouting();
-
-// Add Swagger services
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "API", Version = "v1" });
 });
-
+ 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
+ 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1");
-    });
+    app.UseSwaggerUI();
 }
+ 
 app.UseHttpsRedirection();
 app.UseRouting();
 app.MapControllers();
-
+ 
 app.Run();
