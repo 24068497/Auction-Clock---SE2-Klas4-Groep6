@@ -1,4 +1,6 @@
 ﻿import React from "react";
+import { Link } from 'react-router-dom';
+
 class VisitorHeader extends React.Component {
     render() {
         return (
@@ -13,16 +15,17 @@ class VisitorHeader extends React.Component {
                     <div class="collapse navbar-collapse" id="navbarText">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                                <Link class="nav-link" to='/'>
+                                    Home
+                                </Link>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Registreren</a>
-                            </li>
                         </ul>
 
                         <span class="navbar-text">
-                            <a class="nav-link" href="login.html">Inloggen</a>
+                            <Link class="nav-link" to='/login'>
+                                Inloggen
+                            </Link>
                         </span>
                     </div>
                 </div>
