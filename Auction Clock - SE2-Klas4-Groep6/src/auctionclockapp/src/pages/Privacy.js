@@ -90,23 +90,23 @@ const PersonInformation = () => {
     )
 }
 
-//function allInformation {
-//    return (
-//        <>
-//            <GeneralInformation />
-//            <CompanyInformation />
-//            <PersonInformation />
-//        </>
+function AllInformation (){
+    return (
+        <>
+            <GeneralInformation />
+            <CompanyInformation />
+            <PersonInformation />
+        </>
 
-//    )
-//}
+    )
+}
 
-//class Privacy extends React.Component {
-//    render() {
-//        return (
-//            <allInformation />
-//        );
-//    }
-//}
+class Privacy extends React.Component {
+    render() {
+        return (
+            <AllInformation />
+        );
+    }
+}
 
-export default GeneralInformation;
+export default Privacy;
