@@ -2,10 +2,10 @@
 
 const GeneralInformation = () => {
 
-    const [toggle, setToggle] = useState(true)
+    const [toggle, setToggle] = useState(false)
     return (
         <div>
-            <button onclick={() => setToggle(!toggle)} className='generalInformationBtn'>Algemene informatie</button>
+            <button onClick={() => setToggle(!toggle)} className='generalInformationBtn'>Algemene informatie</button>
 
             {toggle && (
                 <article className='generalInformation'>
@@ -30,11 +30,11 @@ const GeneralInformation = () => {
 }
 
 const CompanyInformation = () => {
-    const [toggle, setToggle] = useState(true)
+    const [toggle, setToggle] = useState(false)
 
     return (
         <div>
-            <button onclick={() => setToggle(!toggle)} className='companyInformationBtn'>Verwerking bedrijfsgegevens</button>
+            <button onClick={() => setToggle(!toggle)} className='companyInformationBtn'>Verwerking bedrijfsgegevens</button>
 
             {toggle && (
                 <article className='companyInformation'>
@@ -59,11 +59,11 @@ const CompanyInformation = () => {
 }
 
 const PersonInformation = () => {
-    const [toggle, setToggle] = useState(true)
+    const [toggle, setToggle] = useState(false)
 
     return (
         <div>
-            <button onclick={() => setToggle(!toggle)} className='personInformation'>Verwerking persoonsgegevens</button>
+            <button onClick={() => setToggle(!toggle)} className='personInformation'>Verwerking persoonsgegevens</button>
 
             {toggle && (
                 <article className='personInformation'>
