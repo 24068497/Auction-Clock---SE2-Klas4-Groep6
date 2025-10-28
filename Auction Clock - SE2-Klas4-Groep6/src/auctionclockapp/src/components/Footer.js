@@ -1,10 +1,21 @@
 ﻿import React from "react";
+import { Link } from 'react-router-dom';
 
 class Footer extends React.Component {
     render() {
         return (
             <div class="container-fluid">
                 <footer class="footer bg-footer">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <Link class="nav-link" to='/privacy'>
+                                Privacybeleid
+                            </Link>
+                        </div>
+                        <br />
+                    </div>
+
                     <div class="row">
 
                         <div class="col">

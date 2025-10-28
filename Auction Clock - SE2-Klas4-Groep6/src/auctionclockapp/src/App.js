@@ -1,5 +1,6 @@
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Privacy from './pages/Privacy';
 
 import VisitorHeader from './components/VisitorHeader';
 import Footer from './components/Footer';
@@ -14,6 +15,7 @@ function App() {
 
                 <Routes>
                     <Route path='/' element={<Home />} />
+                    <Route path='/privacy' element={<Privacy />} />
                     <Route path='/login' element={<Login />} />
                 </Routes>
 
