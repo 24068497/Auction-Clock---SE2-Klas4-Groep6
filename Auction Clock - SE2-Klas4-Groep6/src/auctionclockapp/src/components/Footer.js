@@ -9,9 +9,11 @@ class Footer extends React.Component {
 
                     <div class="row">
                         <div class="col-12">
-                            <Link class="nav-link" to='/privacy'>
-                                Privacybeleid
-                            </Link>
+                            <button class="btn bg-nav">
+                                <Link class="nav-link text-dark" to='/privacy'>
+                                    Privacybeleid
+                                </Link>
+                            </button>
                         </div>
                         <br />
                     </div>

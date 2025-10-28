@@ -10,6 +10,10 @@
     background-color: #3A4D41;
 }
 
+.nav-link:hover{
+    text-decoration-line:underline;
+}
+
 .footer {
     position: fixed;
     left: 0;
@@ -29,6 +33,22 @@
     background-size: 100% 100%;
 }
 
+.btnStyle {
+    margin-top: 10px;
+    background-color: #FF7200;
+    color: white;
+    border-radius: 6px;
+    border-color: #EEEEEE;
+    font-size: 20px;
+    padding: 2pt;
+}
+.personInformation, .companyInformation, .generalInformation {
+    margin-top: 4px;
+    background-color: white;
+    border-radius: 6px;
+    padding: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
 
 .form {
     margin: auto;
