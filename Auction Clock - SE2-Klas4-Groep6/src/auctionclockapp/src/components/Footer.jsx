@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 class Footer extends React.Component {
     render() {
         return (
-            <div class="container-fluid">
                 <footer class="footer bg-footer">
 
                     <div class="row">
@@ -35,7 +34,6 @@ class Footer extends React.Component {
 
                     </div>
                 </footer>
-            </div>
         );
     }
 }

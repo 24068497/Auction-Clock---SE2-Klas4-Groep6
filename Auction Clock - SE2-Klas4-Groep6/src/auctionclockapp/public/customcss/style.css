@@ -1,5 +1,7 @@
 ﻿body {
     background-color: #F4FAF0;
+    height: 100%;
+    overflow-x: hidden;
 }
 
 .bg-nav {
@@ -15,11 +17,17 @@
 }
 
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+    margin-top: 25px;
     padding: 1%;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+    flex: 1;
 }
 
 .navbar-toggler-icon {
