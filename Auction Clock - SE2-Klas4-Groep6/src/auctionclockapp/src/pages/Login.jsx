@@ -1,4 +1,5 @@
 ﻿import React from "react";
+import { Link } from "react-router-dom";
 
 class Login extends React.Component {
     render() {
@@ -36,12 +37,6 @@ class Login extends React.Component {
                 borderRadius: "6px",
                 outline: "none",
             },
-            rememberRow: {
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                marginBottom: "1rem",
-            },
             button: {
                 width: "100%",
                 padding: "10px",
@@ -60,9 +55,7 @@ class Login extends React.Component {
                 <div style={styles.card}>
                     <h2 style={styles.title}>Inloggen</h2>
                     <form>
-                        <label htmlFor="username" style={styles.label}>
-                            Gebruikersnaam:
-                        </label>
+                        <label htmlFor="username" style={styles.label}>Gebruikersnaam:</label>
                         <input
                             id="username"
                             type="text"
@@ -71,9 +64,7 @@ class Login extends React.Component {
                             style={styles.input}
                         />
 
-                        <label htmlFor="password" style={styles.label}>
-                            Wachtwoord:
-                        </label>
+                        <label htmlFor="password" style={styles.label}>Wachtwoord:</label>
                         <input
                             id="password"
                             type="password"
@@ -81,14 +72,28 @@ class Login extends React.Component {
                             placeholder="Voer uw wachtwoord in"
                             style={styles.input}
                         />
-                        <button type="button" style={styles.button}>
-                            Login
-                        </button>
+
+                        <button type="button" style={styles.button}>Login</button>
                     </form>
+
+                    {/* 👇 Hier komt de link naar registreren */}
+                    <p style={{ textAlign: "center", marginTop: "1rem" }}>
+                        Nog geen account?{" "}
+                        <Link
+                            to="/registreren"
+                            style={{
+                                color: "#1e8d5a",
+                                fontWeight: "600",
+                                textDecoration: "none",
+                            }}
+                        >
+                            Registreer hier
+                        </Link>
+                    </p>
                 </div>
             </div>
         );
     }
 }
 
-export default Login
+export default Login;
