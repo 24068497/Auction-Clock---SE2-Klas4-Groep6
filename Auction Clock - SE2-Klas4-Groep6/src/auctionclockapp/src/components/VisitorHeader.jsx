@@ -25,10 +25,17 @@ class VisitorHeader extends React.Component {
                         </ul>
 
                         <span class="navbar-text">
+                            <Link class="nav-link" to='/register'>
+                                Registreren
+                            </Link>
+                        </span>
+
+                        <span class="navbar-text">
                             <Link class="nav-link" to='/login'>
                                 Inloggen
                             </Link>
                         </span>
+
                     </div>
                 </div>
             </nav>
