@@ -8,7 +8,7 @@ class Footer extends React.Component {
 
                     <div class="row">
                         <div class="col-12">
-                            <button class="btn bg-nav">
+                            <button class="btn bg-nav fs-5">
                                 <Link class="nav-link text-dark" to='/privacy'>
                                     Privacybeleid
                                 </Link>

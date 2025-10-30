@@ -16,7 +16,7 @@ class VisitorHeader extends React.Component {
 
                     <div class="collapse navbar-collapse" id="navbarText">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
+                            <li class="nav-item fs-5">
                                 <Link class="nav-link" to='/'>
                                     Home
                                 </Link>
@@ -24,13 +24,13 @@ class VisitorHeader extends React.Component {
 
                         </ul>
 
-                        <span class="navbar-text">
+                        <span class="navbar-text fs-5">
                             <Link class="nav-link" to='/register'>
                                 Registreren
                             </Link>
                         </span>
 
-                        <span class="navbar-text">
+                        <span class="navbar-text fs-5">
                             <Link class="nav-link" to='/login'>
                                 Inloggen
                             </Link>

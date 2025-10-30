@@ -25,7 +25,7 @@ class Home extends React.Component {
                         </article>
                     </div>
 
-                    <div class="col-lg-6 col-md-12">
+                    <div class="col-lg-6 col-md-12 mt-4">
                         <div class="ratio ratio-16x9">
                             <iframe src="https://www.youtube.com/embed/nDMpvh0puSU?si=BPKTxo5ZVoW4DB_C" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>

@@ -6,8 +6,8 @@ class Login extends React.Component {
         const styles = {
             page: {
                 display: "flex",
-                justifyContent: "flex-start",
-                alignItems: "flex-start",
+                justifyContent: "center",
+                alignItems: "center",
                 background: "#e9f0e6",
                 padding: "40px",
             },
@@ -57,7 +57,7 @@ class Login extends React.Component {
                         <label htmlFor="username" style={styles.label}>Gebruikersnaam:</label>
                         <input
                             id="username"
-                            type="text"
+                            type="email"
                             name="username"
                             placeholder="Voer uw gebruikersnaam in"
                             style={styles.input}
@@ -74,8 +74,7 @@ class Login extends React.Component {
 
                         <button type="button" style={styles.button}>Login</button>
                     </form>
-
-                    {/* 👇 Hier komt de link naar registreren */}
+                    {}
                     <p style={{ textAlign: "center", marginTop: "1rem" }}>
                         Nog geen account?{" "}
                         <Link

@@ -6,8 +6,8 @@ class Registreren extends React.Component {
         const styles = {
             page: {
                 display: "flex",
-                justifyContent: "flex-start",
-                alignItems: "flex-start",
+                justifyContent: "center",
+                alignItems: "center",
                 minHeight: "100vh",
                 background: "#e9f0e6",
                 padding: "40px",
@@ -70,7 +70,7 @@ class Registreren extends React.Component {
                         <label htmlFor="adres" style={styles.label}>Bedrijfsadres:</label>
                         <input id="city" type="text" style={styles.input} placeholder="Straatnaam en huisnummer van bedrijf" />
 
-                        <label htmlFor="plaats" style={styles.label}>BedrijfsPlaats:</label>
+                        <label htmlFor="plaats" style={styles.label}>Bedrijfsplaats:</label>
                         <input id="address" type="text" style={styles.input} placeholder="Plaats van uw bedrijf" />
 
                         <label htmlFor="Telefoonnummer" style={styles.label}>Telefoonnummer:</label>
