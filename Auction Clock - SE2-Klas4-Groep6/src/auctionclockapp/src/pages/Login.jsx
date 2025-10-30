@@ -74,7 +74,7 @@ class Login extends React.Component {
 
                         <button type="button" style={styles.button}>Login</button>
                     </form>
-                    {}
+                    
                     <p style={{ textAlign: "center", marginTop: "1rem" }}>
                         Nog geen account?{" "}
                         <Link
