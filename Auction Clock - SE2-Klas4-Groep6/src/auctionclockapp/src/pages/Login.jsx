@@ -80,7 +80,7 @@ class Login extends React.Component {
                     <p style={{ textAlign: "center", marginTop: "1rem" }}>
                         Nog geen account?{" "}
                         <Link
-                            to="/registreren"
+                            to="/register"
                             style={{
                                 color: "#1e8d5a",
                                 fontWeight: "600",
