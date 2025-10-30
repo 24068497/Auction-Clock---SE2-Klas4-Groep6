@@ -9,7 +9,6 @@ class Login extends React.Component {
                 justifyContent: "center",
                 alignItems: "center",
                 background: "#e9f0e6",
-                minHeight: "100vh", 
                 padding: "40px",
             },
             card: {
