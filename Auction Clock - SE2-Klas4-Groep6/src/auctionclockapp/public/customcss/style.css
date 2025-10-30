@@ -1,5 +1,7 @@
 ﻿body {
     background-color: #F4FAF0;
+    height: 100%;
+    overflow-x: hidden;
 }
 
 .bg-nav {
@@ -10,12 +12,50 @@
     background-color: #3A4D41;
 }
 
+.nav-link:hover{
+    text-decoration-line:underline;
+}
+
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+    margin-top: 25px;
     padding: 1%;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+    flex: 1;
+}
+
+.navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+.btnStyle {
+    margin-top: 10px;
+    background-color: #FF7200;
+    color: white;
+    border-radius: 6px;
+    border-color: #EEEEEE;
+    font-size: 20px;
+    padding: 2pt;
+}
+.personInformation, .companyInformation, .generalInformation {
+    margin-top: 4px;
+    background-color: white;
+    border-radius: 6px;
+    padding: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .form {
