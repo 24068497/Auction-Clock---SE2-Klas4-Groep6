@@ -6,9 +6,10 @@ class Login extends React.Component {
         const styles = {
             page: {
                 display: "flex",
-                justifyContent: "flex-start",
-                alignItems: "flex-start",
+                justifyContent: "center",
+                alignItems: "center",
                 background: "#e9f0e6",
+                minHeight: "100vh", 
                 padding: "40px",
             },
             card: {

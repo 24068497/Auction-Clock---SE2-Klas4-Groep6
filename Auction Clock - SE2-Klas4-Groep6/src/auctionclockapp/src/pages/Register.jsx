@@ -6,8 +6,8 @@ class Registreren extends React.Component {
         const styles = {
             page: {
                 display: "flex",
-                justifyContent: "flex-start",
-                alignItems: "flex-start",
+                justifyContent: "center",
+                alignItems: "center",
                 minHeight: "100vh",
                 background: "#e9f0e6",
                 padding: "40px",
