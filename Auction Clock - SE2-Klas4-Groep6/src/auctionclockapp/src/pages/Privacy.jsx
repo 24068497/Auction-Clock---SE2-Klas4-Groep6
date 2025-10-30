@@ -90,7 +90,7 @@ const PersonInformation = () => {
     )
 }
 
-function AllInformation ()
+function AllInformation () 
 {
     return (
         <>
