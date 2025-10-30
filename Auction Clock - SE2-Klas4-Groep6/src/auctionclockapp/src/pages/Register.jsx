@@ -87,8 +87,7 @@ class Registreren extends React.Component {
 
                         <button type="button" style={styles.button}>Registreren</button>
                     </form>
-
-                    {/* Link terug naar login */}
+                    
                     <p style={{ textAlign: "center", marginTop: "1rem" }}>
                         Al een account?{" "}
                         <Link
