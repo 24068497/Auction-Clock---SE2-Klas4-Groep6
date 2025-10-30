@@ -2,6 +2,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Privacy from './pages/Privacy';
 import Register from './pages/Register';
+import NotFound from './pages/NotFound';
 
 import VisitorHeader from './components/VisitorHeader';
 import Footer from './components/Footer';
@@ -21,6 +22,7 @@ function App() {
                         <Route path='/privacy' element={<Privacy />} />
                         <Route path='/login' element={<Login />} />
                         <Route path='/register' element={<Register />} />
+                        <Route path='/*' element={<NotFound />} />
                     </Routes>
                 </main>
 
