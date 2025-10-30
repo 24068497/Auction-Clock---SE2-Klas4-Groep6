@@ -8,7 +8,6 @@ class Login extends React.Component {
                 display: "flex",
                 justifyContent: "flex-start",
                 alignItems: "flex-start",
-                minHeight: "100vh",
                 background: "#e9f0e6",
                 padding: "40px",
             },
