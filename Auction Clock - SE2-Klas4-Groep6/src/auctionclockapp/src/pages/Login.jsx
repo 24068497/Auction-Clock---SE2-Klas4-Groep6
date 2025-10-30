@@ -58,7 +58,7 @@ class Login extends React.Component {
                         <label htmlFor="username" style={styles.label}>Gebruikersnaam:</label>
                         <input
                             id="username"
-                            type="text"
+                            type="email"
                             name="username"
                             placeholder="Voer uw gebruikersnaam in"
                             style={styles.input}
