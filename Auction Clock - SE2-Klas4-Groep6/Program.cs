@@ -13,7 +13,17 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "API", Version = "v1" });
 });
- 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Allowvite"
+    ,
+    builder => builder
+    .WithOrigins("http://localhost:3000")
+    .AllowAnyMethod()
+    .AllowAnyHeader());
+});
+
 var app = builder.Build();
  
 if (app.Environment.IsDevelopment())
@@ -21,7 +31,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
- 
+
+app.UseCors("Allowvite");
+
 app.UseHttpsRedirection();
 app.UseRouting();
 app.MapControllers();
