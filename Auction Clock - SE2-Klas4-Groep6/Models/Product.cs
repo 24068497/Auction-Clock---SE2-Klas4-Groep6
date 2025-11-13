@@ -19,6 +19,7 @@ public class Product
     public decimal StartPrice { get; set; }
 
     [Required]
+    [DataType(DataType.Date)]
     public DateTime AuctionDate { get; set; }
 
     public int? AuctionId { get; set; }
@@ -37,4 +38,6 @@ public class Product
 
     [ForeignKey("Customer")]
     public User CustomerNav { get; set; }
+    
+    public string? ImagePath { get; set; }
 }
