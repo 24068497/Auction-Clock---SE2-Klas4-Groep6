@@ -24,6 +24,10 @@ class VisitorHeader extends React.Component {
 
                         </ul>
 
+                        <li className="nav-item">
+                            <a className="nav-link" href="/products">Producten</a>
+                        </li>
+
                         <span class="navbar-text fs-5">
                             <Link class="nav-link" to='/register'>
                                 Registreren
