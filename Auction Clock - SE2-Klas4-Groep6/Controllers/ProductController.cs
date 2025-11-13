@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Auction_Clock___SE2_Klas4_Groep6.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace Auction_Clock___SE2_Klas4_Groep6.Controllers 
+namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -13,10 +14,30 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
         {
             _context = context;
         }
-        [HttpPost]
-        public async Task<IActionResult> CreateProduct([FromForm] Product product, [FromForm] IFormFile photo)
+
+        // GET: api/products
+        [HttpGet]
+        public async Task<IActionResult> GetProducts()
         {
-            
+            var products = await _context.Products.ToListAsync();
+            return Ok(products);
+        }
+
+        // GET: api/products/5
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetProduct(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+                return NotFound();
+
+            return Ok(product);
+        }
+
+        // POST: api/products
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct([FromForm] Product product, [FromForm] IFormFile? photo)
+        {
             if (photo != null && photo.Length > 0)
             {
                 var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
@@ -31,14 +52,15 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
                     await photo.CopyToAsync(fileStream);
                 }
 
-                
-                product.AuctionDate = product.AuctionDate.Date;
+                // Opslaan van bestandsnaam in product.ImagePath
+                product.ImagePath = "/images/" + uniqueFileName;
             }
+
+            product.AuctionDate = product.AuctionDate.Date;
 
             await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
-            return Ok(product); 
+            return Ok(product);
         }
     }
-    
 }

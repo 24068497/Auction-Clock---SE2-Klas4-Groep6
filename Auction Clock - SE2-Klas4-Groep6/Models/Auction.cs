@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 public class Auction
 {
@@ -20,8 +21,9 @@ public class Auction
     public int Auctioneer { get; set; }
 
     [ForeignKey("Auctioneer")]
-    public User User { get; set; }
+    public User? User { get; set; }
 
     // Navigatie
+    [JsonIgnore]
     public ICollection<Product> Products { get; set; } = new List<Product>();
 }

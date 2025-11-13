@@ -45,11 +45,13 @@ const AddProduct = () => {
         if (formData.photo) data.append("photo", formData.photo);
 
         try {
-            const response = await fetch("https://localhost:5001/api/products", {
+
+            //fout
+            const response = await fetch("http://localhost:5164/api/products", {
                 method: "POST",
                 body: data,
-                mode: "cors",  // zorgt dat frontend en backend elkaar mogen bereiken
             });
+            //einde fout 
 
             if (response.ok) {
                 setMessage("Product succesvol toegevoegd!");

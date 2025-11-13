@@ -102,7 +102,8 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Migrations
                     AuctionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AuctionId = table.Column<int>(type: "int", nullable: true),
                     Company = table.Column<int>(type: "int", nullable: false),
-                    Customer = table.Column<int>(type: "int", nullable: true)
+                    Customer = table.Column<int>(type: "int", nullable: true),
+                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
