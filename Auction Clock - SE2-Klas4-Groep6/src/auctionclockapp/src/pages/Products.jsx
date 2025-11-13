@@ -27,7 +27,7 @@ export default function Products() {
                     pageSize: '12'
                 });
 
-                const res = await fetch(`/api/products?${params.toString()}`);
+                const res = await fetch(`http://localhost:5001/api/products?${params.toString()}`);
 
                 if (!res.ok) {
                     const msg = await res.text().catch(() => '');
