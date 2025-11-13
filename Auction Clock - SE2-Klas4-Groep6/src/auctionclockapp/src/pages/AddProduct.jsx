@@ -46,12 +46,10 @@ const AddProduct = () => {
 
         try {
 
-            //fout
             const response = await fetch("http://localhost:5164/api/products", {
                 method: "POST",
                 body: data,
             });
-            //einde fout 
 
             if (response.ok) {
                 setMessage("Product succesvol toegevoegd!");
