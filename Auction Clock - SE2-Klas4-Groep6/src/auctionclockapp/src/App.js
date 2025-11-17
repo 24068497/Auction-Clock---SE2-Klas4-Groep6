@@ -4,6 +4,8 @@ import Privacy from './pages/Privacy';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import AddProduct from './pages/AddProduct';
+import AdminAuction from "./pages/AdminAuction";
+import CustomerAuction from "./pages/CustomerAuction";
 
 import VisitorHeader from './components/VisitorHeader';
 import Footer from './components/Footer';
@@ -25,6 +27,8 @@ function App() {
                         <Route path='/register' element={<Register />} />
                         <Route path='/*' element={<NotFound />} />
                         <Route path='/A' element={<AddProduct />} />
+                        <Route path="/auctionClock/admin" element={<AdminAuction />} />
+                        <Route path="/auctionClock/customer" element={<CustomerAuction />} />
                     </Routes>
                 </main>
 

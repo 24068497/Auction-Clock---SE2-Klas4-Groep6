@@ -29,8 +29,7 @@ public class Product
     public int? Company { get; set; }
 
     public int? Customer { get; set; }
-
-    // Navigatie
+    
     [JsonIgnore]
     [ForeignKey("AuctionId")]
     public Auction? Auction { get; set; }
