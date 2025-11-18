@@ -6,7 +6,7 @@ function formatDate(dateStr) {
 }
 
 export default function Products() {
-    const [data, setData] = useState({ items: [], total: 0, page: 1, pageSize: 12 });
+    const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
@@ -27,7 +27,7 @@ export default function Products() {
                     pageSize: '12'
                 });
 
-                const res = await fetch(`http://localhost:5001/api/products?${params.toString()}`);
+                const res = await fetch(`http://localhost:5164/api/products?${params.toString()}`);
 
                 if (!res.ok) {
                     const msg = await res.text().catch(() => '');
@@ -61,13 +61,13 @@ export default function Products() {
 
             {!loading && !error && (
                 <div className="row">
-                    {data.items.length === 0 && (
+                    {data.length === 0 && (
                         <div className="col-12">
                             <div className="alert alert-info">Geen producten gevonden.</div>
                         </div>
                     )}
 
-                    {data.items.map(p => (
+                    {data.map(p => (
                         <div key={p.productId} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                             <div className="card h-100 shadow-sm">
                                 <div className="card-body d-flex flex-column">
