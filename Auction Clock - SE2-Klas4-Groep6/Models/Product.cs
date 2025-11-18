@@ -35,7 +35,6 @@ public class Product
     [ForeignKey("AuctionId")]
     public Auction? Auction { get; set; }
 
-    [JsonIgnore]
     [ForeignKey("Company")]
     public Company? CompanyNav { get; set; }
 

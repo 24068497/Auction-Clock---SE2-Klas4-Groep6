@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function formatDate(dateStr) {
     const d = new Date(dateStr);
-    return d.toLocaleString();
+    return d.toLocaleDateString();
 }
 
 export default function Products() {
@@ -75,7 +75,6 @@ export default function Products() {
                                     <h5 className="card-title mb-1">{p.name}</h5>
                                     <hr></hr>
                                     <p className="card-text flex-grow-1">{p.description || '—'}</p>
-                                    <br></br>
                                     <ul className="list-unstyled mb-3">
                                         <li><strong>Startprijs:</strong> € {Number(p.startPrice).toFixed(2)}</li>
                                         <li><strong>Veilingdatum:</strong> {formatDate(p.auctionDate)}</li>
