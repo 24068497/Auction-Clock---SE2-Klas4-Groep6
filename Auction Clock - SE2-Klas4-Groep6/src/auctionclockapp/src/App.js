@@ -4,6 +4,7 @@ import Privacy from './pages/Privacy';
 import Register from './pages/Register';
 import Products from './pages/Products';
 import NotFound from './pages/NotFound';
+import AddProduct from './pages/AddProduct';
 
 import VisitorHeader from './components/VisitorHeader';
 import Footer from './components/Footer';
@@ -25,6 +26,7 @@ function App() {
                         <Route path='/register' element={<Register />} />
                         <Route path='/products' element={<Products />} />
                         <Route path='/*' element={<NotFound />} />
+                        <Route path='/A' element={<AddProduct />} />
                     </Routes>
                 </main>
 
