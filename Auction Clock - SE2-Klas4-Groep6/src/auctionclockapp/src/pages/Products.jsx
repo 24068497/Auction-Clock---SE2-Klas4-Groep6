@@ -1,4 +1,5 @@
 ﻿import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function formatDate(dateStr) {
     const d = new Date(dateStr);
@@ -91,6 +92,7 @@ export default function Products() {
                     ))}
                 </div>
             )}
+            <button class="btn form-btn w-50"><Link to='/product/add' class="nav-link text-white">Product toevoegen</Link></button>
         </div>
     );
 }

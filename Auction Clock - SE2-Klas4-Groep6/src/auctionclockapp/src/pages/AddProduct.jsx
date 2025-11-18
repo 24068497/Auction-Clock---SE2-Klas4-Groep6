@@ -74,7 +74,6 @@ const AddProduct = () => {
         title: { textAlign: "center", marginBottom: "1.5rem" },
         label: { display: "block", marginBottom: "0.4rem", fontSize: "14px" },
         input: { width: "100%", padding: "10px", marginBottom: "1rem", border: "1px solid #ccc", borderRadius: "6px", outline: "none" },
-        button: { width: "100%", padding: "10px", background: "linear-gradient(180deg, #1e8d5a, #0a5a35)", color: "white", border: "none", borderRadius: "6px", fontSize: "16px", fontWeight: "600", cursor: "pointer" },
         message: { textAlign: "center", marginTop: "1rem", color: "#0a5a35", fontWeight: "600" },
     };
 
@@ -101,7 +100,7 @@ const AddProduct = () => {
                     <label style={styles.label}>Foto uploaden:</label>
                     <input name="photo" type="file" accept="image/*" onChange={handleChange} style={styles.input} />
 
-                    <button type="submit" style={styles.button}>Product Toevoegen</button>
+                    <button type="submit" class="btn form-btn">Product Toevoegen</button>
                 </form>
                 {message && <p style={styles.message}>{message}</p>}
             </div>
