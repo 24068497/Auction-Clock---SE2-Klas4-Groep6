@@ -72,9 +72,9 @@ export default function Products() {
                             <div className="card h-100 shadow-sm">
                                 <div className="card-body d-flex flex-column">
                                     <h5 className="card-title mb-1">{p.name}</h5>
-                                    <small className="text-muted mb-2">#{p.productId}</small>
+                                    <hr></hr>
                                     <p className="card-text flex-grow-1">{p.description || '—'}</p>
-
+                                    <br></br>
                                     <ul className="list-unstyled mb-3">
                                         <li><strong>Startprijs:</strong> € {Number(p.startPrice).toFixed(2)}</li>
                                         <li><strong>Veilingdatum:</strong> {formatDate(p.auctionDate)}</li>

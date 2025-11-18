@@ -39,9 +39,7 @@ const AddProduct = () => {
         data.append("description", formData.description);
         data.append("startPrice", formData.startPrice);
         data.append("auctionDate", formData.auctionDate);
-        if (formData.auctionId) data.append("auctionId", formData.auctionId);
         data.append("company", formData.company);
-        if (formData.customer) data.append("customer", formData.customer);
         if (formData.photo) data.append("photo", formData.photo);
 
         try {
@@ -58,9 +56,7 @@ const AddProduct = () => {
                     description: "",
                     startPrice: 0,
                     auctionDate: "",
-                    auctionId: 0,
                     company: 0,
-                    customer: 0,
                     photo: null,
                 });
             } else {
@@ -99,14 +95,8 @@ const AddProduct = () => {
                     <label style={styles.label}>Veilingdatum:</label>
                     <input name="auctionDate" type="date" value={formData.auctionDate} onChange={handleChange} style={styles.input} required />
 
-                    <label style={styles.label}>Auction ID (optioneel):</label>
-                    <input name="auctionId" type="number" value={formData.auctionId} onChange={handleChange} style={styles.input} />
-
                     <label style={styles.label}>Bedrijf (Company ID):</label>
                     <input name="company" type="number" value={formData.company} onChange={handleChange} style={styles.input} required />
-
-                    <label style={styles.label}>Klant (Customer ID):</label>
-                    <input name="customer" type="number" value={formData.customer} onChange={handleChange} style={styles.input} />
 
                     <label style={styles.label}>Foto uploaden:</label>
                     <input name="photo" type="file" accept="image/*" onChange={handleChange} style={styles.input} />
