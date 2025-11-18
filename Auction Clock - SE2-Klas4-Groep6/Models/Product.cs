@@ -26,7 +26,7 @@ public class Product
 
     public int? AuctionId { get; set; }
 
-    public int? Company { get; set; }
+    public int Company { get; set; }
 
     public int? Customer { get; set; }
 

@@ -92,7 +92,7 @@ export default function Products() {
                     ))}
                 </div>
             )}
-            <button class="btn form-btn w-50"><Link to='/product/add' class="nav-link text-white">Product toevoegen</Link></button>
+            <button class="btn btnStyle w-30"><Link to='/product/add' class="nav-link text-white">Product toevoegen</Link></button>
         </div>
     );
 }
