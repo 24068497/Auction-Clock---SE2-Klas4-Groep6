@@ -1,8 +1,10 @@
 namespace Auction_Clock___SE2_Klas4_Groep6.Models;
+
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-public class User
+public class User : IdentityUser
 {
     [Key]
     public int UserId { get; set; }

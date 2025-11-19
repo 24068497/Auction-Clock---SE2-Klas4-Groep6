@@ -19,7 +19,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
         [HttpGet]
         public async Task<IActionResult> GetProducts()
         {
-            var products = await _context.Products.FindAsync();
+            var products = await _context.Products.ToListAsync();
             return Ok(products);
         }
 
