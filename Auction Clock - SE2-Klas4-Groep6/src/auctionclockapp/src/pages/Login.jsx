@@ -36,17 +36,6 @@ class Login extends React.Component {
                 borderRadius: "6px",
                 outline: "none",
             },
-            button: {
-                width: "100%",
-                padding: "10px",
-                background: "linear-gradient(180deg, #1e8d5a, #0a5a35)",
-                color: "white",
-                border: "none",
-                borderRadius: "6px",
-                fontSize: "16px",
-                fontWeight: "600",
-                cursor: "pointer",
-            },
         };
 
         return (
@@ -72,7 +61,7 @@ class Login extends React.Component {
                             style={styles.input}
                         />
 
-                        <button type="button" style={styles.button}>Login</button>
+                        <button type="button" class="form-btn">Login</button>
                     </form>
                     
                     <p style={{ textAlign: "center", marginTop: "1rem" }}>

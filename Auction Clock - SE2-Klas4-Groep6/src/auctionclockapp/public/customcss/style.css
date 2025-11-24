@@ -30,6 +30,22 @@ main {
     flex: 1;
 }
 
+.form-btn {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(180deg, #1e8d5a, #0a5a35);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer
+}
+
+.form-btn:hover {
+    color: white;
+}
+
 .navbar-toggler-icon {
     display: inline-block;
     width: 1.5em;

@@ -39,9 +39,7 @@ const AddProduct = () => {
         data.append("description", formData.description);
         data.append("startPrice", formData.startPrice);
         data.append("auctionDate", formData.auctionDate);
-        if (formData.auctionId) data.append("auctionId", formData.auctionId);
         data.append("company", formData.company);
-        if (formData.customer) data.append("customer", formData.customer);
         if (formData.photo) data.append("photo", formData.photo);
 
         try {
@@ -58,9 +56,7 @@ const AddProduct = () => {
                     description: "",
                     startPrice: 0,
                     auctionDate: "",
-                    auctionId: 0,
                     company: 0,
-                    customer: 0,
                     photo: null,
                 });
             } else {
@@ -78,7 +74,6 @@ const AddProduct = () => {
         title: { textAlign: "center", marginBottom: "1.5rem" },
         label: { display: "block", marginBottom: "0.4rem", fontSize: "14px" },
         input: { width: "100%", padding: "10px", marginBottom: "1rem", border: "1px solid #ccc", borderRadius: "6px", outline: "none" },
-        button: { width: "100%", padding: "10px", background: "linear-gradient(180deg, #1e8d5a, #0a5a35)", color: "white", border: "none", borderRadius: "6px", fontSize: "16px", fontWeight: "600", cursor: "pointer" },
         message: { textAlign: "center", marginTop: "1rem", color: "#0a5a35", fontWeight: "600" },
     };
 
@@ -99,19 +94,13 @@ const AddProduct = () => {
                     <label style={styles.label}>Veilingdatum:</label>
                     <input name="auctionDate" type="date" value={formData.auctionDate} onChange={handleChange} style={styles.input} required />
 
-                    <label style={styles.label}>Auction ID (optioneel):</label>
-                    <input name="auctionId" type="number" value={formData.auctionId} onChange={handleChange} style={styles.input} />
-
                     <label style={styles.label}>Bedrijf (Company ID):</label>
                     <input name="company" type="number" value={formData.company} onChange={handleChange} style={styles.input} required />
-
-                    <label style={styles.label}>Klant (Customer ID):</label>
-                    <input name="customer" type="number" value={formData.customer} onChange={handleChange} style={styles.input} />
 
                     <label style={styles.label}>Foto uploaden:</label>
                     <input name="photo" type="file" accept="image/*" onChange={handleChange} style={styles.input} />
 
-                    <button type="submit" style={styles.button}>Product Toevoegen</button>
+                    <button type="submit" class="btn form-btn">Product Toevoegen</button>
                 </form>
                 {message && <p style={styles.message}>{message}</p>}
             </div>
@@ -120,3 +109,4 @@ const AddProduct = () => {
 };
 
 export default AddProduct;
+ 

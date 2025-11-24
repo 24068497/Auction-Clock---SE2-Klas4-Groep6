@@ -21,7 +21,7 @@ public class Auction
     public int Auctioneer { get; set; }
 
     [ForeignKey("Auctioneer")]
-    public User? User { get; set; }
+    public int? User { get; set; }
 
     // Navigatie
     [JsonIgnore]

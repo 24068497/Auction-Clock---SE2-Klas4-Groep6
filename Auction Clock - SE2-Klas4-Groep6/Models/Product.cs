@@ -26,7 +26,7 @@ public class Product
 
     public int? AuctionId { get; set; }
 
-    public int? Company { get; set; }
+    public int Company { get; set; }
 
     public int? Customer { get; set; }
     
@@ -40,7 +40,7 @@ public class Product
 
     [JsonIgnore]
     [ForeignKey("Customer")]
-    public User? CustomerNav { get; set; }
+    public int? CustomerNav { get; set; }
     
     public string? ImagePath { get; set; }
 }
