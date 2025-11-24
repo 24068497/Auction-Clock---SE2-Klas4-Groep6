@@ -35,12 +35,13 @@ public class Product
     [ForeignKey("AuctionId")]
     public Auction? Auction { get; set; }
 
+    [JsonIgnore]
     [ForeignKey("Company")]
     public Company? CompanyNav { get; set; }
 
     [JsonIgnore]
     [ForeignKey("Customer")]
-    public User? CustomerNav { get; set; }
+    public int? CustomerNav { get; set; }
     
     public string? ImagePath { get; set; }
 }
