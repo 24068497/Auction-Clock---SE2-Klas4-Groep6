@@ -37,17 +37,6 @@ class Registreren extends React.Component {
                 borderRadius: "6px",
                 outline: "none",
             },
-            button: {
-                width: "100%",
-                padding: "10px",
-                background: "linear-gradient(180deg, #1e8d5a, #0a5a35)",
-                color: "white",
-                border: "none",
-                borderRadius: "6px",
-                fontSize: "16px",
-                fontWeight: "600",
-                cursor: "pointer",
-            },
         };
 
         return (
@@ -85,10 +74,9 @@ class Registreren extends React.Component {
                         <label htmlFor="confirmPassword" style={styles.label}>Bevestig wachtwoord:</label>
                         <input id="confirmPassword" type="password" style={styles.input} placeholder="Herhaal wachtwoord" />
 
-                        <button type="button" style={styles.button}>Registreren</button>
+                        <button type="button" class="btn form-btn">Registreren</button>
                     </form>
-
-                    {/* Link terug naar login */}
+                    
                     <p style={{ textAlign: "center", marginTop: "1rem" }}>
                         Al een account?{" "}
                         <Link

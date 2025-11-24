@@ -22,6 +22,9 @@ class VisitorHeader extends React.Component {
                                 </Link>
                             </li>
 
+                            <li className="nav-item fs-5">
+                                <a className="nav-link" href="/products">Producten</a>
+                            </li>
                         </ul>
 
                         <span class="navbar-text fs-5">
