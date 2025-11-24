@@ -36,7 +36,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
 
         // POST: api/products
         [HttpPost]
-        public async Task<IActionResult> CreateProduct([FromForm] Product product, [FromForm] IFormFile? photo)
+        public async Task<IActionResult> CreateProduct([FromForm] ProductaddDTO productaddDTO, [FromForm] IFormFile? photo)
         {
             if (photo != null && photo.Length > 0)
             {
@@ -52,11 +52,19 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
                     await photo.CopyToAsync(fileStream);
                 }
 
-                // Opslaan van bestandsnaam in product.ImagePath
-                product.ImagePath = "/images/" + uniqueFileName;
+                productaddDTO.ImagePath = "/images/" + uniqueFileName;
             }
 
-            product.AuctionDate = product.AuctionDate.Date;
+            productaddDTO.AuctionDate = productaddDTO.AuctionDate.Date;
+
+            var product = new Product
+            {
+                Name = productaddDTO.Name,
+                Description = productaddDTO.Description,
+                StartPrice = productaddDTO.StartPrice,
+                AuctionDate = productaddDTO.AuctionDate,
+                ImagePath = productaddDTO.ImagePath,
+            };
 
             await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
