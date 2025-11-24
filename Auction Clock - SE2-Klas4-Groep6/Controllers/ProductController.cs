@@ -19,7 +19,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
         [HttpGet]
         public async Task<IActionResult> GetProducts()
         {
-            var products = await _context.Products.FindAsync();
+            var products = await _context.Products.ToListAsync();
             return Ok(products);
         }
 
@@ -27,7 +27,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProduct(int id)
         {
-            var product = await _context.Products.FindAsync(id);
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.ProductId == id);
             if (product == null)
                 return NotFound();
 

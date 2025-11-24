@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Auction_Clock___SE2_Klas4_Groep6.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251113113532_DatabaseEnviroment")]
-    partial class DatabaseEnviroment
+    [Migration("20251124090300_FKFix")]
+    partial class FKFix
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

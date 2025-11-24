@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Auction_Clock___SE2_Klas4_Groep6.Migrations
 {
     /// <inheritdoc />
-    public partial class DatabaseEnviroment : Migration
+    public partial class FKFix : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
