@@ -26,7 +26,6 @@ public class User : IdentityUser
     
     [Required]
     public int RoleId { get; set; }
-
     public int? CompanyId { get; set; }
 
     // Navigatie
