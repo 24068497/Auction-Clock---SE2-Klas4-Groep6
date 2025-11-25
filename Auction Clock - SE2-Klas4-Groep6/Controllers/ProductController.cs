@@ -40,7 +40,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
         {
             if (photo != null && photo.Length > 0)
             {
-                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img");
                 if (!Directory.Exists(uploadsFolder))
                     Directory.CreateDirectory(uploadsFolder);
 
@@ -52,7 +52,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
                     await photo.CopyToAsync(fileStream);
                 }
 
-                productaddDTO.ImagePath = "/images/" + uniqueFileName;
+                productaddDTO.ImagePath = "/img/" + uniqueFileName;
             }
 
             productaddDTO.AuctionDate = productaddDTO.AuctionDate.Date;
@@ -64,6 +64,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
                 StartPrice = productaddDTO.StartPrice,
                 AuctionDate = productaddDTO.AuctionDate,
                 ImagePath = productaddDTO.ImagePath,
+                Company = productaddDTO.Company,
             };
 
             await _context.Products.AddAsync(product);
