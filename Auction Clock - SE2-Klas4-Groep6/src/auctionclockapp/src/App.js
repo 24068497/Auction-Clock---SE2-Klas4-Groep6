@@ -5,6 +5,7 @@ import Register from './pages/Register';
 import Products from './pages/Products';
 import NotFound from './pages/NotFound';
 import AddProduct from './pages/AddProduct';
+import ProductOverview from './pages/ProductOverview';
 
 import VisitorHeader from './components/VisitorHeader';
 import Footer from './components/Footer';
@@ -27,6 +28,7 @@ function App() {
                         <Route path='/products' element={<Products />} />
                         <Route path='/*' element={<NotFound />} />
                         <Route path='/product/add' element={<AddProduct />} />
+                        <Route path='/product/:id' element={<ProductOverview />} />
                     </Routes>
                 </main>
 
