@@ -9,7 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2cda8dd-f148-47db-b209-ddb6755005a7" name="Changes" comment="" />
+    <list default="true" id="d2cda8dd-f148-47db-b209-ddb6755005a7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Auction Clock - SE2-Klas4-Groep6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Auction Clock - SE2-Klas4-Groep6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/src/auctionclockapp/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/src/auctionclockapp/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/src/auctionclockapp/src/components/AuctionClock.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/src/auctionclockapp/src/components/AuctionClock.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/src/auctionclockapp/src/pages/AdminAuction.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/src/auctionclockapp/src/pages/AdminAuction.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/src/auctionclockapp/src/pages/CustomerAuction.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/src/auctionclockapp/src/pages/CustomerAuction.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +32,7 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -33,12 +40,12 @@
     &quot;assignee&quot;: &quot;Aditya24060682&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/24068497/Auction-Clock---SE2-Klas4-Groep6.git",
-    "accountId": "b17ad289-1e4a-4667-96a2-23a8089662a7"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/24068497/Auction-Clock---SE2-Klas4-Groep6.git&quot;,
+    &quot;accountId&quot;: &quot;b17ad289-1e4a-4667-96a2-23a8089662a7&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/Controllers/CompanyTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
@@ -60,6 +67,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "git-widget-placeholder": "Tim",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -67,6 +75,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "ts.external.directory.path": "C:\\Users\\tjmwe\\AppData\\Local\\Programs\\Rider\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -75,7 +84,6 @@
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/Auction Clock - SE2-Klas4-Groep6.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
       <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
@@ -83,6 +91,7 @@
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
       <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -91,7 +100,6 @@
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/Auction Clock - SE2-Klas4-Groep6.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
       <option name="LAUNCH_PROFILE_NAME" value="http" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
@@ -99,6 +107,7 @@
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
       <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -107,7 +116,6 @@
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/Auction Clock - SE2-Klas4-Groep6.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
       <option name="LAUNCH_PROFILE_NAME" value="https" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
@@ -115,6 +123,7 @@
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
       <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -140,6 +149,8 @@
       <workItem from="1761644869961" duration="258000" />
       <workItem from="1761645163456" duration="242000" />
       <workItem from="1763400923864" duration="8651000" />
+      <workItem from="1764147218637" duration="5315000" />
+      <workItem from="1764194023244" duration="4416000" />
     </task>
     <task id="LOCAL-00001" summary="companytest erbij">
       <option name="closed" value="true" />
@@ -189,6 +200,11 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/src/auctionclockapp/src/App.js</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

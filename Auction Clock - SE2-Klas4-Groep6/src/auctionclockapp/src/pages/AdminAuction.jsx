@@ -1,76 +1,93 @@
-﻿// src/pages/AdminAuction.jsx
-import React, { useEffect, useState } from "react";
-import AuctionClock from "../components/AuctionClock";
+﻿import { useEffect, useState } from 'react';
+import AuctionClock from '../components/AuctionClock';
 
 export default function AdminAuction() {
-    const [queue, setQueue] = useState([]);
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [products, setProducts] = useState([]);
+    const [activeProduct, setActiveProduct] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
 
     useEffect(() => {
-        async function loadQueue() {
-            const res = await fetch("https://localhost:5001/api/auctions/queue/today");
-            const data = await res.json();
-            setQueue(data);
+        async function load() {
+            setLoading(true);
+            try {
+                const res = await fetch("http://localhost:5164/api/products");
+                if (!res.ok) throw new Error("Fout bij ophalen producten");
+
+                const json = await res.json();
+                setProducts(json);
+
+                if (json.length > 0 && !activeProduct) {
+                    setActiveProduct(json[0]);
+                }
+
+            } catch (e) {
+                setError(e.message);
+            } finally {
+                setLoading(false);
+            }
         }
-        loadQueue();
+        load();
     }, []);
 
-    const activeProduct = queue[activeIndex];
-
-    const handleNext = () => {
-        if (activeIndex < queue.length - 1) {
-            setActiveIndex(i => i + 1);
-        } else {
-            alert("Alle kavels van vandaag zijn geveild ✅");
-        }
-    };
-
     return (
-        <div style={{ padding: "30px", textAlign: "center" }}>
-            <h1>Veilingmeester</h1>
+        <div className="container-fluid mt-4">
+            <div className="row">
 
-            {activeProduct && (
-                <>
-                    <h2>{activeProduct.name}</h2>
-                    {activeProduct.imagePath && (
-                        <img
-                            src={activeProduct.imagePath}
-                            alt={activeProduct.name}
-                            style={{ maxWidth: "200px", borderRadius: "10px", marginBottom: "15px" }}
-                        />
+                {/* === PRODUCT LIJST LINKS === */}
+                <div className="col-md-3 border-end" style={{ maxHeight: "90vh", overflowY: "auto" }}>
+                    <h4 className="text-center mb-3">Kavel Volgorde</h4>
+
+                    {loading && <p>Laden…</p>}
+                    {error && <p className="text-danger">{error}</p>}
+
+                    <ul className="list-group">
+                        {products.map(p => (
+                            <li
+                                key={p.productId}
+                                className={`list-group-item ${activeProduct?.productId === p.productId ? 'active' : ''}`}
+                                style={{ cursor: 'pointer' }}
+                                onClick={() => setActiveProduct(p)}
+                            >
+                                <strong>{p.name}</strong>
+                                <br />
+                                <small className="text-muted">€ {Number(p.startPrice).toFixed(2)}</small>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                {/* === RECHTER KANT: PRODUCT INFO + KLOK === */}
+                <div className="col-md-9 d-flex justify-content-center align-items-start gap-4">
+
+                    {/* Groot product detail */}
+                    {activeProduct && (
+                        <div className="card p-3 shadow" style={{ width: "350px" }}>
+                            <h4>{activeProduct.name}</h4>
+
+                            {activeProduct.imagePath && (
+                                <img
+                                    src={activeProduct.imagePath}
+                                    alt={activeProduct.name}
+                                    className="img-fluid rounded mb-2"
+                                    style={{ maxHeight: "200px", objectFit: "cover" }}
+                                />
+                            )}
+
+                            <p>{activeProduct.description}</p>
+                            <p><strong>Startprijs:</strong> € {Number(activeProduct.startPrice).toFixed(2)}</p>
+                        </div>
                     )}
-                    <p>{activeProduct.description}</p>
-                </>
-            )}
 
-            <AuctionClock
-                role="admin"
-                startPrice={activeProduct ? activeProduct.startPrice : 0}
-                duration={10}             // ⏱ maximaal 10 seconden
-            />
-
-            <h3 style={{ marginTop: "30px" }}>Veilingvolgorde vandaag</h3>
-            <ol style={{ textAlign: "left", maxWidth: "400px", margin: "10px auto" }}>
-                {queue.map((p, idx) => (
-                    <li
-                        key={p.productId}
-                        style={{
-                            fontWeight: idx === activeIndex ? "bold" : "normal",
-                            color: idx === activeIndex ? "#007bff" : "#333",
-                        }}
-                    >
-                        {p.orderInAuction ?? idx + 1}. {p.name} – €{p.startPrice.toFixed(2)}
-                    </li>
-                ))}
-            </ol>
-
-            <button
-                onClick={handleNext}
-                disabled={activeIndex >= queue.length - 1}
-                className="btn btn-primary"
-            >
-                Volgende kavel
-            </button>
+                    {/* Veilingsklok */}
+                    <AuctionClock
+                        key={activeProduct?.productId}
+                        startPrice={activeProduct?.startPrice || 0}
+                        productName={activeProduct?.name || ""}
+                        role="admin"
+                    />
+                </div>
+            </div>
         </div>
     );
 }

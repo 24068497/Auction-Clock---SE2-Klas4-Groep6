@@ -12,40 +12,61 @@ export default function AuctionClock({
     const [running, setRunning] = useState(false);
     const intervalRef = useRef(null);
 
+    // Reset klok wanneer product verandert
     useEffect(() => {
-        setTimeLeft(duration);
-        setPrice(startPrice);
-        setRunning(false);
-        clearInterval(intervalRef.current);
+        resetClock();
     }, [startPrice, duration]);
 
+    // Start automatisch bij koper
     useEffect(() => {
-        if (role === "customer") {
-            setRunning(true);
-        }
+        if (role === "customer") setRunning(true);
     }, [role]);
 
+    // Lineaire prijs- en tijdsafname
     useEffect(() => {
         if (!running) return;
 
+        const startTimestamp = Date.now();
+        const totalMs = duration * 1000;
+        const startP = startPrice;
+
         intervalRef.current = setInterval(() => {
-            setTimeLeft((prev) => {
-                if (prev <= 1) {
-                    clearInterval(intervalRef.current);
-                    return 0;
-                }
-                setPrice((p) => Math.max(0, p - startPrice / duration));
-                return prev - 1;
-            });
-        }, 1000);
+            const elapsed = Date.now() - startTimestamp;
+
+            if (elapsed >= totalMs) {
+                setTimeLeft(0);
+                setPrice(0);
+                stopClock();
+                return;
+            }
+
+            setPrice(startP * (1 - elapsed / totalMs)); // dalende prijs
+            setTimeLeft(Math.ceil((totalMs - elapsed) / 1000)); // tijd update
+        }, 50);
 
         return () => clearInterval(intervalRef.current);
     }, [running, startPrice, duration]);
 
-    const handleStart = () => setRunning(true);
-    const handlePause = () => { setRunning(false); clearInterval(intervalRef.current); };
-    const handleReset = () => { setRunning(false); clearInterval(intervalRef.current); setTimeLeft(duration); setPrice(startPrice); };
-    const handleBuy = () => { if (onBuy) onBuy(price); alert(`Je hebt gekocht voor €${price.toFixed(2)}`); setRunning(false); };
+    function startClock() {
+        setRunning(true);
+    }
+
+    function stopClock() {
+        setRunning(false);
+        clearInterval(intervalRef.current);
+    }
+
+    function resetClock() {
+        stopClock();
+        setTimeLeft(duration);
+        setPrice(startPrice);
+    }
+
+    // KOOP
+    function buyProduct() {
+        stopClock();
+        if (onBuy) onBuy(price); // GEEN ALERT MEER HIER!
+    }
 
     return (
         <div className="auction-clock-container">
@@ -57,19 +78,27 @@ export default function AuctionClock({
 
             <h1 className="price">€ {price.toFixed(2)}</h1>
 
-            <p className="status-text">{running ? "⏱ Veiling loopt…" : "⏸ Veiling gepauzeerd"}</p>
+            <p className="status-text">
+                {running ? "⏱ Veiling loopt…" : "⏸ Veiling gepauzeerd"}
+            </p>
 
+            {/* KOPER KNOP */}
             {role === "customer" && (
-                <button className="buy-btn" onClick={handleBuy} disabled={!running || timeLeft === 0}>
+                <button
+                    className="buy-btn"
+                    onClick={buyProduct}
+                    disabled={!running || timeLeft === 0}
+                >
                     KOOP NU
                 </button>
             )}
 
+            {/* ADMIN KNOPPEN */}
             {role === "admin" && (
                 <div className="admin-controls">
-                    <button onClick={handleStart} disabled={running || timeLeft === 0}>Start</button>
-                    <button onClick={handlePause} disabled={!running}>Pauze</button>
-                    <button onClick={handleReset}>Reset</button>
+                    <button onClick={startClock} disabled={running || timeLeft === 0}>Start</button>
+                    <button onClick={stopClock} disabled={!running}>Pauze</button>
+                    <button onClick={resetClock}>Reset</button>
                 </div>
             )}
         </div>
