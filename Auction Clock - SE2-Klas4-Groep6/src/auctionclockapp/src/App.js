@@ -29,8 +29,8 @@ function App() {
                         <Route path='/products' element={<Products />} />
                         <Route path='/*' element={<NotFound />} />
                         <Route path='/product/add' element={<AddProduct />} />
-                        <Route path='/a' element={<AdminAuction />} />
-                        <Route path='/b' element={<CustomerAuction />} />
+                        <Route path='/auction/admin' element={<AdminAuction />} />
+                        <Route path='/auction/customer' element={<CustomerAuction />} />
                     </Routes>
                 </main>
 
