@@ -1,5 +1,5 @@
 ﻿import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const AddProduct = () => {
     const [formData, setFormData] = useState({
         name: "",
@@ -11,6 +11,8 @@ const AddProduct = () => {
         customer: 0,
         photo: null,
     });
+
+    const navigate = useNavigate();
 
     const [message, setMessage] = useState("");
 
@@ -58,16 +60,13 @@ const AddProduct = () => {
                 body: data,
             });
 
-                if (response.ok) {
-                    setMessage("Product succesvol toegevoegd!");
-                    setFormData({
-                        name: "",
-                        description: "",
-                        startPrice: 0,
-                        auctionDate: "",
-                        company: 0,
-                        photo: null,
-                    });
+            if (response.ok) {
+                setMessage("Product succesvol toegevoegd!");
+
+                setTimeout(() => {
+                    navigate("/products");
+                }, 1000);
+                
                 } else {
                     setMessage("Er ging iets mis bij het toevoegen van het product.");
                 }
