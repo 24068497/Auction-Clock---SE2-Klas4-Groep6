@@ -45,7 +45,7 @@ export default function ProductDetails() {
             <div className="row mt-4 p-2">
 
                 <div className="col-md-6 col-sm-12 my-1">
-                    <img src={product.imagePath} alt={product.name} width="100%" className="float-md-end d-block mx-auto" />
+                    <img src={`http://localhost:5164${product.imagePath}`} alt={product.name} width="100%" className="float-md-end d-block mx-auto" />
                 </div>
 
                 <div className="col-md-6 col-sm-12 my-1 border bg-light">

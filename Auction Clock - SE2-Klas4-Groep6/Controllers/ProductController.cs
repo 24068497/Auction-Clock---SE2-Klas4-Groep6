@@ -54,7 +54,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
                     await photo.CopyToAsync(fileStream);
                 }
 
-                productaddDTO.ImagePath = "/img/" + uniqueFileName;
+                productaddDTO.ImagePath = $"/img/{uniqueFileName}";
             }
 
             productaddDTO.AuctionDate = productaddDTO.AuctionDate.Date;

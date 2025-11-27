@@ -42,11 +42,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseStaticFiles();
 app.UseCors("Allowvite");
 
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseStaticFiles();
 app.MapIdentityApi<User>();
 
 app.UseHttpsRedirection();
