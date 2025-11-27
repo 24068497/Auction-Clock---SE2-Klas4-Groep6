@@ -23,11 +23,13 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             return Ok(products);
         }
 
-        // GET: api/products/5
+        // GET: api/products/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProduct(int id)
         {
-            var product = await _context.Products.FirstOrDefaultAsync(p => p.ProductId == id);
+            var product = await _context.Products
+                .FirstOrDefaultAsync(p => p.ProductId == id);
+
             if (product == null)
                 return NotFound();
 
@@ -52,11 +54,11 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
                     await photo.CopyToAsync(fileStream);
                 }
 
-                productaddDTO.ImagePath = "/img/" + uniqueFileName;
+                productaddDTO.ImagePath = $"/img/{uniqueFileName}";
             }
 
             productaddDTO.AuctionDate = productaddDTO.AuctionDate.Date;
-
+            
             var product = new Product
             {
                 Name = productaddDTO.Name,
