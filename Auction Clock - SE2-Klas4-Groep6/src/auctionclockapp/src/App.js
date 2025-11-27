@@ -6,7 +6,8 @@ import Products from './pages/Products';
 import NotFound from './pages/NotFound';
 import AddProduct from './pages/AddProduct';
 import ProductOverview from './pages/ProductOverview';
-
+import AdminAuction from "./pages/AdminAuction";
+import CustomerAuction from "./pages/CustomerAuction";
 import VisitorHeader from './components/VisitorHeader';
 import Footer from './components/Footer';
 
@@ -29,6 +30,8 @@ function App() {
                         <Route path='/*' element={<NotFound />} />
                         <Route path='/product/add' element={<AddProduct />} />
                         <Route path='/product/:id' element={<ProductOverview />} />
+                        <Route path='/auction/Admin' element={<AdminAuction />} />
+                        <Route path='/auction/Customer' element={<CustomerAuction />} />
                     </Routes>
                 </main>
 

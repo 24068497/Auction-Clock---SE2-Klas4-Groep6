@@ -36,6 +36,8 @@ export default function Products() {
                 }
                 const json = await res.json();
                 setData(json);
+                json.sort((a, b) => new Date(a.auctionDate) - new Date(b.auctionDate));
+                setData(json);
             } catch (e) {
                 setError(e.message || 'Er ging iets mis');
             } finally {
