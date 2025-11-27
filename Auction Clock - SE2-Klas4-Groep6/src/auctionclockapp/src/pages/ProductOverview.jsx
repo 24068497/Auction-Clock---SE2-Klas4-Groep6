@@ -44,14 +44,19 @@ export default function ProductDetails() {
 
             <div className="row mt-4 p-2">
 
-                <div className="col-md-6 col-sm-12 my-1 border bg-light">
-                    <img src={product.imagePath} alt={product.name} />
+                <div className="col-md-6 col-sm-12 my-1">
+                    <img src={product.imagePath} alt={product.name} width="100%" className="float-md-end d-block mx-auto" />
                 </div>
 
                 <div className="col-md-6 col-sm-12 my-1 border bg-light">
-                    <h4>{product.name}</h4>
-                    <p>Startprijs: €{product.startPrice.toFixed(2)}</p>
-                    <p>Veildatum: {formatDate(product.auctionDate)}</p>
+                    <div className="p-1">
+                        <h4>{product.name}</h4>
+                        <hr></hr>
+                        <article>Productbeschrijving: {product.description}</article>
+                        <br></br>
+                        <p>Startprijs: €{product.startPrice.toFixed(2)}</p>
+                        <p>Veildatum: {formatDate(product.auctionDate)}</p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -46,6 +46,7 @@ app.UseCors("Allowvite");
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseStaticFiles();
 app.MapIdentityApi<User>();
 
 app.UseHttpsRedirection();
