@@ -10,6 +10,7 @@ export default function Products() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const role = localStorage.getItem("role");
 
     useEffect(() => {
         const today = new Date();
@@ -84,8 +85,16 @@ export default function Products() {
 
                                     <div className="mt-auto d-grid text-break">
                                         <button className="btn btn-primary">
-                                            <Link to={`/product/${p.productId}`} class="nav-link text-white">Meer over {p.name}</Link>
+                                            <Link to={`/product/${p.productId}`} class="nav-link text-white">
+                                                Meer over {p.name}
+                                            </Link>
                                         </button>
+
+                                        {role === "VeilingMeester" && (
+                                            <button className="btn btn-warning mt-2">
+                                                Toevoegen aan kavel
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
                             </div>
