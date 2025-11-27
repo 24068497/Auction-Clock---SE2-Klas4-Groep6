@@ -34,6 +34,15 @@ const AddProduct = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        const currentDate = new Date();
+        const auctionDate = new Date(formData.auctionDate);
+
+        if (auctionDate < currentDate) {
+            setMessage("Geef een geldige datum mee. Let op dat de datum nog niet verstreken is!");
+            return;
+        }
+
+        console.log(currentDate);
         const data = new FormData();
         data.append("name", formData.name);
         data.append("description", formData.description);
@@ -49,19 +58,19 @@ const AddProduct = () => {
                 body: data,
             });
 
-            if (response.ok) {
-                setMessage("Product succesvol toegevoegd!");
-                setFormData({
-                    name: "",
-                    description: "",
-                    startPrice: 0,
-                    auctionDate: "",
-                    company: 0,
-                    photo: null,
-                });
-            } else {
-                setMessage("Er ging iets mis bij het toevoegen van het product.");
-            }
+                if (response.ok) {
+                    setMessage("Product succesvol toegevoegd!");
+                    setFormData({
+                        name: "",
+                        description: "",
+                        startPrice: 0,
+                        auctionDate: "",
+                        company: 0,
+                        photo: null,
+                    });
+                } else {
+                    setMessage("Er ging iets mis bij het toevoegen van het product.");
+                }
         } catch (error) {
             console.error(error);
             setMessage("Fout bij het verbinden met de server.");
@@ -109,4 +118,3 @@ const AddProduct = () => {
 };
 
 export default AddProduct;
- 

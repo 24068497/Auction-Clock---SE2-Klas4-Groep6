@@ -23,11 +23,13 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             return Ok(products);
         }
 
-        // GET: api/products/5
+        // GET: api/products/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProduct(int id)
         {
-            var product = await _context.Products.FirstOrDefaultAsync(p => p.ProductId == id);
+            var product = await _context.Products
+                .FirstOrDefaultAsync(p => p.ProductId == id);
+
             if (product == null)
                 return NotFound();
 
@@ -36,11 +38,11 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
 
         // POST: api/products
         [HttpPost]
-        public async Task<IActionResult> CreateProduct([FromForm] Product product, [FromForm] IFormFile? photo)
+        public async Task<IActionResult> CreateProduct([FromForm] ProductaddDTO productaddDTO, [FromForm] IFormFile? photo)
         {
             if (photo != null && photo.Length > 0)
             {
-                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img");
                 if (!Directory.Exists(uploadsFolder))
                     Directory.CreateDirectory(uploadsFolder);
 
@@ -52,11 +54,20 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
                     await photo.CopyToAsync(fileStream);
                 }
 
-                // Opslaan van bestandsnaam in product.ImagePath
-                product.ImagePath = "/images/" + uniqueFileName;
+                productaddDTO.ImagePath = $"/img/{uniqueFileName}";
             }
 
-            product.AuctionDate = product.AuctionDate.Date;
+            productaddDTO.AuctionDate = productaddDTO.AuctionDate.Date;
+            
+            var product = new Product
+            {
+                Name = productaddDTO.Name,
+                Description = productaddDTO.Description,
+                StartPrice = productaddDTO.StartPrice,
+                AuctionDate = productaddDTO.AuctionDate,
+                ImagePath = productaddDTO.ImagePath,
+                Company = productaddDTO.Company,
+            };
 
             await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
