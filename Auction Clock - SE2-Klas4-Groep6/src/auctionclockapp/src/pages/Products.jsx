@@ -80,7 +80,7 @@ export default function Products() {
                                     </ul>
 
                                     <div className="mt-auto d-grid text-break">
-                                        <button className="btn btn-primary">
+                                        <button className="btn bg-footer">
                                             <Link to={`/product/${p.productId}`} class="nav-link text-white">Meer over {p.name}</Link>
                                         </button>
                                     </div>
