@@ -12,9 +12,6 @@
     <list default="true" id="d2cda8dd-f148-47db-b209-ddb6755005a7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Auction Clock - SE2-Klas4-Groep6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Auction Clock - SE2-Klas4-Groep6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/src/auctionclockapp/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/src/auctionclockapp/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/src/auctionclockapp/src/components/AuctionClock.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/src/auctionclockapp/src/components/AuctionClock.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/src/auctionclockapp/src/pages/AdminAuction.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/src/auctionclockapp/src/pages/AdminAuction.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/src/auctionclockapp/src/pages/CustomerAuction.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/src/auctionclockapp/src/pages/CustomerAuction.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,25 +57,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.Auction Clock - SE2-Klas4-Groep6: http.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "Tim",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "ts.external.directory.path": "C:\\Users\\tjmwe\\AppData\\Local\\Programs\\Rider\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.Auction Clock - SE2-Klas4-Groep6: http.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Tim&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\tjmwe\\AppData\\Local\\Programs\\Rider\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Auction Clock - SE2-Klas4-Groep6: http">
     <configuration name="Auction Clock - SE2-Klas4-Groep6: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/Auction Clock - SE2-Klas4-Groep6.csproj" />
@@ -151,6 +148,7 @@
       <workItem from="1763400923864" duration="8651000" />
       <workItem from="1764147218637" duration="5315000" />
       <workItem from="1764194023244" duration="4416000" />
+      <workItem from="1764234191503" duration="1578000" />
     </task>
     <task id="LOCAL-00001" summary="companytest erbij">
       <option name="closed" value="true" />
@@ -168,7 +166,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763418621334</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Routes admin en customer Auction">
+      <option name="closed" value="true" />
+      <created>1764199030423</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1764199030423</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,7 +189,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="companytest erbij" />
     <MESSAGE value="Veiling klok gemaakt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Veiling klok gemaakt" />
+    <MESSAGE value="Routes admin en customer Auction" />
+    <option name="LAST_COMMIT_MESSAGE" value="Routes admin en customer Auction" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -200,11 +207,6 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/src/auctionclockapp/src/App.js</url>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
