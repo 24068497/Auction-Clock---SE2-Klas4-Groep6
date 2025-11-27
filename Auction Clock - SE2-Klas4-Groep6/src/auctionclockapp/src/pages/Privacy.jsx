@@ -105,7 +105,7 @@ function AllInformation ()
 class Privacy extends React.Component {
     render() {
         return (
-            <div class='container'>
+            <div className='container'>
                 <AllInformation />
             </div>
         );

@@ -61,7 +61,7 @@ class Login extends React.Component {
                             style={styles.input}
                         />
 
-                        <button type="button" class="form-btn">Login</button>
+                        <button type="button" className="form-btn">Login</button>
                     </form>
                     
                     <p style={{ textAlign: "center", marginTop: "1rem" }}>

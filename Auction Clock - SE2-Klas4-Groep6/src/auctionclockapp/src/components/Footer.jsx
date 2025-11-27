@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 class Footer extends React.Component {
     render() {
         return (
-                <footer class="footer bg-footer">
+                <footer className="footer bg-footer">
 
-                    <div class="row">
-                        <div class="col-12">
-                            <button class="btn bg-nav fs-5">
+                    <div className="row">
+                        <div className="col-12">
+                            <button className="btn bg-nav fs-5">
                                 <Link class="nav-link text-dark" to='/privacy'>
                                     Privacybeleid
                                 </Link>
@@ -17,17 +17,17 @@ class Footer extends React.Component {
                         <br />
                     </div>
 
-                    <div class="row">
+                    <div className="row">
 
-                        <div class="col">
+                        <div className="col">
                             <img src="../img/RoyalFloraHollandFooterlogo.png" width="175px"></img>
                         </div>
 
-                        <div class="col text-white">
+                        <div className="col text-white">
                             <h6>Contactgegevens RoyalFloraHolland:</h6>
                             <p>
                                 Tel:  +31 88 789 89 89<br />
-                                Email: <a href="mailto:events@royalfloraholland.com" class="text-decoration-none text-white">events@royalfloraholland.com</a><br />
+                                Email: <a href="mailto:events@royalfloraholland.com" className="text-decoration-none text-white">events@royalfloraholland.com</a><br />
                                 <br />Wij zijn op werkdagen bereikbaar van 9.00 - 17.00 uur
                             </p>
                         </div>

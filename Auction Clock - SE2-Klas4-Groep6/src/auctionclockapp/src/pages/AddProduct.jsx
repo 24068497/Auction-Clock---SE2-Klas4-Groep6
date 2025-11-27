@@ -108,7 +108,7 @@ const AddProduct = () => {
                     <label style={styles.label}>Foto uploaden:</label>
                     <input name="photo" type="file" accept="image/*" onChange={handleChange} style={styles.input} />
 
-                    <button type="submit" class="btn form-btn">Product Toevoegen</button>
+                    <button type="submit" className="btn form-btn">Product Toevoegen</button>
                 </form>
                 {message && <p style={styles.message}>{message}</p>}
             </div>

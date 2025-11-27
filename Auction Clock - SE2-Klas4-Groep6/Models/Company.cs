@@ -7,10 +7,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Models
     [Table("company")] 
     public class Company
     {
-        [Key]
-        [Column("companyid")]  
-        public int CompanyId { get; set; }
-
+        [Key] [Column("companyid")] public int? CompanyId { get; set; } = null;
         [Required]
         [MaxLength(100)]
         [Column("name")]       

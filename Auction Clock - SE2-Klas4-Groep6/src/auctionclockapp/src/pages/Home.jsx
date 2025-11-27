@@ -4,11 +4,11 @@ class Home extends React.Component {
     render() {
         return (
         
-            <div class="container-fluid">
+            <div className="container-fluid">
 
-                <div class="row">
-                    <div class="col-lg-6 col-md-12">
-                        <article class="m-4">
+                <div className="row">
+                    <div className="col-lg-6 col-md-12">
+                        <article className="m-4">
                             <h2>Welkom bij de veilingklok van RoyalFloraHolland</h2>
                             <p>
                                 Bloemen en planten maken onze wereld groener.<br />
@@ -25,8 +25,8 @@ class Home extends React.Component {
                         </article>
                     </div>
 
-                    <div class="col-lg-6 col-md-12 mt-4">
-                        <div class="ratio ratio-16x9">
+                    <div className="col-lg-6 col-md-12 mt-4">
+                        <div className="ratio ratio-16x9">
                             <iframe src="https://www.youtube.com/embed/nDMpvh0puSU?si=BPKTxo5ZVoW4DB_C" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
                     </div>
