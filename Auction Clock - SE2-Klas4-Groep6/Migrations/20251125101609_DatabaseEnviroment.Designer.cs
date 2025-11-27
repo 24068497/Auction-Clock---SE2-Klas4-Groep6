@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Auction_Clock___SE2_Klas4_Groep6.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251124114329_DatabaseEnviroment")]
+    [Migration("20251125101609_DatabaseEnviroment")]
     partial class DatabaseEnviroment
     {
         /// <inheritdoc />

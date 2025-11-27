@@ -5,8 +5,7 @@ import Register from './pages/Register';
 import Products from './pages/Products';
 import NotFound from './pages/NotFound';
 import AddProduct from './pages/AddProduct';
-import AdminAuction from './pages/AdminAuction';
-import CustomerAuction from "./pages/CustomerAuction";
+import ProductOverview from './pages/ProductOverview';
 
 import VisitorHeader from './components/VisitorHeader';
 import Footer from './components/Footer';
@@ -27,10 +26,9 @@ function App() {
                         <Route path='/login' element={<Login />} />
                         <Route path='/register' element={<Register />} />
                         <Route path='/products' element={<Products />} />
-                        <Route path=' /*' element={<NotFound />} />
+                        <Route path='/*' element={<NotFound />} />
                         <Route path='/product/add' element={<AddProduct />} />
-                        <Route path='/auction/admin' element={<AdminAuction />} />
-                        <Route path='/auction/customer' element={<CustomerAuction />} />
+                        <Route path='/product/:id' element={<ProductOverview />} />
                     </Routes>
                 </main>
 

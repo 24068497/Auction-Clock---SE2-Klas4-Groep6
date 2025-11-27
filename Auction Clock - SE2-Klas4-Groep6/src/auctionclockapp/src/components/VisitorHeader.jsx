@@ -1,6 +1,5 @@
 ﻿import React from "react";
 import { Link } from 'react-router-dom';
-
 class VisitorHeader extends React.Component {
     render() {
         return (

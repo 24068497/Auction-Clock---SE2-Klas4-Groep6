@@ -82,9 +82,9 @@ export default function Products() {
                                         <li><strong>Veilingdatum:</strong> {formatDate(p.auctionDate)}</li>
                                     </ul>
 
-                                    <div className="mt-auto d-grid">
-                                        <button className="btn btn-primary" disabled title="Nog geen detailpagina">
-                                            Meer info
+                                    <div className="mt-auto d-grid text-break">
+                                        <button className="btn btn-primary">
+                                            <Link to={`/product/${p.productId}`} class="nav-link text-white">Meer over {p.name}</Link>
                                         </button>
                                     </div>
                                 </div>
