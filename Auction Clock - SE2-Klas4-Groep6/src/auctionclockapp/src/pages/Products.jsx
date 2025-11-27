@@ -36,6 +36,8 @@ export default function Products() {
                 }
                 const json = await res.json();
                 setData(json);
+                json.sort((a, b) => new Date(a.auctionDate) - new Date(b.auctionDate));
+                setData(json);
             } catch (e) {
                 setError(e.message || 'Er ging iets mis');
             } finally {
@@ -74,15 +76,14 @@ export default function Products() {
                                 <div className="card-body d-flex flex-column">
                                     <h5 className="card-title mb-1">{p.name}</h5>
                                     <hr></hr>
-                                    <p className="card-text flex-grow-1">{p.description || '—'}</p>
                                     <ul className="list-unstyled mb-3">
                                         <li><strong>Startprijs:</strong> € {Number(p.startPrice).toFixed(2)}</li>
                                         <li><strong>Veilingdatum:</strong> {formatDate(p.auctionDate)}</li>
                                     </ul>
 
                                     <div className="mt-auto d-grid text-break">
-                                        <button className="btn btn-primary" disabled title="Nog geen detailpagina">
-                                            Meer over {p.name}
+                                        <button className="btn bg-footer">
+                                            <Link to={`/product/${p.productId}`} class="nav-link text-white">Meer over {p.name}</Link>
                                         </button>
                                     </div>
                                 </div>
