@@ -51,7 +51,7 @@ export default function AdminAuction() {
                             >
                                 <strong>{p.name}</strong>
                                 <br />
-                                <small className="text-muted">€ {Number(p.startPrice).toFixed(2)}</small>
+                                <small className="text-dark">€ {Number(p.startPrice).toFixed(2)}</small>
                             </li>
                         ))}
                     </ul>
