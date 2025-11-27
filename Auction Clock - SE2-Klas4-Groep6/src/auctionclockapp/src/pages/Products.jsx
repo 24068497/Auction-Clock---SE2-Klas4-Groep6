@@ -76,14 +76,13 @@ export default function Products() {
                                 <div className="card-body d-flex flex-column">
                                     <h5 className="card-title mb-1">{p.name}</h5>
                                     <hr></hr>
-                                    <p className="card-text flex-grow-1">{p.description || '—'}</p>
                                     <ul className="list-unstyled mb-3">
                                         <li><strong>Startprijs:</strong> € {Number(p.startPrice).toFixed(2)}</li>
                                         <li><strong>Veilingdatum:</strong> {formatDate(p.auctionDate)}</li>
                                     </ul>
 
                                     <div className="mt-auto d-grid text-break">
-                                        <button className="btn btn-primary">
+                                        <button className="btn bg-footer">
                                             <Link to={`/product/${p.productId}`} class="nav-link text-white">Meer over {p.name}</Link>
                                         </button>
                                     </div>
