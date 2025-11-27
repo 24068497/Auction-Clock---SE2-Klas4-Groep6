@@ -67,7 +67,7 @@ export default function AdminAuction() {
 
                             {activeProduct.imagePath && (
                                 <img
-                                    src={activeProduct.imagePath}
+                                    src={`http://localhost:5164${activeProduct.imagePath}`}
                                     alt={activeProduct.name}
                                     className="img-fluid rounded mb-2"
                                     style={{ maxHeight: "200px", objectFit: "cover" }}
