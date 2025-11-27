@@ -62,7 +62,7 @@ export default function AdminAuction() {
 
                     {/* Groot product detail */}
                     {activeProduct && (
-                        <div className="card p-3 shadow" style={{ width: "350px" }}>
+                        <div className="card  mt-4 p-3 shadow" style={{ width: "350px" }}>
                             <h4>{activeProduct.name}</h4>
 
                             {activeProduct.imagePath && (
