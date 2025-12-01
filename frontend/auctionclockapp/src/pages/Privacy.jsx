@@ -5,6 +5,7 @@ const GeneralInformation = () => {
     const [toggle, setToggle] = useState(false)
     return (
         <div>
+            <title>Privacybeleid de veilingklok</title>
             <button onClick={() => setToggle(!toggle)} className='generalInformationBtn btnStyle'>Algemene informatie</button>
 
             {toggle && (

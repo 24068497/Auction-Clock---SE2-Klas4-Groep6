@@ -3,7 +3,8 @@
 class Home extends React.Component {
     render() {
         return (
-        
+            <>
+            <title>Home</title>
             <div class="container-fluid">
 
                 <div class="row">
@@ -31,7 +32,8 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
+            </>
         );
     }
 }

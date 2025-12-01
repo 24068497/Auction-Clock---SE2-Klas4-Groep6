@@ -49,6 +49,8 @@ export default function Products() {
     }, []);
 
     return (
+        <>
+        <title>Productoverzicht</title>
         <div className="container mt-5">
             <div className="row mb-4">
                 <div className="col-12 text-center">
@@ -93,6 +95,7 @@ export default function Products() {
                 </div>
             )}
             <button class="btn btnStyle w-30"><Link to='/product/add' class="nav-link text-white">Product toevoegen</Link></button>
-        </div>
+            </div>
+        </>
     );
 }
