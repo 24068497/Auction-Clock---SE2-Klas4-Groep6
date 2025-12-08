@@ -19,6 +19,9 @@ public class Product
 
     [Required]
     public decimal StartPrice { get; set; }
+    
+    [Required]
+    public decimal MinimumPrice { get; set; }
 
     [Required]
     [DataType(DataType.Date)]
