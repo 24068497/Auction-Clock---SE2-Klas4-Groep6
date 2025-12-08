@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Auction_Clock___SE2_Klas4_Groep6.Migrations
+namespace AuctionClock.Api.Migrations
 {
     /// <inheritdoc />
     public partial class DatabaseEnviroment : Migration
@@ -100,6 +100,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Migrations
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StartPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    MinimumPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     AuctionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AuctionId = table.Column<int>(type: "int", nullable: true),
                     Company = table.Column<int>(type: "int", nullable: false),

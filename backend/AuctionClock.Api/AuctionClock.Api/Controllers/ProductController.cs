@@ -64,6 +64,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
                 Name = productaddDTO.Name,
                 Description = productaddDTO.Description,
                 StartPrice = productaddDTO.StartPrice,
+                MinimumPrice = productaddDTO.MinimumPrice,
                 AuctionDate = productaddDTO.AuctionDate,
                 ImagePath = productaddDTO.ImagePath,
                 Company = productaddDTO.Company,

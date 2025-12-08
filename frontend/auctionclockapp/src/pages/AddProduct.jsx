@@ -5,6 +5,7 @@ const AddProduct = () => {
         name: "",
         description: "",
         startPrice: 0,
+        minimumPrice: 0,
         auctionDate: "",
         auctionId: 0,
         company: 0,
@@ -23,7 +24,7 @@ const AddProduct = () => {
             let newValue = value;
 
             // Zet bepaalde velden om naar integer
-            if (["startPrice", "auctionId", "company", "customer"].includes(name)) {
+            if (["startPrice","minimumPrice", "auctionId", "company", "customer"].includes(name)) {
                 newValue = value === "" ? "" : parseInt(value, 10);
             }
 
@@ -33,6 +34,8 @@ const AddProduct = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
+            console.log("Submitting minimumPrice:", formData.minimumPrice);
 
         const currentDate = new Date();
         const auctionDate = new Date(formData.auctionDate);
@@ -42,11 +45,17 @@ const AddProduct = () => {
             return;
         }
 
+        if (formData.minimumPrice > formData.startPrice) {
+            setMessage("De minimumprijs kan niet hoger zijn dan de startprijs!");
+            return;
+        }
+
         console.log(currentDate);
         const data = new FormData();
         data.append("name", formData.name);
         data.append("description", formData.description);
         data.append("startPrice", formData.startPrice);
+        data.append("minimumPrice", formData.minimumPrice);
         data.append("auctionDate", formData.auctionDate);
         data.append("company", formData.company);
         if (formData.photo) data.append("photo", formData.photo);
@@ -64,6 +73,7 @@ const AddProduct = () => {
                         name: "",
                         description: "",
                         startPrice: 0,
+                        minimumPrice: 0,    
                         auctionDate: "",
                         company: 0,
                         photo: null,
@@ -101,6 +111,9 @@ const AddProduct = () => {
 
                     <label style={styles.label}>Startprijs (€):</label>
                     <input name="startPrice" type="number" step="1" value={formData.startPrice} onChange={handleChange} placeholder="Bijv. 49" style={styles.input} required />
+
+                    <label style={styles.label}>Minimumprijs (€):</label>
+                    <input name="minimumPrice" type="number" step="1" value={formData.minimumPrice} onChange={handleChange} placeholder="Bijv. 25" style={styles.input} required />
 
                     <label style={styles.label}>Veilingdatum:</label>
                     <input name="auctionDate" type="date" value={formData.auctionDate} onChange={handleChange} style={styles.input} required />

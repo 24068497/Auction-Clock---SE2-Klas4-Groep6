@@ -9,10 +9,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Auction_Clock___SE2_Klas4_Groep6.Migrations
+namespace AuctionClock.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251125101609_DatabaseEnviroment")]
+    [Migration("20251208103051_DatabaseEnviroment")]
     partial class DatabaseEnviroment
     {
         /// <inheritdoc />
@@ -111,6 +111,9 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Migrations
 
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("MinimumPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Name")
                         .IsRequired()

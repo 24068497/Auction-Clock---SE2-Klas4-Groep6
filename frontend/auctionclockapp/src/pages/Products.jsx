@@ -80,6 +80,7 @@ export default function Products() {
                                     <hr></hr>
                                     <ul className="list-unstyled mb-3">
                                         <li><strong>Startprijs:</strong> € {Number(p.startPrice).toFixed(2)}</li>
+                                        <li><strong>Minimumprijs:</strong> € {Number(p.minimumPrice).toFixed(2)}</li>
                                         <li><strong>Veilingdatum:</strong> {formatDate(p.auctionDate)}</li>
                                     </ul>
 
