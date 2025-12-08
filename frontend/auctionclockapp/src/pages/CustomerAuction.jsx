@@ -1,5 +1,4 @@
-﻿// src/pages/CustomerAuction.jsx
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import AuctionClock from "../components/AuctionClock";
 
 export default function CustomerAuction() {
@@ -31,8 +30,7 @@ export default function CustomerAuction() {
     }, []);
 
     const handleBuy = (price) => {
-        alert("U heeft gekocht voor €" + price.toFixed(2));
-        // Optioneel: API call om aankoop op te slaan
+        alert(`U heeft ${activeProduct.name} gekocht voor € ${price.toFixed(2)}`);
     };
 
     return (

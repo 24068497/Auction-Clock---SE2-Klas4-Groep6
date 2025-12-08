@@ -69,11 +69,10 @@ export default function AuctionClock({
         <div className="auction-clock-container">
             <div className="clock-circle">
                 <div className="clock-inner">
-                    <div className="clock-time">{timeLeft}s</div>
+                    <h1 className="price">€ {price.toFixed(2)}</h1>
+
                 </div>
             </div>
-
-            <h1 className="price">€ {price.toFixed(2)}</h1>
 
             <p className="status-text">
                 {running ? "⏱ Veiling loopt…" : "⏸ Veiling gepauzeerd"}
