@@ -1,6 +1,0 @@
-@Auction_Clock___SE2_Klas4_Groep6_HostAddress = http://localhost:5164
-
-GET {{Auction_Clock___SE2_Klas4_Groep6_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

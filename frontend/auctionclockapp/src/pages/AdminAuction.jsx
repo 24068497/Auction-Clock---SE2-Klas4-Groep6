@@ -1,12 +1,11 @@
-﻿// src/pages/CustomerAuction.jsx
-import { useEffect, useState } from "react";
-import AuctionClock from "../components/AuctionClock";
+﻿import { useEffect, useState } from 'react';
+import AuctionClock from '../components/AuctionClock';
 
-export default function CustomerAuction() {
+export default function AdminAuction() {
     const [products, setProducts] = useState([]);
     const [activeProduct, setActiveProduct] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState("");
+    const [error, setError] = useState('');
 
     useEffect(() => {
         async function load() {
@@ -14,12 +13,13 @@ export default function CustomerAuction() {
             try {
                 const res = await fetch("http://localhost:5164/api/products");
                 if (!res.ok) throw new Error("Fout bij ophalen producten");
-                const json = await res.json();
 
+                const json = await res.json();
                 setProducts(json);
 
-                // Zet het eerste product als actief
-                if (json.length > 0) setActiveProduct(json[0]);
+                if (json.length > 0 && !activeProduct) {
+                    setActiveProduct(json[0]);
+                }
 
             } catch (e) {
                 setError(e.message);
@@ -29,11 +29,6 @@ export default function CustomerAuction() {
         }
         load();
     }, []);
-
-    const handleBuy = (price) => {
-        alert("U heeft gekocht voor €" + price.toFixed(2));
-        // Optioneel: API call om aankoop op te slaan
-    };
 
     return (
         <div className="container-fluid mt-4">
@@ -62,12 +57,12 @@ export default function CustomerAuction() {
                     </ul>
                 </div>
 
-                {/* === PRODUCT + KLOK === */}
+                {/* === RECHTER KANT: PRODUCT INFO + KLOK === */}
                 <div className="col-md-9 d-flex justify-content-center align-items-start gap-4">
 
-                    {/* Product details */}
+                    {/* Groot product detail */}
                     {activeProduct && (
-                        <div className="card p-3 shadow" style={{ width: "350px" }}>
+                        <div className="card  mt-4 p-3 shadow" style={{ width: "350px" }}>
                             <h4>{activeProduct.name}</h4>
 
                             {activeProduct.imagePath && (
@@ -84,13 +79,12 @@ export default function CustomerAuction() {
                         </div>
                     )}
 
-                    {/* Klantenklok (met koopknop) */}
+                    {/* Veilingsklok */}
                     <AuctionClock
                         key={activeProduct?.productId}
                         startPrice={activeProduct?.startPrice || 0}
                         productName={activeProduct?.name || ""}
-                        role="customer"
-                        onBuy={handleBuy}
+                        role="admin"
                     />
                 </div>
             </div>
