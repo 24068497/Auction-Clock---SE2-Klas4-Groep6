@@ -4,22 +4,20 @@ import "../AuctionClock.css";
 export default function AuctionClock({
     role = "customer",
     startPrice = 10,
-    duration = 20,        // in seconden
+    duration = 20,        
     onBuy,
 }) {
-    const [timeLeft, setTimeLeft] = useState(duration);  // in seconden
+    const [timeLeft, setTimeLeft] = useState(duration);  
     const [price, setPrice] = useState(startPrice);
     const [running, setRunning] = useState(false);
 
-    // Reset klok wanneer product verandert
     useEffect(() => {
         setTimeLeft(duration);
         setPrice(startPrice);
-        setRunning(role === "customer"); // klant: automatisch starten, admin: stil
+        setRunning(role === "customer"); 
     }, [startPrice, duration, role]);
 
-    //Prijs volgen
-    useEffect(() => {
+  useEffect(() => {
         if (!running) return;
 
         const totalMs = duration * 1000;
@@ -32,7 +30,7 @@ export default function AuctionClock({
     }, [running, timeLeft, startPrice, duration]);
 
 
-    // Timer: 1 seconde op scherm = 1 seconde in het echt
+    // Timer 
     useEffect(() => {
         if (!running) return;
         if (timeLeft <= 0) {
