@@ -55,6 +55,7 @@ export default function ProductDetails() {
                         <article>Productbeschrijving: {product.description}</article>
                         <br></br>
                         <p>Startprijs: €{product.startPrice.toFixed(2)}</p>
+                        <p>Minimumprijs: €{product.minimumPrice.toFixed(2)}</p>
                         <p>Veildatum: {formatDate(product.auctionDate)}</p>
                     </div>
                 </div>

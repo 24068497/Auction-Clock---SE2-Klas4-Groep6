@@ -76,6 +76,8 @@ export default function AdminAuction() {
 
                             <p>{activeProduct.description}</p>
                             <p><strong>Startprijs:</strong> € {Number(activeProduct.startPrice).toFixed(2)}</p>
+                            <p><strong>Minimumprijs:</strong> € {Number(activeProduct.minimumPrice).toFixed(2)}</p>
+
                         </div>
                     )}
 
@@ -83,6 +85,7 @@ export default function AdminAuction() {
                     <AuctionClock
                         key={activeProduct?.productId}
                         startPrice={activeProduct?.startPrice || 0}
+                        minimumPrice={activeProduct?.minimumPrice || 0}
                         productName={activeProduct?.name || ""}
                         role="admin"
                     />

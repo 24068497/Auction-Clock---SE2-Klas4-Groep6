@@ -4,6 +4,7 @@ import "../AuctionClock.css";
 export default function AuctionClock({
     role = "customer",
     startPrice = 10,
+    minimumPrice = 0,
     duration = 20,        
     onBuy,
 }) {
@@ -23,11 +24,18 @@ export default function AuctionClock({
         const totalMs = duration * 1000;
         const interval = setInterval(() => {
             const fraction = Math.max(0, timeLeft * 1000 / totalMs);
-            setPrice(startPrice * fraction);
+            const newPrice = Math.max(startPrice * fraction, minimumPrice);
+
+            setPrice(currentPrice => {
+                if (currentPrice <= minimumPrice) {
+                    return minimumPrice;
+                }
+                return newPrice;
+            })
         }, 50); 
 
-        return () => clearInterval(interval);
-    }, [running, timeLeft, startPrice, duration]);
+      return () => clearInterval(interval);
+  }, [running, timeLeft, startPrice, duration, minimumPrice]);
 
 
     // Timer 
