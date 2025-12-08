@@ -48,7 +48,7 @@ export default function ProductDetails() {
                     <img src={`http://localhost:5164${product.imagePath}`} alt={product.name} width="100%" className="float-md-end d-block mx-auto" />
                 </div>
 
-                <div className="col-md-6 col-sm-12 my-1 border bg-light">
+                <div className="col-md-6 col-sm-12 my-1 border bg-light h-100">
                     <div className="p-1">
                         <h4>{product.name}</h4>
                         <hr></hr>

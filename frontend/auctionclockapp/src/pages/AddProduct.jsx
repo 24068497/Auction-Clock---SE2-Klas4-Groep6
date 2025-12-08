@@ -87,6 +87,8 @@ const AddProduct = () => {
     };
 
     return (
+        <>
+        <title>Product toevoegen</title>
         <div style={styles.page}>
             <div style={styles.card}>
                 <h2 style={styles.title}>Nieuw Product Aanmaken</h2>
@@ -113,8 +115,10 @@ const AddProduct = () => {
                 </form>
                 {message && <p style={styles.message}>{message}</p>}
             </div>
-        </div>
+            </div>
+        </>
     );
 };
 
 export default AddProduct;
+ 

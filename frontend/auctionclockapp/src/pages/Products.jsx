@@ -10,7 +10,6 @@ export default function Products() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-    const role = localStorage.getItem("role");
 
     useEffect(() => {
         const today = new Date();
@@ -50,6 +49,8 @@ export default function Products() {
     }, []);
 
     return (
+        <>
+        <title>Productoverzicht</title>
         <div className="container mt-5">
             <div className="row mb-4">
                 <div className="col-12 text-center">
@@ -77,24 +78,15 @@ export default function Products() {
                                 <div className="card-body d-flex flex-column">
                                     <h5 className="card-title mb-1">{p.name}</h5>
                                     <hr></hr>
-                                    <p className="card-text flex-grow-1">{p.description || '—'}</p>
                                     <ul className="list-unstyled mb-3">
                                         <li><strong>Startprijs:</strong> € {Number(p.startPrice).toFixed(2)}</li>
                                         <li><strong>Veilingdatum:</strong> {formatDate(p.auctionDate)}</li>
                                     </ul>
 
                                     <div className="mt-auto d-grid text-break">
-                                        <button className="btn btn-primary">
-                                            <Link to={`/product/${p.productId}`} class="nav-link text-white">
-                                                Meer over {p.name}
-                                            </Link>
+                                        <button className="btn bg-footer">
+                                            <Link to={`/product/${p.productId}`} class="nav-link text-white">Meer over {p.name}</Link>
                                         </button>
-
-                                        {role === "VeilingMeester" && (
-                                            <button className="btn btn-warning mt-2">
-                                                Toevoegen aan kavel
-                                            </button>
-                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -103,6 +95,7 @@ export default function Products() {
                 </div>
             )}
             <button class="btn btnStyle w-30"><Link to='/product/add' class="nav-link text-white">Product toevoegen</Link></button>
-        </div>
+            </div>
+        </>
     );
 }
