@@ -45,6 +45,11 @@ const AddProduct = () => {
             return;
         }
 
+        if (formData.minimumPrice > formData.startPrice) {
+            setMessage("De minimumprijs kan niet hoger zijn dan de startprijs!");
+            return;
+        }
+
         console.log(currentDate);
         const data = new FormData();
         data.append("name", formData.name);
