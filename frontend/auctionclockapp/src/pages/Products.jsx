@@ -95,6 +95,7 @@ export default function Products() {
                 </div>
             )}
             <button class="btn bg-footer"><Link to='/product/add' class="nav-link text-white">Product toevoegen</Link></button>
-        </div>
+            </div>
+        </>
     );
 }
