@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Auction_Clock___SE2_Klas4_Groep6.Models;
 using Microsoft.EntityFrameworkCore;
+using AuctionClock.Api.Models.DTO_s;
 
 namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
 {
@@ -73,6 +74,32 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
             return Ok(product);
+        }
+
+        // POST: api/auction/addtime/{id}
+        [HttpPost]
+        public async Task<IActionResult> CreateAuctionTime(int id, [FromForm] AuctionTimeDTO auctionTimeDTO)
+        {
+            var product = await _context.Products
+                            .FirstOrDefaultAsync(p => p.ProductId == id);
+            
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            var auction = new Auction
+            {
+                StartTime = auctionTimeDTO.StartTime,
+                EndTime = auctionTimeDTO.EndTime,
+                Auctioneer = auctionTimeDTO.Auctioneer,
+            };
+
+            product.SetAuction(auction);
+
+            await _context.Auctions.AddAsync(auction);
+            await _context.SaveChangesAsync();
+            return Ok(auction);
         }
     }
 }

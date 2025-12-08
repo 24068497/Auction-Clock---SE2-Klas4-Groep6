@@ -46,4 +46,10 @@ public class Product
     public int? CustomerNav { get; set; }
     
     public string? ImagePath { get; set; }
+
+    public void SetAuction(Auction auction)
+    {
+        this.Auction = auction;
+        this.AuctionId = auction.AuctionId;
+    }
 }

@@ -35,7 +35,7 @@ const AddProduct = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-            console.log("Submitting minimumPrice:", formData.minimumPrice);
+        console.log("Submitting minimumPrice:", formData.minimumPrice);
 
         const currentDate = new Date();
         const auctionDate = new Date(formData.auctionDate);
@@ -98,7 +98,6 @@ const AddProduct = () => {
 
     return (
         <>
-        <title>Product toevoegen</title>
         <div style={styles.page}>
             <div style={styles.card}>
                 <h2 style={styles.title}>Nieuw Product Aanmaken</h2>

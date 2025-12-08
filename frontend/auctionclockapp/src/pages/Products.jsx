@@ -88,6 +88,10 @@ export default function Products() {
                                         <button className="btn bg-footer">
                                             <Link to={`/product/${p.productId}`} class="nav-link text-white">Meer over {p.name}</Link>
                                         </button>
+                                        <hr></hr>
+                                        <button className="btn bg-nav">
+                                            <Link to={`/auction/addtime/${p.productId}`} class="nav-link text-dark">Bepaal veilingstijden</Link>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

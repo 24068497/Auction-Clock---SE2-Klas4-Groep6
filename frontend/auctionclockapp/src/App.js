@@ -5,6 +5,7 @@ import Register from './pages/Register';
 import Products from './pages/Products';
 import NotFound from './pages/NotFound';
 import AddProduct from './pages/AddProduct';
+import AddAuctionTime from './pages/AddAuctionTime';
 import ProductOverview from './pages/ProductOverview';
 import AdminAuction from "./pages/AdminAuction";
 import CustomerAuction from "./pages/CustomerAuction";
@@ -30,6 +31,7 @@ function App() {
                         <Route path='/*' element={<NotFound />} />
                         <Route path='/product/add' element={<AddProduct />} />
                         <Route path='/product/:id' element={<ProductOverview />} />
+                        <Route path='/auction/addtime/:id' element={<AddAuctionTime />} />
                         <Route path='/auction/Admin' element={<AdminAuction />} />
                         <Route path='/auction/Customer' element={<CustomerAuction />} />
                     </Routes>

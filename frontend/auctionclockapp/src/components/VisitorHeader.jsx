@@ -6,7 +6,7 @@ class VisitorHeader extends React.Component {
             <nav class="navbar navbar-expand-lg bg-nav">
                 <div class="container-fluid">
                     <Link class="navbar-brand" to='/'>
-                        <img src="../img/RoyalFloraHollandlogo.png" width="150px"></img>
+                        <img src="/img/RoyalFloraHollandlogo.png" width="150px"></img>
                     </Link>
                     
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
