@@ -29,7 +29,7 @@ const AddAuctionTime = () => {
         const startTime = formData.startTime;
         const endTime = formData.endTime;
 
-        if (endTime < startTime) {
+        if (endTime < startTime || endTime == startTime) {
             setMessage("De veiling kan niet eindigen voordat deze van start is geweest!");
             return;
         }
