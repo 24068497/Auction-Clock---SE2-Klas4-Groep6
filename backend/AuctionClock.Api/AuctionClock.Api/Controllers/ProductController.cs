@@ -36,9 +36,10 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
 
             return Ok(product);
         }
+        [HttpPost("create-product")]
+        [Consumes("multipart/form-data")]
 
         // POST: api/products
-        [HttpPost("create-product")]
         public async Task<IActionResult> CreateProduct([FromForm] ProductaddDTO productaddDTO, [FromForm] IFormFile? photo)
         {
             if (photo != null && photo.Length > 0)
@@ -78,6 +79,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
 
         // POST: api/auction/addtime/{id}
         [HttpPost("create-auction-time")]
+        [Consumes("multipart/form-data")]
         public async Task<IActionResult> CreateAuctionTime(int id, [FromForm] AuctionTimeDTO auctionTimeDTO)
         {
             var product = await _context.Products
