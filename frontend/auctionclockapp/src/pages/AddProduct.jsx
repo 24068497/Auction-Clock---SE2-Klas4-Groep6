@@ -1,5 +1,5 @@
 ﻿import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const AddProduct = () => {
     const [formData, setFormData] = useState({
         name: "",
@@ -12,6 +12,8 @@ const AddProduct = () => {
         customer: 0,
         photo: null,
     });
+
+    const navigate = useNavigate();
 
     const [message, setMessage] = useState("");
 
@@ -58,7 +60,6 @@ const AddProduct = () => {
         data.append("minimumPrice", formData.minimumPrice);
         data.append("auctionDate", formData.auctionDate);
         data.append("company", formData.company);
-        if (formData.photo) data.append("photo", formData.photo);
 
         try {
 
@@ -66,6 +67,19 @@ const AddProduct = () => {
                 method: "POST",
                 body: data,
             });
+
+            const result = await response.json();
+            const productId = result.productId;
+
+            if (formData.photo) {
+                const photo = new FormData();
+                photo.append("photo", formData.photo);
+
+                await fetch(`http://localhost:5164/api/products/upload-photo?productId=${productId}`, {
+                    method: "POST",
+                    body: photo
+                });
+            }
 
                 if (response.ok) {
                     setMessage("Product succesvol toegevoegd!");
@@ -123,7 +137,7 @@ const AddProduct = () => {
                     <label style={styles.label}>Foto uploaden:</label>
                     <input name="photo" type="file" accept="image/*" onChange={handleChange} style={styles.input} />
 
-                    <button type="submit" class="btn form-btn">Product Toevoegen</button>
+                    <button type="submit" className="btn form-btn">Product Toevoegen</button>
                 </form>
                 {message && <p style={styles.message}>{message}</p>}
             </div>

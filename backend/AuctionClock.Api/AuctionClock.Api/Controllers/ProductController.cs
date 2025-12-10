@@ -36,27 +36,12 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
 
             return Ok(product);
         }
+        [HttpPost("create-product")]
+        [Consumes("multipart/form-data")]
 
         // POST: api/products
-        [HttpPost("create-product")]
-        public async Task<IActionResult> CreateProduct([FromForm] ProductaddDTO productaddDTO, [FromForm] IFormFile? photo)
+        public async Task<IActionResult> CreateProduct([FromForm] ProductaddDTO productaddDTO)
         {
-            if (photo != null && photo.Length > 0)
-            {
-                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img");
-                if (!Directory.Exists(uploadsFolder))
-                    Directory.CreateDirectory(uploadsFolder);
-
-                var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(photo.FileName);
-                var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await photo.CopyToAsync(fileStream);
-                }
-
-                productaddDTO.ImagePath = $"/img/{uniqueFileName}";
-            }
 
             productaddDTO.AuctionDate = productaddDTO.AuctionDate.Date;
             
@@ -67,7 +52,6 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
                 StartPrice = productaddDTO.StartPrice,
                 MinimumPrice = productaddDTO.MinimumPrice,
                 AuctionDate = productaddDTO.AuctionDate,
-                ImagePath = productaddDTO.ImagePath,
                 Company = productaddDTO.Company,
             };
 
@@ -76,8 +60,35 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             return Ok(product);
         }
 
+        [HttpPost("upload-photo")]
+        public async Task<IActionResult> UploadPhoto(int productId, IFormFile photo)
+        {
+            var product = await _context.Products.FindAsync(productId);
+            if (product == null)
+                return NotFound("Product niet gevonden");
+
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img");
+            if (!Directory.Exists(uploadsFolder))
+                Directory.CreateDirectory(uploadsFolder);
+
+            var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(photo.FileName);
+            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await photo.CopyToAsync(stream);
+            }
+
+            product.ImagePath = $"/img/{uniqueFileName}";
+            await _context.SaveChangesAsync();
+
+            return Ok(product.ImagePath);
+        }
+
+
         // POST: api/auction/addtime/{id}
         [HttpPost("create-auction-time")]
+        [Consumes("multipart/form-data")]
         public async Task<IActionResult> CreateAuctionTime(int id, [FromForm] AuctionTimeDTO auctionTimeDTO)
         {
             var product = await _context.Products

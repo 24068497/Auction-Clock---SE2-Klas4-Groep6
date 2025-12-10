@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuctionClock.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251208103051_DatabaseEnviroment")]
-    partial class DatabaseEnviroment
+    [Migration("20251210095157_Database")]
+    partial class Database
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,12 +52,12 @@ namespace AuctionClock.Api.Migrations
 
             modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.Company", b =>
                 {
-                    b.Property<int>("CompanyId")
+                    b.Property<int?>("CompanyId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("companyid");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CompanyId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("CompanyId"));
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)")
@@ -132,24 +132,6 @@ namespace AuctionClock.Api.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.Role", b =>
-                {
-                    b.Property<int>("RoleId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoleId"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("RoleId");
-
-                    b.ToTable("Role");
-                });
-
             modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -158,15 +140,11 @@ namespace AuctionClock.Api.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CompanyId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -192,11 +170,6 @@ namespace AuctionClock.Api.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
@@ -205,9 +178,6 @@ namespace AuctionClock.Api.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -220,16 +190,11 @@ namespace AuctionClock.Api.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -238,8 +203,6 @@ namespace AuctionClock.Api.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -394,23 +357,6 @@ namespace AuctionClock.Api.Migrations
                     b.Navigation("CompanyNav");
                 });
 
-            modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.User", b =>
-                {
-                    b.HasOne("Auction_Clock___SE2_Klas4_Groep6.Models.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId");
-
-                    b.HasOne("Auction_Clock___SE2_Klas4_Groep6.Models.Role", "Role")
-                        .WithMany("Users")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Company");
-
-                    b.Navigation("Role");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -465,11 +411,6 @@ namespace AuctionClock.Api.Migrations
             modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.Auction", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.Role", b =>
-                {
-                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }
