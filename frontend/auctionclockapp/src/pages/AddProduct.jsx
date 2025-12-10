@@ -60,7 +60,6 @@ const AddProduct = () => {
         data.append("minimumPrice", formData.minimumPrice);
         data.append("auctionDate", formData.auctionDate);
         data.append("company", formData.company);
-        if (formData.photo) data.append("photo", formData.photo);
 
         try {
 
@@ -68,6 +67,19 @@ const AddProduct = () => {
                 method: "POST",
                 body: data,
             });
+
+            const result = await response.json();
+            const productId = result.productId;
+
+            if (formData.photo) {
+                const photo = new FormData();
+                photo.append("photo", formData.photo);
+
+                await fetch(`http://localhost:5164/api/products/upload-photo?productId=${productId}`, {
+                    method: "POST",
+                    body: photo
+                });
+            }
 
                 if (response.ok) {
                     setMessage("Product succesvol toegevoegd!");
