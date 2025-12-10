@@ -1,5 +1,5 @@
 ﻿import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const AddProduct = () => {
     const [formData, setFormData] = useState({
         name: "",
@@ -12,6 +12,8 @@ const AddProduct = () => {
         customer: 0,
         photo: null,
     });
+
+    const navigate = useNavigate();
 
     const [message, setMessage] = useState("");
 
@@ -123,7 +125,7 @@ const AddProduct = () => {
                     <label style={styles.label}>Foto uploaden:</label>
                     <input name="photo" type="file" accept="image/*" onChange={handleChange} style={styles.input} />
 
-                    <button type="submit" class="btn form-btn">Product Toevoegen</button>
+                    <button type="submit" className="btn form-btn">Product Toevoegen</button>
                 </form>
                 {message && <p style={styles.message}>{message}</p>}
             </div>

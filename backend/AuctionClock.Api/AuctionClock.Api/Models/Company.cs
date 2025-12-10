@@ -7,10 +7,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Models
     [Table("company")] 
     public class Company
     {
-        [Key]
-        [Column("companyid")]  
-        public int CompanyId { get; set; }
-
+        [Key] [Column("companyid")] public int? CompanyId { get; set; } = null;
         [Required]
         [MaxLength(100)]
         [Column("name")]       
@@ -25,8 +22,6 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Models
         [Column("bank_account")]
         public string? BankAccount { get; set; }
 
-        // Navigatieproperties (relaties)
-        //public ICollection<User> Users { get; set; } = new List<User>();
-        //public ICollection<Product> Products { get; set; } = new List<Product>();
+      
     }
 }

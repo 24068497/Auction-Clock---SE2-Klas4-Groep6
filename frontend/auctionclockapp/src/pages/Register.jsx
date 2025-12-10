@@ -2,6 +2,78 @@
 import { Link } from "react-router-dom";
 
 class Registreren extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            firstname: "",
+            lastname: "",
+            company: "",
+            kvk: "",
+            adres: "",
+            plaats: "",
+            telNr: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+        };
+    }
+
+    handleChange = (e) => {
+        this.setState({ [e.target.id]: e.target.value });
+    };
+
+
+    handleRegister = async () => {
+        if (this.state.password !== this.state.confirmPassword) {
+            alert("Wachtwoorden komen niet overeen!");
+            return;
+        }
+        
+        const dto = {
+            name: `${this.state.firstname} ${this.state.lastname}`,
+            email: this.state.email,
+            password: this.state.password,
+            telNr: this.state.telNr,
+        };
+
+        try {
+            const response = await fetch("http://localhost:5164/api/auth/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(dto),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error("Registratie fout:", errorData);
+                alert("Registratie mislukt. Check console voor details.");
+                return;
+            }
+
+            alert("Registratie succesvol!");
+       
+        } catch (error) {
+            console.error("Netwerkfout:", error);
+            alert("Er is een netwerkfout opgetreden.");
+        }
+    };
+
+    validateForm = () => {
+        const errors = {};
+        if (!this.state.firstname) errors.firstname = "Voornaam is verplicht";
+        if (!this.state.lastname) errors.lastname = "Achternaam is verplicht";
+        if (!this.state.telNr) errors.telNr = "Telefoonnummer is verplicht";
+        if (!this.state.email) errors.email = "E-mailadres is verplicht";
+        if (!this.state.password) errors.password = "Wachtwoord is verplicht";
+        if (this.state.password !== this.state.confirmPassword) errors.confirmPassword = "Wachtwoorden komen niet overeen";
+
+        this.setState({ errors });
+        return Object.keys(errors).length === 0; 
+    };
+    
+    
     render() {
         const styles = {
             page: {
@@ -44,37 +116,61 @@ class Registreren extends React.Component {
                 <div style={styles.card}>
                     <h2 style={styles.title}>Registreren</h2>
                     <form>
-                        <label htmlFor="firstname" style={styles.label}>Voornaam:</label>
-                        <input id="firstname" type="text" style={styles.input} placeholder="Uw voornaam" />
-
-                        <label htmlFor="lastname" style={styles.label}>Achternaam:</label>
-                        <input id="lastname" type="text" style={styles.input} placeholder="Uw achternaam" />
-
-                        <label htmlFor="company" style={styles.label}>Bedrijfsnaam:</label>
-                        <input id="company" type="text" style={styles.input} placeholder="Naam van uw bedrijf" />
-
-                        <label htmlFor="kvk" style={styles.label}>KVK-nummer:</label>
-                        <input id="kvk" type="text" style={styles.input} placeholder="Voer uw KVK-nummer in" />
-
-                        <label htmlFor="adres" style={styles.label}>Bedrijfsadres:</label>
-                        <input id="city" type="text" style={styles.input} placeholder="Straatnaam en huisnummer van bedrijf" />
-
-                        <label htmlFor="plaats" style={styles.label}>Bedrijfsplaats:</label>
-                        <input id="address" type="text" style={styles.input} placeholder="Plaats van uw bedrijf" />
-
-                        <label htmlFor="Telefoonnummer" style={styles.label}>Telefoonnummer:</label>
-                        <input id="email" type="email" style={styles.input} placeholder="Uw Telefoonnummer" />
-
-                        <label htmlFor="email" style={styles.label}>E-mailadres:</label>
-                        <input id="email" type="email" style={styles.input} placeholder="Uw e-mailadres" />
-
-                        <label htmlFor="password" style={styles.label}>Wachtwoord:</label>
-                        <input id="password" type="password" style={styles.input} placeholder="Kies een wachtwoord" />
-
-                        <label htmlFor="confirmPassword" style={styles.label}>Bevestig wachtwoord:</label>
-                        <input id="confirmPassword" type="password" style={styles.input} placeholder="Herhaal wachtwoord" />
-
-                        <button type="button" class="btn form-btn">Registreren</button>
+                        <input
+                            id="firstname"
+                            type="text"
+                            style={styles.input}
+                            placeholder="Uw voornaam"
+                            value={this.state.firstname}      
+                            onChange={this.handleChange}      
+                        />
+                        <input
+                            id="lastname"
+                            type="text"
+                            style={styles.input}
+                            placeholder="Uw achternaam"
+                            value={this.state.lastname}
+                            onChange={this.handleChange}
+                        />
+                        <input
+                            id="telNr"
+                            type="text"
+                            style={styles.input}
+                            placeholder="Uw telefoonnummer"
+                            value={this.state.telNr}
+                            onChange={this.handleChange}
+                        />
+                        <input
+                            id="email"
+                            type="email"
+                            style={styles.input}
+                            placeholder="Uw e-mailadres"
+                            value={this.state.email}
+                            onChange={this.handleChange}
+                        />
+                        <input
+                            id="password"
+                            type="password"
+                            style={styles.input}
+                            placeholder="Kies een wachtwoord"
+                            value={this.state.password}
+                            onChange={this.handleChange}
+                        />
+                        <input
+                            id="confirmPassword"
+                            type="password"
+                            style={styles.input}
+                            placeholder="Herhaal wachtwoord"
+                            value={this.state.confirmPassword}
+                            onChange={this.handleChange}
+                        />
+                        <button
+                            type="button"
+                            className="btn form-btn"
+                            onClick={this.handleRegister}
+                        >
+                            Registreren
+                        </button>
                     </form>
                     
                     <p style={{ textAlign: "center", marginTop: "1rem" }}>

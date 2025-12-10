@@ -5,15 +5,18 @@ import Register from './pages/Register';
 import Products from './pages/Products';
 import NotFound from './pages/NotFound';
 import AddProduct from './pages/AddProduct';
+import AdminDashboard from './pages/AdminDashboard';
+import CompanyDashboard from './pages/CompanyDashboard';
+
 import AddAuctionTime from './pages/AddAuctionTime';
 import ProductOverview from './pages/ProductOverview';
 import AdminAuction from "./pages/AdminAuction";
 import CustomerAuction from "./pages/CustomerAuction";
 import VisitorHeader from './components/VisitorHeader';
 import Footer from './components/Footer';
+import PrivateRoute from './components/PrivateRoute';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
 
 function App() {
     return (
@@ -34,11 +37,23 @@ function App() {
                         <Route path='/auction/addtime/:id' element={<AddAuctionTime />} />
                         <Route path='/auction/Admin' element={<AdminAuction />} />
                         <Route path='/auction/Customer' element={<CustomerAuction />} />
+
+                        {/* Beveiligde routes */}
+                        <Route path='/admin/dashboard' element={
+                            <PrivateRoute allowedRoles={['Admin']}>
+                                <AdminDashboard />
+                            </PrivateRoute>
+                        } />
+
+                        <Route path='/company/dashboard' element={
+                            <PrivateRoute allowedRoles={['Company']}>
+                                <CompanyDashboard />
+                            </PrivateRoute>
+                        } />
                     </Routes>
                 </main>
 
                 <Footer />
-
             </Router>
         </div>
     )
