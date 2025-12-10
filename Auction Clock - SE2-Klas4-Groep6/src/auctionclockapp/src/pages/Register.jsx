@@ -59,6 +59,21 @@ class Registreren extends React.Component {
             alert("Er is een netwerkfout opgetreden.");
         }
     };
+
+    validateForm = () => {
+        const errors = {};
+        if (!this.state.firstname) errors.firstname = "Voornaam is verplicht";
+        if (!this.state.lastname) errors.lastname = "Achternaam is verplicht";
+        if (!this.state.telNr) errors.telNr = "Telefoonnummer is verplicht";
+        if (!this.state.email) errors.email = "E-mailadres is verplicht";
+        if (!this.state.password) errors.password = "Wachtwoord is verplicht";
+        if (this.state.password !== this.state.confirmPassword) errors.confirmPassword = "Wachtwoorden komen niet overeen";
+
+        this.setState({ errors });
+        return Object.keys(errors).length === 0; 
+    };
+    
+    
     render() {
         const styles = {
             page: {

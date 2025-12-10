@@ -26,7 +26,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             _config = config;
         }
 
-        // ------------------------- REGISTER -------------------------
+       
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDto dto)
         {
@@ -42,7 +42,6 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
 
-            // Voeg rol toe
             if (!string.IsNullOrEmpty(dto.Role))
             {
                 if (await _roleManager.RoleExistsAsync(dto.Role))
@@ -57,7 +56,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
 
             return Ok("User registered successfully.");
         }
-        // ------------------------- LOGIN -------------------------
+        
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDto dto)
         {
@@ -73,7 +72,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             return Ok(new { token });
         }
 
-        // ------------------------- JWT GENERATION -------------------------
+        
         private async Task<string> GenerateJwtToken(User user)
         {
             var roles = await _userManager.GetRolesAsync(user);

@@ -44,7 +44,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// ------------------ Controllers + Swagger ------------------
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -64,8 +64,8 @@ using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-    // Voeg rollen toe als ze nog niet bestaan
-    var roles = new[] { "Admin", "Company","Customer"};
+   
+    var roles = new[] { "Admin", "Company"};
     foreach (var roleName in roles)
     {
         if (!await roleManager.RoleExistsAsync(roleName))
