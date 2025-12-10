@@ -40,7 +40,7 @@ const AddAuctionTime = () => {
         data.append("auctioneer", formData.auctioneer);
 
         try {
-            const response = await fetch(`api/auction/addtime/${id}`, {
+            const response = await fetch(`api/auction/addtime/${id}/create-auction-time`, {
                 method: "POST",
                 body: data,
             });
