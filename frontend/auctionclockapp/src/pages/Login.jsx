@@ -52,8 +52,8 @@ class Login extends React.Component {
             // Redirect op basis van rol
             if (role === "Admin") {
                 window.location.href = "/admin/dashboard";
-            } else if (role === "Company") {
-                window.location.href = "/company/dashboard";
+            } else if (role === "Auctioneer") {
+                window.location.href = "/Auctioneer/dashboard";
             } else {
                 window.location.href = "/";
             }

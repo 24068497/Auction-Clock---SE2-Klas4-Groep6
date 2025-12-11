@@ -6,7 +6,7 @@ import Products from './pages/Products';
 import NotFound from './pages/NotFound';
 import AddProduct from './pages/AddProduct';
 import AdminDashboard from './pages/AdminDashboard';
-import CompanyDashboard from './pages/CompanyDashboard';
+import AuctioneerDashboard from './pages/AuctioneerDashboard';
 
 import AddAuctionTime from './pages/AddAuctionTime';
 import ProductOverview from './pages/ProductOverview';
@@ -45,9 +45,9 @@ function App() {
                             </PrivateRoute>
                         } />
 
-                        <Route path='/company/dashboard' element={
-                            <PrivateRoute allowedRoles={['Company']}>
-                                <CompanyDashboard />
+                        <Route path='/Auctioneer/dashboard' element={
+                            <PrivateRoute allowedRoles={['Auctioneer']}>
+                                <AuctioneerDashboard />
                             </PrivateRoute>
                         } />
                     </Routes>

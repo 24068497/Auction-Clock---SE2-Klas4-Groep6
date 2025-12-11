@@ -22,15 +22,20 @@ class Registreren extends React.Component {
         this.setState({ [e.target.id]: e.target.value });
     };
 
-
     handleRegister = async () => {
+        // 1) client-side validatie
+        if (!this.validateForm()) {
+            alert("Vul alle verplichte velden correct in.");
+            return;
+        }
+
         if (this.state.password !== this.state.confirmPassword) {
             alert("Wachtwoorden komen niet overeen!");
             return;
         }
-        
+
         const dto = {
-            name: `${this.state.firstname} ${this.state.lastname}`,
+            name: `${this.state.firstname} ${this.state.lastname}`.trim(),
             email: this.state.email,
             password: this.state.password,
             telNr: this.state.telNr,
@@ -46,20 +51,20 @@ class Registreren extends React.Component {
             });
 
             if (!response.ok) {
+                // 2) lees en toon volledige fout van server
                 const errorData = await response.json();
                 console.error("Registratie fout:", errorData);
-                alert("Registratie mislukt. Check console voor details.");
+                // toon leesbaar aan gebruiker (of gebruik console tijdens debugging)
+                alert("Registratie mislukt:\n" + JSON.stringify(errorData, null, 2));
                 return;
             }
 
             alert("Registratie succesvol!");
-       
         } catch (error) {
             console.error("Netwerkfout:", error);
             alert("Er is een netwerkfout opgetreden.");
         }
     };
-
     validateForm = () => {
         const errors = {};
         if (!this.state.firstname) errors.firstname = "Voornaam is verplicht";
