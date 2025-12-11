@@ -18,7 +18,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<!-- Laat dit pad gelijk aan wat jij al had als het anders is -->
 		<ProjectReference Include="..\backend\AuctionClock.Api\AuctionClock.Api\AuctionClock.Api.csproj" />
 	</ItemGroup>
 

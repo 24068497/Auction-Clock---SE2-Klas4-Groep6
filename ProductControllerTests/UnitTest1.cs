@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 using Auction_Clock___SE2_Klas4_Groep6.Controllers;
 using Auction_Clock___SE2_Klas4_Groep6.Models;
 using AuctionClock.Api.Models.DTO_s;
