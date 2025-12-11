@@ -15,10 +15,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d2cda8dd-f148-47db-b209-ddb6755005a7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Auction Clock - SE2-Klas4-Groep6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Auction Clock - SE2-Klas4-Groep6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/AuctionClock.Api/AuctionClock.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/backend/AuctionClock.Api/AuctionClock.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/auctionclockapp/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/auctionclockapp/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/auctionclockapp/src/pages/CompanyDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/auctionclockapp/src/pages/AuctioneerDashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/auctionclockapp/src/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/auctionclockapp/src/pages/Login.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Chris" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,12 +39,12 @@
     &quot;assignee&quot;: &quot;Aditya24060682&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/24068497/Auction-Clock---SE2-Klas4-Groep6.git",
-    "accountId": "eb39f3a7-7c80-4665-8ae7-596daf202652"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/24068497/Auction-Clock---SE2-Klas4-Groep6.git&quot;,
+    &quot;accountId&quot;: &quot;eb39f3a7-7c80-4665-8ae7-596daf202652&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/Controllers/CompanyTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
@@ -208,7 +204,8 @@
     <MESSAGE value="companytest erbij" />
     <MESSAGE value="Veiling klok gemaakt" />
     <MESSAGE value="Routes admin en customer Auction" />
-    <option name="LAST_COMMIT_MESSAGE" value="Routes admin en customer Auction" />
+    <MESSAGE value="company rol veranderd naar auctioneer" />
+    <option name="LAST_COMMIT_MESSAGE" value="company rol veranderd naar auctioneer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
