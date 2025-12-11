@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuctionClock.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251210095157_Database")]
-    partial class Database
+    [Migration("20251211090313_AuctionDB")]
+    partial class AuctionDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
