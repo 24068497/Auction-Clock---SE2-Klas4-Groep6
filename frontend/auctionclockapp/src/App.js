@@ -36,7 +36,7 @@ function App() {
                         <Route path='/product/:id' element={<ProductOverview />} />
                         <Route path='/auction/addtime/:id' element={<AddAuctionTime />} />
                         <Route path='/auction/Admin' element={<AdminAuction />} />
-                        <Route path='/auction/Customer' element={<CustomerAuction/>} />
+                        <Route path='/auction/Customer' element={<CustomerAuction />} />
 
                         {/* Beveiligde routes */}
                         <Route path='/admin/dashboard' element={
