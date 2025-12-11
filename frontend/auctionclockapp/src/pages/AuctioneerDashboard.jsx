@@ -1,5 +1,6 @@
 import React from "react";
 import { jwtDecode } from "jwt-decode";
+import { Link } from 'react-router-dom';
 
 class AuctioneerDashboard extends React.Component {
     constructor(props) {
@@ -35,6 +36,7 @@ class AuctioneerDashboard extends React.Component {
                 <h1>Auctioneer Dashboard</h1>
                 <p>Welkom, {this.state.name}!</p>
                 <p>Jouw rol: {this.state.role}</p>
+                <Link className="nav-link text-dark me-3" to='/admin/auction'>Naar Veilingklok</Link>
             </div>
         );
     }
