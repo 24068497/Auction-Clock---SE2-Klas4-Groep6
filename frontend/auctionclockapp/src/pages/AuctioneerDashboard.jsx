@@ -1,6 +1,6 @@
 import React from "react";
 
-function CompanyDashboard() {
+function AuctioneerDashboard() {
     return (
         <div>
             <h1>Company Dashboard</h1>
@@ -9,4 +9,4 @@ function CompanyDashboard() {
     );
 }
 
-export default CompanyDashboard;
+export default AuctioneerDashboard;
