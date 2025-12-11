@@ -66,7 +66,7 @@ class Login extends React.Component {
 
     render() {
         const styles = {
-            page: { display: "flex", justifyContent: "center", alignItems: "center", minHeight: "100vh", background: "#e9f0e6", padding: "40px" },
+            page: { display: "flex", justifyContent: "center", alignItems: "center", background: "#e9f0e6", padding: "40px" },
             card: { background: "#ffffff", padding: "2rem", maxWidth: "350px", width: "100%", borderRadius: "12px", boxShadow: "0 4px 15px rgba(0,0,0,0.1)" },
             title: { textAlign: "center", marginBottom: "1.5rem" },
             label: { display: "block", marginBottom: "0.4rem", fontSize: "14px" },

@@ -80,7 +80,6 @@ class Registreren extends React.Component {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                minHeight: "100vh",
                 background: "#e9f0e6",
                 padding: "40px",
             },
