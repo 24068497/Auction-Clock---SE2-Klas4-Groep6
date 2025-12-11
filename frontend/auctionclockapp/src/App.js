@@ -47,7 +47,7 @@ function App() {
                         } />
 
                         <Route path='/admin/auction' element={
-                            <PrivateRoute allowedRoles={['Admin']}>
+                            <PrivateRoute allowedRoles={['Admin', 'Auctioneer']}>
                                 <AdminAuction />
                             </PrivateRoute>
                         } />
@@ -59,8 +59,6 @@ function App() {
                                 <AuctioneerDashboard />
                             </PrivateRoute>
                         } />
-
-
                     </Routes>
                 </main>
 
