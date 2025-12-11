@@ -32,24 +32,35 @@ function App() {
                         <Route path='/register' element={<Register />} />
                         <Route path='/products' element={<Products />} />
                         <Route path='/*' element={<NotFound />} />
+
                         <Route path='/product/add' element={<AddProduct />} />
                         <Route path='/product/:id' element={<ProductOverview />} />
                         <Route path='/auction/addtime/:id' element={<AddAuctionTime />} />
-                        <Route path='/auction/Admin' element={<AdminAuction />} />
                         <Route path='/auction/Customer' element={<CustomerAuction />} />
 
-                        {/* Beveiligde routes */}
+
+                        {/* Beveiligde admin routes */}
                         <Route path='/admin/dashboard' element={
                             <PrivateRoute allowedRoles={['Admin']}>
                                 <AdminDashboard />
                             </PrivateRoute>
                         } />
 
+                        <Route path='/admin/auction' element={
+                            <PrivateRoute allowedRoles={['Admin']}>
+                                <AdminAuction />
+                            </PrivateRoute>
+                        } />
+
+
+                        {/* Beveiligde auctioneer routes */}
                         <Route path='/Auctioneer/dashboard' element={
                             <PrivateRoute allowedRoles={['Auctioneer']}>
                                 <AuctioneerDashboard />
                             </PrivateRoute>
                         } />
+
+
                     </Routes>
                 </main>
 

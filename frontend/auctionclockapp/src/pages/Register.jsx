@@ -23,7 +23,6 @@ class Registreren extends React.Component {
     };
 
     handleRegister = async () => {
-        // 1) client-side validatie
         if (!this.validateForm()) {
             alert("Vul alle verplichte velden correct in.");
             return;
@@ -51,10 +50,8 @@ class Registreren extends React.Component {
             });
 
             if (!response.ok) {
-                // 2) lees en toon volledige fout van server
                 const errorData = await response.json();
                 console.error("Registratie fout:", errorData);
-                // toon leesbaar aan gebruiker (of gebruik console tijdens debugging)
                 alert("Registratie mislukt:\n" + JSON.stringify(errorData, null, 2));
                 return;
             }
