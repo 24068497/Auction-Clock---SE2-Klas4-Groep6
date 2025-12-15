@@ -39,12 +39,12 @@
     &quot;assignee&quot;: &quot;Aditya24060682&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/24068497/Auction-Clock---SE2-Klas4-Groep6.git",
-    "accountId": "b633bb5a-c36c-4dc3-a066-1d23f188880e"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/24068497/Auction-Clock---SE2-Klas4-Groep6.git&quot;,
+    &quot;accountId&quot;: &quot;b633bb5a-c36c-4dc3-a066-1d23f188880e&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/ProductAdd_Test/UnitTest1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TestProject1/UnitTest1.cs" root0="FORCE_HIGHLIGHTING" />
