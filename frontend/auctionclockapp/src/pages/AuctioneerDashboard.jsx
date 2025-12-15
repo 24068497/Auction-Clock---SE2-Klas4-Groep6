@@ -1,7 +1,8 @@
 import React from "react";
 import { jwtDecode } from "jwt-decode";
+import { Link } from 'react-router-dom';
 
-class AdminDashboard extends React.Component {
+class AuctioneerDashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -32,12 +33,13 @@ class AdminDashboard extends React.Component {
     render() {
         return (
             <div className="container mt-5">
-                <h1>Admin Dashboard</h1>
+                <h1>Auctioneer Dashboard</h1>
                 <p>Welkom, {this.state.name}!</p>
                 <p>Jouw rol: {this.state.role}</p>
+                <Link className="nav-link text-dark me-3" to='/admin/auction'>Naar Veilingklok</Link>
             </div>
         );
     }
 }
 
-export default AdminDashboard;
+export default AuctioneerDashboard;

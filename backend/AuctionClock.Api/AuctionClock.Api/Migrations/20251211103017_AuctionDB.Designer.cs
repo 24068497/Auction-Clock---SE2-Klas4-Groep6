@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuctionClock.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251211090313_AuctionDB")]
+    [Migration("20251211103017_AuctionDB")]
     partial class AuctionDB
     {
         /// <inheritdoc />

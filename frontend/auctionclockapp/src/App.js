@@ -6,7 +6,7 @@ import Products from './pages/Products';
 import NotFound from './pages/NotFound';
 import AddProduct from './pages/AddProduct';
 import AdminDashboard from './pages/AdminDashboard';
-import CompanyDashboard from './pages/CompanyDashboard';
+import AuctioneerDashboard from './pages/AuctioneerDashboard';
 
 import AddAuctionTime from './pages/AddAuctionTime';
 import ProductOverview from './pages/ProductOverview';
@@ -32,22 +32,31 @@ function App() {
                         <Route path='/register' element={<Register />} />
                         <Route path='/products' element={<Products />} />
                         <Route path='/*' element={<NotFound />} />
+
                         <Route path='/product/add' element={<AddProduct />} />
                         <Route path='/product/:id' element={<ProductOverview />} />
                         <Route path='/auction/addtime/:id' element={<AddAuctionTime />} />
-                        <Route path='/auction/Admin' element={<AdminAuction />} />
                         <Route path='/auction/Customer' element={<CustomerAuction />} />
 
-                        {/* Beveiligde routes */}
+
+                        {/* Beveiligde admin routes */}
                         <Route path='/admin/dashboard' element={
                             <PrivateRoute allowedRoles={['Admin']}>
                                 <AdminDashboard />
                             </PrivateRoute>
                         } />
 
-                        <Route path='/company/dashboard' element={
-                            <PrivateRoute allowedRoles={['Company']}>
-                                <CompanyDashboard />
+                        <Route path='/admin/auction' element={
+                            <PrivateRoute allowedRoles={['Admin', 'Auctioneer']}>
+                                <AdminAuction />
+                            </PrivateRoute>
+                        } />
+
+
+                        {/* Beveiligde auctioneer routes */}
+                        <Route path='/Auctioneer/dashboard' element={
+                            <PrivateRoute allowedRoles={['Auctioneer']}>
+                                <AuctioneerDashboard />
                             </PrivateRoute>
                         } />
                     </Routes>
