@@ -20,15 +20,14 @@ class Footer extends React.Component {
                     <div className="row">
 
                         <div class="col">
-                            <img src="/img/RoyalFloraHollandFooterlogo.png" width="175px"></img>
                         </div>
 
                         <div className="col text-white">
-                            <h6>Contactgegevens RoyalFloraHolland:</h6>
+                            <h6>Contactgegevens Veilingklok:</h6>
                             <p>
-                                Tel:  +31 88 789 89 89<br />
-                                Email: <a href="mailto:events@royalfloraholland.com" className="text-decoration-none text-white">events@royalfloraholland.com</a><br />
-                                <br />Wij zijn op werkdagen bereikbaar van 9.00 - 17.00 uur
+                                Tel:  +31 12 345 67 89<br />
+                                Adres: LaanVanSlechtOnderwijs 1<br />
+                                Afdeling: SE
                             </p>
                         </div>
 
