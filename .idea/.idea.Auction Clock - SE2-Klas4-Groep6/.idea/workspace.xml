@@ -15,8 +15,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d2cda8dd-f148-47db-b209-ddb6755005a7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Auction Clock - SE2-Klas4-Groep6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Auction Clock - SE2-Klas4-Groep6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/auctionclockapp/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/auctionclockapp/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/auctionclockapp/src/pages/UserDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/auctionclockapp/src/pages/UserDashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/auctionclockapp/src/components/VisitorHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/auctionclockapp/src/components/VisitorHeader.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="Aditya" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -75,7 +74,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "Aditya",
+    "git-widget-placeholder": "dev",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",

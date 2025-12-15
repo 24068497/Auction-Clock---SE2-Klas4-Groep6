@@ -45,7 +45,10 @@ function VisitorHeader() {
                         <li className="nav-item fs-5">
                             <Link className="nav-link text-dark" to='/products'>Producten</Link>
                         </li>
+                       
                     </ul>
+                    
+                    
 
                     <div className="d-flex">
                         {user ? (
