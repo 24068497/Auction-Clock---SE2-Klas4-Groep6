@@ -54,8 +54,10 @@ class Login extends React.Component {
                 window.location.href = "/admin/dashboard";
             } else if (role === "Auctioneer") {
                 window.location.href = "/Auctioneer/dashboard";
+            } else if (role === "User") {
+                window.location.href = "/user/dashboard"; 
             } else {
-                window.location.href = "/";
+                window.location.href = "/"; 
             }
 
         } catch (error) {
