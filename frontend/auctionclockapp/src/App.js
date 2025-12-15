@@ -62,7 +62,7 @@ function App() {
                         } />
 
                         <Route path='/user/dashboard' element={
-                            <PrivateRoute allowedRoles={['User']}>
+                            <PrivateRoute allowedRoles={['User']} >
                                 <UserDashboard />
                             </PrivateRoute>
                         } />
