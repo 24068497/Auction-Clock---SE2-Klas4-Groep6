@@ -7,6 +7,7 @@ import NotFound from './pages/NotFound';
 import AddProduct from './pages/AddProduct';
 import AdminDashboard from './pages/AdminDashboard';
 import AuctioneerDashboard from './pages/AuctioneerDashboard';
+import UserDashboard from './pages/UserDashboard';
 
 import AddAuctionTime from './pages/AddAuctionTime';
 import ProductOverview from './pages/ProductOverview';
@@ -59,7 +60,15 @@ function App() {
                                 <AuctioneerDashboard />
                             </PrivateRoute>
                         } />
+
+                        <Route path='/user/dashboard' element={
+                            <PrivateRoute allowedRoles={['User']}>
+                                <UserDashboard />
+                            </PrivateRoute>
+                        } />
                     </Routes>
+
+                    
                 </main>
 
                 <Footer />
