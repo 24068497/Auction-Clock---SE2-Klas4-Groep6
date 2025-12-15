@@ -38,6 +38,7 @@ class Registreren extends React.Component {
             email: this.state.email,
             password: this.state.password,
             telNr: this.state.telNr,
+            role: "User"
         };
 
         try {
