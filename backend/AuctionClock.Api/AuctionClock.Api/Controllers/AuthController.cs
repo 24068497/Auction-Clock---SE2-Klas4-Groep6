@@ -42,17 +42,12 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
 
-            if (!string.IsNullOrEmpty(dto.Role))
-            {
-                if (await _roleManager.RoleExistsAsync(dto.Role))
-                {
-                    await _userManager.AddToRoleAsync(user, dto.Role);
-                }
-                else
-                {
-                    return BadRequest($"Role {dto.Role} does not exist.");
-                }
-            }
+            var roleToAssign = string.IsNullOrEmpty(dto.Role) ? "User" : dto.Role;
+
+            if (!await _roleManager.RoleExistsAsync(roleToAssign))
+                return BadRequest($"Role {roleToAssign} does not exist.");
+
+            await _userManager.AddToRoleAsync(user, roleToAssign);
 
             return Ok("User registered successfully.");
         }
