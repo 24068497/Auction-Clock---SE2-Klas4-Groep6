@@ -47,7 +47,7 @@ class Registreren extends React.Component {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(dto),
+                body: JSON.stringify(dto) ,
             });
 
             if (!response.ok) {
