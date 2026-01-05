@@ -27,12 +27,42 @@ function VisitorHeader() {
         navigate("/"); // terug naar home
     };
 
+    const handleImageLinks = () => {
+        if (user && user.role === "Koper") {
+            return (
+                <Link className="navbar-brand" to="/Koper/dashboard">
+                    <img src="/img/LogoFlorabid.png" width="100px" alt="Logo" />
+                </Link>
+            );
+        } else if (user && user.role === "Verkoper") {
+            return (
+                <Link className="navbar-brand" to="/Verkoper/dashboard">
+                    <img src="/img/LogoFlorabid.png" width="100px" alt="Logo" />
+                </Link>
+            );
+        } else if (user && user.role === "Auctioneer") {
+            return (
+                <Link className="navbar-brand" to="/Auctioneer/dashboard">
+                    <img src="/img/LogoFlorabid.png" width="100px" alt="Logo" />
+                </Link>
+            );
+        }
+    };
+
+    const handleNavLinks = () => {
+        if (user && user.role === "Koper") {
+            return (
+               <li className="nav-item fs-5">
+                  <Link className="nav-link text-dark" to='/Koper/dashboard'>Home</Link>
+               </li>
+            );
+        }
+    };
+
     return (
         <nav className="navbar navbar-expand-lg bg-nav">
             <div className="container-fluid">
-                <Link className="navbar-brand" to='/'>
-                    <img src="img/LogoFlorabid.png" width="100px"></img>
-                </Link>
+                {handleImageLinks()}
 
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -40,9 +70,8 @@ function VisitorHeader() {
 
                 <div className="collapse navbar-collapse" id="navbarText">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item fs-5">
-                            <Link className="nav-link text-dark" to='/'>Home</Link>
-                        </li>
+                        {handleNavLinks()}
+
                         <li className="nav-item fs-5">
                             <Link className="nav-link text-dark" to='/products'>Producten</Link>
                         </li>

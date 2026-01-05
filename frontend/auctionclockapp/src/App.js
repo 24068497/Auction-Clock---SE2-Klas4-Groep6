@@ -8,6 +8,7 @@ import AddProduct from './pages/AddProduct';
 import AdminDashboard from './pages/AdminDashboard';
 import AuctioneerDashboard from './pages/AuctioneerDashboard';
 import UserDashboard from './pages/KoperDashboard';
+import SellerDashboard from './pages/VerkoperDashboard';
 
 import AddAuctionTime from './pages/AddAuctionTime';
 import ProductOverview from './pages/ProductOverview';
@@ -58,6 +59,12 @@ function App() {
                         <Route path='/Auctioneer/dashboard' element={
                             <PrivateRoute allowedRoles={['Auctioneer']}>
                                 <AuctioneerDashboard />
+                            </PrivateRoute>
+                        } />
+
+                        <Route path='/Verkoper/dashboard' element={
+                            <PrivateRoute allowedRoles={['Verkoper']} >
+                                <SellerDashboard />
                             </PrivateRoute>
                         } />
 
