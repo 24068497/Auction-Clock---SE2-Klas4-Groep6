@@ -1,7 +1,8 @@
 ﻿import React from "react";
 import { jwtDecode } from "jwt-decode";
+import { Link } from 'react-router-dom';
 
-class UserDashboard extends React.Component {
+class KoperDashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -32,16 +33,16 @@ class UserDashboard extends React.Component {
     render() {
         return (
             <div className="container mt-5">
-                <h1>User Dashboard</h1>
+                <h1>Koper Dashboard</h1>
                 <p>Welkom, {this.state.name}!</p>
                 <p>Jouw rol: {this.state.role}</p>
 
                 <h2>Jouw actieve veilingen</h2>
                 <p>Hier zie je alle veilingen waar je aan deelneemt.</p>
-                {/* Je kunt hier later fetch of dummy data toevoegen */}
+                
             </div>
         );
     }
 }
 
-export default UserDashboard;
+export default KoperDashboard;
