@@ -157,8 +157,8 @@ function VisitorHeader() {
                             </>
                         ) : (
                             <>
-                                <Link className="nav-link text-dark me-3" to='/register'>Registreren</Link>
-                                <Link className="nav-link text-dark" to='/login'>Inloggen</Link>
+                                <Link className="nav-link text-dark  fs-5 me-3" to='/register'>Registreren</Link>
+                                <Link className="nav-link text-dar fs-5" to='/login'>Inloggen</Link>
                             </>
                         )}
                     </div>
