@@ -46,6 +46,12 @@ function VisitorHeader() {
                     <img src="/img/LogoFlorabid.png" width="100px" alt="Logo" />
                 </Link>
             );
+        } else {
+            return (
+                <Link className="navbar-brand" to="/">
+                    <img src="/img/LogoFlorabid.png" width="100px" alt="Logo" />
+                </Link>
+            );
         }
     };
 
