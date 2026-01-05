@@ -27,35 +27,40 @@ function VisitorHeader() {
         navigate("/"); // terug naar home
     };
 
+    const Logo = () => {
+        return (
+            <img src="/img/LogoFlorabid.png" width="100px" alt="Logo" />
+        )
+    }
     const handleImageLinks = () => {
         if (user && user.role === "Koper") {
             return (
                 <Link className="navbar-brand" to="/Koper/dashboard">
-                    <img src="/img/LogoFlorabid.png" width="100px" alt="Logo" />
+                    {Logo()}
                 </Link>
             );
         } else if (user && user.role === "Verkoper") {
             return (
                 <Link className="navbar-brand" to="/Verkoper/dashboard">
-                    <img src="/img/LogoFlorabid.png" width="100px" alt="Logo" />
+                    {Logo()}
                 </Link>
             );
         } else if (user && user.role === "Auctioneer") {
             return (
                 <Link className="navbar-brand" to="/Auctioneer/dashboard">
-                    <img src="/img/LogoFlorabid.png" width="100px" alt="Logo" />
+                    {Logo()}
                 </Link>
             );
         } else if (user && user.role === "Admin") {
             return (
                 <Link className="navbar-brand" to="/Admin/dashboard">
-                    <img src="/img/LogoFlorabid.png" width="100px" alt="Logo" />
+                    {Logo()}
                 </Link>
             );
         } else {
             return (
                 <Link className="navbar-brand" to="/">
-                    <img src="/img/LogoFlorabid.png" width="100px" alt="Logo" />
+                    {Logo()}
                 </Link>
             );
         }
