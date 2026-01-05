@@ -46,6 +46,12 @@ function VisitorHeader() {
                     <img src="/img/LogoFlorabid.png" width="100px" alt="Logo" />
                 </Link>
             );
+        } else if (user && user.role === "Admin") {
+            return (
+                <Link className="navbar-brand" to="/Admin/dashboard">
+                    <img src="/img/LogoFlorabid.png" width="100px" alt="Logo" />
+                </Link>
+            );
         } else {
             return (
                 <Link className="navbar-brand" to="/">
@@ -61,6 +67,31 @@ function VisitorHeader() {
                <li className="nav-item fs-5">
                   <Link className="nav-link text-dark" to='/Koper/dashboard'>Home</Link>
                </li>
+            );
+        } else if (user && user.role === "Verkoper") {
+            return (
+                <li className="nav-item fs-5">
+                    <Link className="nav-link text-dark" to='/Verkoper/dashboard'>Home</Link>
+                </li>
+            );
+        } else if (user && user.role === "Auctioneer") {
+            return (
+                <li className="nav-item fs-5">
+                    <Link className="nav-link text-dark" to='/Auctioneer/dashboard'>Home</Link>
+                </li>
+            );
+        } else if (user && user.role === "Admin") {
+            return (
+                <li className="nav-item fs-5">
+                    <Link className="nav-link text-dark" to='/Admin/dashboard'>Home</Link>
+                </li>
+            );
+        }
+        else {
+            return (
+                <li className="nav-item fs-5">
+                    <Link className="nav-link text-dark" to='/'>Home</Link>
+                </li>
             );
         }
     };
