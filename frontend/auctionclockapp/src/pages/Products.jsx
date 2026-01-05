@@ -13,6 +13,8 @@ export default function Products() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [role, setRole] = useState(null);
+    const canSetAuctionTime = role === "Admin" || role === "Auctioneer";
+    const canAddProduct = role === "Admin" || role === "Auctioneer";
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -118,12 +120,15 @@ export default function Products() {
                                                     Meer over {p.name}
                                                 </Link>
 
-                                                <Link
-                                                    to={`/auction/addtime/${p.productId}`}
-                                                    className="btn bg-nav text-dark"
-                                                >
-                                                    Bepaal veilingstijden
-                                                </Link>
+                                                {canSetAuctionTime && (
+                                                    <Link
+                                                        to={`/auction/addtime/${p.productId}`}
+                                                        className="btn bg-nav text-dark"
+                                                    >
+                                                        Bepaal veilingstijden
+                                                    </Link>
+                                                )}
+
                                             </div>
                                         </div>
                                     </div>
