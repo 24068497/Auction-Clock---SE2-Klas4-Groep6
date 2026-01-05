@@ -29,7 +29,7 @@ function VisitorHeader() {
 
     const Logo = () => {
         return (
-            <img src="/img/LogoFlorabid.png" width="100px" alt="Logo" />
+            <img src="/img/Logo_Florabid-png.png" width="100px" alt="Logo" />
         )
     }
     const handleImageLinks = () => {
