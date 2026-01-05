@@ -15,7 +15,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d2cda8dd-f148-47db-b209-ddb6755005a7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Auction Clock - SE2-Klas4-Groep6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Auction Clock - SE2-Klas4-Groep6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/auctionclockapp/src/components/VisitorHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/auctionclockapp/src/components/VisitorHeader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/auctionclockapp/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/auctionclockapp/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,10 +25,17 @@
   <component name="DpaMonitoringSettings">
     <option name="firstShow" value="false" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JSX File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="Aditya" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,7 +50,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/24068497/Auction-Clock---SE2-Klas4-Groep6.git&quot;,
-    &quot;accountId&quot;: &quot;b633bb5a-c36c-4dc3-a066-1d23f188880e&quot;
+    &quot;accountId&quot;: &quot;eb39f3a7-7c80-4665-8ae7-596daf202652&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -102,58 +109,10 @@
         <option name="Build" />
       </method>
     </configuration>
-    <configuration name="Auction Clock - SE2-Klas4-Groep6: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+    <configuration name="Auction Clock - SE2-Klas4-Groep6: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/Auction Clock - SE2-Klas4-Groep6.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <option name="AUTO_ATTACH_CHILDREN" value="0" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="Auction Clock - SE2-Klas4-Groep6: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/backend/AuctionClock.Api/AuctionClock.Api/AuctionClock.Api.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
       <option name="LAUNCH_PROFILE_NAME" value="http" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <option name="AUTO_ATTACH_CHILDREN" value="0" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="Auction Clock - SE2-Klas4-Groep6: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/backend/AuctionClock.Api/AuctionClock.Api/AuctionClock.Api.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="http" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <option name="AUTO_ATTACH_CHILDREN" value="0" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="Auction Clock - SE2-Klas4-Groep6: https" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/Auction Clock - SE2-Klas4-Groep6.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="https" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
@@ -208,8 +167,7 @@
       <workItem from="1764234191503" duration="1578000" />
       <workItem from="1765447366749" duration="362000" />
       <workItem from="1765455387626" duration="1884000" />
-      <workItem from="1766880523828" duration="225000" />
-      <workItem from="1767451508898" duration="1798000" />
+      <workItem from="1767559764063" duration="2399000" />
     </task>
     <task id="LOCAL-00001" summary="companytest erbij">
       <option name="closed" value="true" />
