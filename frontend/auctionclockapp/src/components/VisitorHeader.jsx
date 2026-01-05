@@ -46,7 +46,23 @@ function VisitorHeader() {
                         <li className="nav-item fs-5">
                             <Link className="nav-link text-dark" to='/products'>Producten</Link>
                         </li>
-                       
+                        {(!user || (user.role !== 'Admin' && user.role !== 'Auctioneer')) && (
+                            <li className="nav-item fs-5">
+                                <Link className="nav-link text-dark" to="/auction/customer">
+                                    Veiling
+                                </Link>
+                            </li>
+                        )}
+
+                        {user && (user.role === 'Admin' || user.role === 'Auctioneer') && (
+                            <li className="nav-item fs-5">
+                                <Link className="nav-link text-dark" to="/admin/auction">
+                                    Admin Veiling
+                                </Link>
+                            </li>
+                        )}
+
+
                     </ul>
                     
                     
