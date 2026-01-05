@@ -145,9 +145,6 @@ function VisitorHeader() {
                         )}
                     </ul>
 
-
-
-
                     <div className="d-flex">
                         {user ? (
                             <>
