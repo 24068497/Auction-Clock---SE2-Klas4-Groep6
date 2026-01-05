@@ -14,14 +14,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2cda8dd-f148-47db-b209-ddb6755005a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/auctionclockapp/src/pages/VerkoperDashboard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Auction Clock - SE2-Klas4-Groep6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Auction Clock - SE2-Klas4-Groep6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/AuctionClock.Api/AuctionClock.Api/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/backend/AuctionClock.Api/AuctionClock.Api/Controllers/AuthController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/AuctionClock.Api/AuctionClock.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/backend/AuctionClock.Api/AuctionClock.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/auctionclockapp/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/auctionclockapp/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/auctionclockapp/src/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/auctionclockapp/src/pages/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/auctionclockapp/src/pages/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/auctionclockapp/src/pages/Register.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/auctionclockapp/src/pages/UserDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/auctionclockapp/src/pages/KoperDashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/auctionclockapp/src/components/VisitorHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/auctionclockapp/src/components/VisitorHeader.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,13 +24,6 @@
   </component>
   <component name="DpaMonitoringSettings">
     <option name="firstShow" value="false" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JSX File" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -53,12 +40,12 @@
     &quot;assignee&quot;: &quot;Aditya24060682&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/24068497/Auction-Clock---SE2-Klas4-Groep6.git",
-    "accountId": "eb39f3a7-7c80-4665-8ae7-596daf202652"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/24068497/Auction-Clock---SE2-Klas4-Groep6.git&quot;,
+    &quot;accountId&quot;: &quot;b633bb5a-c36c-4dc3-a066-1d23f188880e&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/ProductAdd_Test/UnitTest1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TestProject1/UnitTest1.cs" root0="FORCE_HIGHLIGHTING" />
@@ -79,25 +66,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.Auction Clock - SE2-Klas4-Groep6: http.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\tjmwe\\AppData\\Local\\Programs\\Rider\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.Auction Clock - SE2-Klas4-Groep6: http.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "dev",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "ts.external.directory.path": "C:\\Users\\tjmwe\\AppData\\Local\\Programs\\Rider\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Auction Clock - SE2-Klas4-Groep6: http">
     <configuration name="Auction Clock - SE2-Klas4-Groep6: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Auction Clock - SE2-Klas4-Groep6/Auction Clock - SE2-Klas4-Groep6.csproj" />
@@ -173,7 +160,6 @@
       <workItem from="1764234191503" duration="1578000" />
       <workItem from="1765447366749" duration="362000" />
       <workItem from="1765455387626" duration="1884000" />
-      <workItem from="1767559764063" duration="2399000" />
     </task>
     <task id="LOCAL-00001" summary="companytest erbij">
       <option name="closed" value="true" />

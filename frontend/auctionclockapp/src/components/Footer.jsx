@@ -19,11 +19,12 @@ class Footer extends React.Component {
 
                     <div className="row">
 
-                        <div class="col">
+                    <div class="col">
+                        <img src="img/LogoFlorabid.png" width="100px" class="mt-2"></img>
                         </div>
 
                         <div className="col text-white">
-                            <h6>Contactgegevens Veilingklok:</h6>
+                            <h6>Contactgegevens FloraBid:</h6>
                             <p>
                                 Tel:  +31 12 345 67 89<br />
                                 Adres: LaanVanSlechtOnderwijs 1<br />
