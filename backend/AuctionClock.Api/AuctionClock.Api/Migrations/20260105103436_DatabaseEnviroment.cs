@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AuctionClock.Api.Migrations
 {
     /// <inheritdoc />
-    public partial class AuctionDB : Migration
+    public partial class DatabaseEnviroment : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
