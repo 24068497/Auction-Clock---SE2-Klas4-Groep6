@@ -141,7 +141,7 @@ export default function Products() {
                             <div className="text-center mt-4">
                                 <Link
                                     to="/product/add"
-                                    className="btn bg-footer text-white"
+                                    className="btn  bg-footer text-white"
                                 >
                                     Product toevoegen
                                 </Link>

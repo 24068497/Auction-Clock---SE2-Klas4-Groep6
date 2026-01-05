@@ -8,6 +8,7 @@ import AddProduct from './pages/AddProduct';
 import AdminDashboard from './pages/AdminDashboard';
 import AuctioneerDashboard from './pages/AuctioneerDashboard';
 import UserDashboard from './pages/KoperDashboard';
+import VerkoperDashboard from "./pages/VerkoperDashboard";
 
 import AddAuctionTime from './pages/AddAuctionTime';
 import ProductOverview from './pages/ProductOverview';
@@ -15,7 +16,7 @@ import AdminAuction from "./pages/AdminAuction";
 import CustomerAuction from "./pages/CustomerAuction";
 import VisitorHeader from './components/VisitorHeader';
 import Footer from './components/Footer';
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute' ;
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -66,6 +67,14 @@ function App() {
                                 <UserDashboard />
                             </PrivateRoute>
                         } />
+
+                        <Route path='/Verkoper/dashboard' element={
+                            <PrivateRoute allowedRoles={['Verkoper']} >
+                                <verkoperDashboard />
+                            </PrivateRoute>
+                        } />
+                        
+                        
                     </Routes>
 
                     
