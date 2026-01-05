@@ -1,5 +1,7 @@
 ﻿import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode";
+
 
 function formatDate(dateStr) {
     const d = new Date(dateStr);
@@ -10,6 +12,22 @@ export default function Products() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [role, setRole] = useState(null);
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            try {
+                const decoded = jwtDecode(token);
+                setRole(
+                    decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]
+                );
+            } catch (err) {
+                console.error("Token decode fout", err);
+            }
+        }
+    }, []);
+
 
     useEffect(() => {
         async function loadProducts() {
@@ -32,6 +50,7 @@ export default function Products() {
                 setLoading(false);
             }
         }
+        
 
         loadProducts();
     }, []);
@@ -113,14 +132,16 @@ export default function Products() {
                         </div>
 
                         {/* Product toevoegen knop */}
-                        <div className="text-center mt-4">
-                            <Link
-                                to="/product/add"
-                                className="btn bg-footer text-white"
-                            >
-                                Product toevoegen
-                            </Link>
-                        </div>
+                        {role === 'Verkoper' && (
+                            <div className="text-center mt-4">
+                                <Link
+                                    to="/product/add"
+                                    className="btn bg-footer text-white"
+                                >
+                                    Product toevoegen
+                                </Link>
+                            </div>
+                        )}
                     </>
                 )}
             </div>
