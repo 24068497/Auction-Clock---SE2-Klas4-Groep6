@@ -38,6 +38,7 @@ class Registreren extends React.Component {
             email: this.state.email,
             password: this.state.password,
             telNr: this.state.telNr,
+            role: this.state.role
         };
 
         try {
@@ -46,7 +47,7 @@ class Registreren extends React.Component {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(dto),
+                body: JSON.stringify(dto) ,
             });
 
             if (!response.ok) {
@@ -149,6 +150,18 @@ class Registreren extends React.Component {
                             value={this.state.email}
                             onChange={this.handleChange}
                         />
+
+                        <label style={styles.label}>Account type</label>
+                        <select
+                            id="role"
+                            style={styles.input}
+                            value={this.state.role}
+                            onChange={this.handleChange}
+                        >
+                            <option value="Koper">Koper</option>
+                            <option value="Verkoper">Verkoper</option>
+                        </select>
+                        
                         <input
                             id="password"
                             type="password"
