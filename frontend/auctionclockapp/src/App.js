@@ -7,7 +7,8 @@ import NotFound from './pages/NotFound';
 import AddProduct from './pages/AddProduct';
 import AdminDashboard from './pages/AdminDashboard';
 import AuctioneerDashboard from './pages/AuctioneerDashboard';
-import UserDashboard from './pages/UserDashboard';
+import UserDashboard from './pages/KoperDashboard';
+import VerkoperDashboard from "./pages/VerkoperDashboard";
 
 import AddAuctionTime from './pages/AddAuctionTime';
 import ProductOverview from './pages/ProductOverview';
@@ -61,11 +62,19 @@ function App() {
                             </PrivateRoute>
                         } />
 
-                        <Route path='/user/dashboard' element={
-                            <PrivateRoute allowedRoles={['User']}>
+                        <Route path='/Koper/dashboard' element={
+                            <PrivateRoute allowedRoles={['Koper']} >
                                 <UserDashboard />
                             </PrivateRoute>
                         } />
+
+                        <Route path='/Verkoper/dashboard' element={
+                            <PrivateRoute allowedRoles={['Verkoper']} >
+                                <verkoperDashboard />
+                            </PrivateRoute>
+                        } />
+                        
+                        
                     </Routes>
 
                     

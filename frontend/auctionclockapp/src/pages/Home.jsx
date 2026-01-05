@@ -43,7 +43,7 @@ class Home extends React.Component {
                         
                         <div className="col-lg-6 col-md-12">
                             <article className="m-4">
-                                <h2>Welkom bij de veilingklok</h2>
+                                <h2>Welkom bij de veilingklok van FloraBid</h2>
                                 <p>
                                     Bloemen en planten maken onze wereld groener.<br />
                                     Ze kleuren onze huizen en vergroenen onze steden.<br />
