@@ -107,31 +107,41 @@ function VisitorHeader() {
 
                 <div className="collapse navbar-collapse" id="navbarText">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        {/* Home → altijd zichtbaar */}
                         {handleNavLinks()}
 
-                        <li className="nav-item fs-5">
-                            <Link className="nav-link text-dark" to='/products'>Producten</Link>
-                        </li>
-                        {(!user || (user.role !== 'Admin' && user.role !== 'Auctioneer')) && (
-                            <li className="nav-item fs-5">
-                                <Link className="nav-link text-dark" to="/auction/customer">
-                                    Veiling
-                                </Link>
-                            </li>
+                        {/* Alles hieronder alleen als ingelogd */}
+                        {user && (
+                            <>
+                                <li className="nav-item fs-5">
+                                    <Link className="nav-link text-dark" to="/products">
+                                        Producten
+                                    </Link>
+                                </li>
+
+                                {/* Normale veiling: alleen niet-Admin/Auctioneer */}
+                                {(user.role !== 'Admin' && user.role !== 'Auctioneer') && (
+                                    <li className="nav-item fs-5">
+                                        <Link className="nav-link text-dark" to="/auction/customer">
+                                            Veiling
+                                        </Link>
+                                    </li>
+                                )}
+
+                                {/* Admin veiling: Admin & Auctioneer */}
+                                {(user.role === 'Admin' || user.role === 'Auctioneer') && (
+                                    <li className="nav-item fs-5">
+                                        <Link className="nav-link text-dark" to="/admin/auction">
+                                            Admin Veiling
+                                        </Link>
+                                    </li>
+                                )}
+                            </>
                         )}
-
-                        {user && (user.role === 'Admin' || user.role === 'Auctioneer') && (
-                            <li className="nav-item fs-5">
-                                <Link className="nav-link text-dark" to="/admin/auction">
-                                    Admin Veiling
-                                </Link>
-                            </li>
-                        )}
-
-
                     </ul>
-                    
-                    
+
+
+
 
                     <div className="d-flex">
                         {user ? (
