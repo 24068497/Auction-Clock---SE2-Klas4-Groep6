@@ -12,7 +12,4 @@ public class User : IdentityUser
     public string Name { get; set; }
     [MaxLength(20)]
     public string TelNr { get; set; }
-
-   
-    
 }

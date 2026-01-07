@@ -7,19 +7,16 @@ const AddAuctionTime = () => {
     const [formData, setFormData] = useState({
         startTime: "",
         endTime: "",
-        auctioneer: 0,
     });
 
     const [message, setMessage] = useState("");
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-
-        const newValue = name === "auctioneer" ? parseInt(value, 10) || 0 : value;
-
+    
         setFormData({
             ...formData,
-            [name]: newValue,
+            [name]: value,
         });
     }
 
@@ -35,14 +32,16 @@ const AddAuctionTime = () => {
         }
 
         const data = new FormData();
-        data.append("startTime", startTime);
-        data.append("endTime", endTime);
-        data.append("auctioneer", formData.auctioneer);
+        data.append("StartTime", startTime);
+        data.append("EndTime", endTime);
 
         try {
-            const response = await fetch(`api/auction/addtime/${id}/create-auction-time`, {
+            const token = localStorage.getItem("token");
+
+            const response = await fetch(`http://localhost:5164/api/Products/create-auction-time/${id}`, {
                 method: "POST",
                 body: data,
+                headers: { "Authorization": `Bearer ${token}` },
             });
 
             if (response.ok) {
@@ -50,7 +49,6 @@ const AddAuctionTime = () => {
                 setFormData({
                     startTime: "",
                     endTime: "",
-                    auctioneer: 0,
                 });
             } else {
                 setMessage("Er ging iets mis tijdens het toevoegen van de veilingsdatum.");
@@ -82,9 +80,6 @@ const AddAuctionTime = () => {
 
                         <label style={styles.label}>EindTijd:</label>
                         <input name="endTime" type="time" value={formData.endTime} onChange={handleChange} style={styles.input} required />
-
-                        <label style={styles.label}>Veilingmeester:</label>
-                        <input name="auctioneer" type="number" min="0" value={formData.auctioneer} onChange={handleChange} style={styles.input} required />
 
                         <button type="submit" class="btn form-btn">Veilingstijden opslaan</button>
                     </form>
