@@ -10,5 +10,8 @@
 
         [Required]
         public DateTime EndTime { get; set; }
+        
+        [Required]
+        public decimal StartPrice { get; set; }
     }
 }

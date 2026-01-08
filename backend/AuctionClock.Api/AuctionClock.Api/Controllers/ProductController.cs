@@ -16,14 +16,12 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
         private readonly AppDbContext _context;
         private readonly UserManager<User> _userManager;
 
-
         public ProductsController(AppDbContext context, UserManager<User> userManager)
         {
             _context = context;
             _userManager = userManager;
         }
 
-        // GET: api/products
         [HttpGet]
         public async Task<IActionResult> GetProducts()
         {
@@ -31,7 +29,6 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             return Ok(products);
         }
 
-        // GET: api/products/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProduct(int id)
         {
@@ -43,23 +40,21 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
 
             return Ok(product);
         }
+
         [HttpPost("create-product")]
         [Consumes("multipart/form-data")]
-
-        // POST: api/products
-        public async Task<IActionResult> CreateProduct([FromForm] ProductaddDTO productaddDTO)
+        public async Task<IActionResult> CreateProduct([FromForm] ProductaddDTO dto)
         {
-
-            productaddDTO.AuctionDate = productaddDTO.AuctionDate.Date;
+            dto.AuctionDate = dto.AuctionDate.Date;
 
             var product = new Product
             {
-                Name = productaddDTO.Name,
-                Description = productaddDTO.Description,
-                StartPrice = productaddDTO.StartPrice,
-                MinimumPrice = productaddDTO.MinimumPrice,
-                AuctionDate = productaddDTO.AuctionDate,
-                Company = productaddDTO.Company,
+                Name = dto.Name,
+                Description = dto.Description,
+                MinimumPrice = dto.MinimumPrice,
+                AuctionDate = dto.AuctionDate,
+                Company = dto.Company,
+                StartPrice = 0
             };
 
             await _context.Products.AddAsync(product);
@@ -81,10 +76,8 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(photo.FileName);
             var filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await photo.CopyToAsync(stream);
-            }
+            using var stream = new FileStream(filePath, FileMode.Create);
+            await photo.CopyToAsync(stream);
 
             product.ImagePath = $"/img/{uniqueFileName}";
             await _context.SaveChangesAsync();
@@ -92,51 +85,42 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             return Ok(product.ImagePath);
         }
 
-        //POST: api/auction/addtime/{id}
         [Authorize]
         [HttpPost("create-auction-time/{id}")]
         [Consumes("multipart/form-data")]
-        public async Task<IActionResult> CreateAuctionTime(int id, [FromForm] AuctionTimeDTO auctionTimeDTO)
+        public async Task<IActionResult> CreateAuctionTime(int id, [FromForm] AuctionTimeDTO dto)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value
-                         ?? User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
-
+                      ?? User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
 
             if (userId == null)
-            {
                 return Unauthorized();
-            }
-            else
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                return BadRequest();
+
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.ProductId == id);
+            if (product == null)
+                return NotFound();
+
+            if (dto.StartPrice < product.MinimumPrice)
+                return BadRequest("Startprijs mag niet lager zijn dan minimumprijs.");
+
+            var auction = new Auction
             {
-                var user = await _userManager.FindByIdAsync(userId);
+                StartTime = dto.StartTime,
+                EndTime = dto.EndTime,
+                AuctioneerId = user.Id,
+            };
 
-                var product = await _context.Products
-                                    .FirstOrDefaultAsync(p => p.ProductId == id);
+            product.StartPrice = dto.StartPrice;
+            product.SetAuction(auction);
 
-                if (product == null)
-                {
-                    return NotFound();
-                }
-                if (user == null)
-                {
-                    return BadRequest();
-                }
-                else
-                {
-                    var auction = new Auction
-                    {
-                        StartTime = auctionTimeDTO.StartTime,
-                        EndTime = auctionTimeDTO.EndTime,
-                        AuctioneerId = user.Id,
-                    };
+            await _context.Auctions.AddAsync(auction);
+            await _context.SaveChangesAsync();
 
-                    product.SetAuction(auction);
-
-                    await _context.Auctions.AddAsync(auction);
-                    await _context.SaveChangesAsync();
-                    return Ok(auction);
-                }
-            }
+            return Ok(auction);
         }
     }
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 const AddAuctionTime = () => {
     const { id } = useParams();
@@ -7,58 +7,50 @@ const AddAuctionTime = () => {
     const [formData, setFormData] = useState({
         startTime: "",
         endTime: "",
+        startPrice: 0,
     });
 
     const [message, setMessage] = useState("");
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-    
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    }
+        const newValue = name === "startPrice" ? parseFloat(value) : value;
+        setFormData({ ...formData, [name]: newValue });
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const startTime = formData.startTime;
-        const endTime = formData.endTime;
-
-        if (endTime < startTime || endTime == startTime) {
-            setMessage("De veiling kan niet eindigen voordat deze van start is geweest!");
+        if (formData.endTime <= formData.startTime) {
+            setMessage("De veiling kan niet eindigen voordat deze gestart is!");
             return;
         }
 
         const data = new FormData();
-        data.append("StartTime", startTime);
-        data.append("EndTime", endTime);
+        data.append("StartTime", formData.startTime);
+        data.append("EndTime", formData.endTime);
+        data.append("StartPrice", formData.startPrice);
 
         try {
             const token = localStorage.getItem("token");
 
-            const response = await fetch(`http://localhost:5164/api/Products/create-auction-time/${id}`, {
+            const response = await fetch(`http://localhost:5164/api/products/create-auction-time/${id}`, {
                 method: "POST",
                 body: data,
-                headers: { "Authorization": `Bearer ${token}` },
+                headers: { Authorization: `Bearer ${token}` },
             });
 
             if (response.ok) {
-                setMessage("De veilingstijden zijn succesvol toegevoegd aan het product!");
-                setFormData({
-                    startTime: "",
-                    endTime: "",
-                });
+                setMessage("Veiling succesvol ingesteld!");
             } else {
-                setMessage("Er ging iets mis tijdens het toevoegen van de veilingsdatum.");
+                const err = await response.text();
+                setMessage(err);
             }
 
-        } catch (error) {
-            console.error(error);
+        } catch {
             setMessage("Fout bij het verbinden met de server.");
         }
-    }
+    };
 
     const styles = {
         page: { display: "flex", justifyContent: "center", alignItems: "center", background: "#e9f0e6", padding: "40px" },
@@ -70,23 +62,26 @@ const AddAuctionTime = () => {
     };
 
     return (
-        <>
-            <div style={styles.page}>
-                <div style={styles.card}>
-                    <h2 style={styles.title}>Veilingstijden bepalen</h2>
-                    <form onSubmit={handleSubmit}>
-                        <label style={styles.label}>StartTijd:</label>
-                        <input name="startTime" type="time" value={formData.startTime} onChange={handleChange} style={styles.input} required />
+        <div style={styles.page}>
+            <div style={styles.card}>
+                <h2 style={styles.title}>Veiling instellen</h2>
 
-                        <label style={styles.label}>EindTijd:</label>
-                        <input name="endTime" type="time" value={formData.endTime} onChange={handleChange} style={styles.input} required />
+                <form onSubmit={handleSubmit}>
+                    <label style={styles.label}>Startprijs (€):</label>
+                    <input name="startPrice" type="number" value={formData.startPrice} onChange={handleChange} style={styles.input} required />
 
-                        <button type="submit" class="btn form-btn">Veilingstijden opslaan</button>
-                    </form>
-                    {message && <p style={styles.message}>{message}</p>}
-                </div>
+                    <label style={styles.label}>Starttijd:</label>
+                    <input name="startTime" type="time" value={formData.startTime} onChange={handleChange} style={styles.input} required />
+
+                    <label style={styles.label}>Eindtijd:</label>
+                    <input name="endTime" type="time" value={formData.endTime} onChange={handleChange} style={styles.input} required />
+
+                    <button type="submit" className="btn form-btn">Veiling opslaan</button>
+                </form>
+
+                {message && <p style={styles.message}>{message}</p>}
             </div>
-        </>
+        </div>
     );
 };
 

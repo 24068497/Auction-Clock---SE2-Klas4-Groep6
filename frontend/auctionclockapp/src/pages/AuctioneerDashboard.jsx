@@ -36,7 +36,6 @@ class AuctioneerDashboard extends React.Component {
                 <h1>Auctioneer Dashboard</h1>
                 <p>Welkom, {this.state.name}!</p>
                 <p>Jouw rol: {this.state.role}</p>
-                <Link className="nav-link text-dark me-3" to='/admin/auction'>Naar Veilingklok</Link>
             </div>
         );
     }
