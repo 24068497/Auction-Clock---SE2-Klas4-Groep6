@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from "jwt-decode"; 
 import { Link } from 'react-router-dom';
 
 class KoperDashboard extends React.Component {
@@ -7,7 +7,8 @@ class KoperDashboard extends React.Component {
         super(props);
         this.state = {
             name: "",
-            role: ""
+            role: "",
+            companyId: "" // toegevoegd
         };
     }
 
@@ -23,7 +24,8 @@ class KoperDashboard extends React.Component {
             const decoded = jwtDecode(token);
             this.setState({
                 name: decoded["name"] || "",
-                role: decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] || ""
+                role: decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] || "",
+                companyId: decoded["companyId"] || "" // toegevoegd
             });
         } catch (err) {
             console.error("Fout bij decoderen token", err);
@@ -36,10 +38,14 @@ class KoperDashboard extends React.Component {
                 <h1>Koper Dashboard</h1>
                 <p>Welkom, {this.state.name}!</p>
                 <p>Jouw rol: {this.state.role}</p>
+                <p>Bedrijf ID: {this.state.companyId || "Niet beschikbaar"}</p> {/* toegevoegd */}
 
                 <h2>Jouw actieve veilingen</h2>
                 <p>Hier zie je alle veilingen waar je aan deelneemt.</p>
-                
+
+                <Link to="/veilingen" className="btn btn-primary mt-3">
+                    Bekijk veilingen
+                </Link>
             </div>
         );
     }

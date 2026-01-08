@@ -1,5 +1,6 @@
 namespace Auction_Clock___SE2_Klas4_Groep6.Models;
 
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,11 +18,10 @@ public class Auction
     [Required]
     public DateTime EndTime { get; set; }
 
-    [Required]
-    public int Auctioneer { get; set; }
-
-    [ForeignKey("Auctioneer")]
-    public int? User { get; set; }
+    public string AuctioneerId { get; set; }
+    
+    [ForeignKey(nameof(AuctioneerId))]
+    public User Auctioneer { get; set; }
 
     // Navigatie
     [JsonIgnore]

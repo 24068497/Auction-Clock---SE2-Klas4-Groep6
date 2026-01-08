@@ -1,4 +1,5 @@
 using Auction_Clock___SE2_Klas4_Groep6.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -45,7 +46,6 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -56,7 +56,9 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Allowvite", p =>
-        p.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod());
+        p.WithOrigins("http://localhost:3000")
+        .AllowAnyHeader()
+        .AllowAnyMethod());
 });
 
 var app = builder.Build();
