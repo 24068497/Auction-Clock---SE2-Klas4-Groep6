@@ -137,6 +137,9 @@ namespace AuctionClock.Api.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -192,6 +195,8 @@ namespace AuctionClock.Api.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -363,6 +368,17 @@ namespace AuctionClock.Api.Migrations
                     b.Navigation("Auction");
 
                     b.Navigation("CompanyNav");
+                });
+
+            modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.User", b =>
+                {
+                    b.HasOne("Auction_Clock___SE2_Klas4_Groep6.Models.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -29,7 +29,7 @@ function VisitorHeader() {
 
     const Logo = () => {
         return (
-            <img src="/img/LogoFlorabid.png" width="100px" alt="Logo" />
+            <img src="/img/Logo_Florabid-png.png" width="100px" alt="Logo" />
         )
     }
     const handleImageLinks = () => {
@@ -145,9 +145,6 @@ function VisitorHeader() {
                         )}
                     </ul>
 
-
-
-
                     <div className="d-flex">
                         {user ? (
                             <>
@@ -160,8 +157,8 @@ function VisitorHeader() {
                             </>
                         ) : (
                             <>
-                                <Link className="nav-link text-dark me-3" to='/register'>Registreren</Link>
-                                <Link className="nav-link text-dark" to='/login'>Inloggen</Link>
+                                <Link className="nav-link text-dark  fs-5 me-3" to='/register'>Registreren</Link>
+                                <Link className="nav-link text-dark fs-5" to='/login'>Inloggen</Link>
                             </>
                         )}
                     </div>

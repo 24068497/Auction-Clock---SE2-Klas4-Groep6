@@ -20,7 +20,7 @@ class Footer extends React.Component {
                     <div className="row">
 
                     <div class="col">
-                        <img src="img/LogoFlorabid.png" width="100px" class="mt-2"></img>
+                        <img src="img/Logo_Florabid-Photoroom.png" width="100px" class="mt-2"></img>
                         </div>
 
                         <div className="col text-white">

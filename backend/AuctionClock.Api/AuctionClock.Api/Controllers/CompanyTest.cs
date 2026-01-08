@@ -19,14 +19,14 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Company>>> GetAll()
         {
-            return await _context.Company.ToListAsync();
+            return await _context.Companies.ToListAsync();
         }
  
         // GET: api/company/1
         [HttpGet("{id}")]
         public async Task<ActionResult<Company>> GetById(int id)
         {
-            var company = await _context.Company.FindAsync(id);
+            var company = await _context.Companies.FindAsync(id);
             if (company == null)
                 return NotFound();
             return company;
@@ -36,7 +36,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
         [HttpPost]
         public async Task<ActionResult<Company>> AddCompany([FromBody] Company newCompany)
         {
-            _context.Company.Add(newCompany);
+            _context.Companies.Add(newCompany);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetById), new { id = newCompany.CompanyId }, newCompany);
         }
@@ -57,11 +57,11 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCompany(int id)
         {
-            var company = await _context.Company.FindAsync(id);
+            var company = await _context.Companies.FindAsync(id);
             if (company == null)
                 return NotFound();
  
-            _context.Company.Remove(company);
+            _context.Companies.Remove(company);
             await _context.SaveChangesAsync();
             return NoContent();
         }
