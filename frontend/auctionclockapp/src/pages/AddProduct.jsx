@@ -68,7 +68,7 @@ const AddProduct = () => {
             }
 
             if (response.ok) {
-                navigate(`/add-auction-time/${productId}`);
+                setMessage("Product succesvol toegevoegd!");
             } else {
                 setMessage("Er ging iets mis bij het toevoegen van het product.");
             }
