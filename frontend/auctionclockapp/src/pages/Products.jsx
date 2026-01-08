@@ -118,12 +118,14 @@ export default function Products() {
                                                     Meer over {p.name}
                                                 </Link>
 
-                                                <Link
-                                                    to={`/auction/addtime/${p.productId}`}
-                                                    className="btn bg-nav text-dark"
-                                                >
-                                                    Bepaal veilingstijden
-                                                </Link>
+                                                {role === "Auctioneer" && (
+                                                    <Link
+                                                        to={`/auction/addtime/${p.productId}`}
+                                                        className="btn bg-nav text-dark"
+                                                    >
+                                                        Bepaal veilingstijden
+                                                    </Link>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
