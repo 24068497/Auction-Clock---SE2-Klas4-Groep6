@@ -39,13 +39,7 @@ class KoperDashboard extends React.Component {
                 <p>Welkom, {this.state.name}!</p>
                 <p>Jouw rol: {this.state.role}</p>
                 <p>Bedrijf ID: {this.state.companyId || "Niet beschikbaar"}</p> {/* toegevoegd */}
-
-                <h2>Jouw actieve veilingen</h2>
-                <p>Hier zie je alle veilingen waar je aan deelneemt.</p>
-
-                <Link to="/veilingen" className="btn btn-primary mt-3">
-                    Bekijk veilingen
-                </Link>
+                
             </div>
         );
     }

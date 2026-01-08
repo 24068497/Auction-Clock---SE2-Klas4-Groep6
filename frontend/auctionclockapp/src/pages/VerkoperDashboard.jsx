@@ -39,12 +39,9 @@ class VerkoperDashboard extends React.Component {
                 <p>Jouw rol: {this.state.role}</p>
                 <p>Bedrijf ID: {this.state.companyId}</p> {/* toegevoegd */}
 
-                <h2>Jouw aangeboden veilingen</h2>
-                <p>Hier zie je alle veilingen die jij hebt geplaatst.</p>
+                
 
-                <button className="btn btn-primary mt-3">
-                    Nieuwe veiling aanmaken
-                </button>
+                
             </div>
         );
     }

@@ -1,20 +1,17 @@
 ﻿import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 const AddProduct = () => {
     const [formData, setFormData] = useState({
         name: "",
         description: "",
-        startPrice: 0,
         minimumPrice: 0,
         auctionDate: "",
-        auctionId: 0,
         company: 0,
-        customer: 0,
         photo: null,
     });
 
     const navigate = useNavigate();
-
     const [message, setMessage] = useState("");
 
     const handleChange = (e) => {
@@ -25,8 +22,7 @@ const AddProduct = () => {
         } else {
             let newValue = value;
 
-            // Zet bepaalde velden om naar integer
-            if (["startPrice","minimumPrice", "auctionId", "company", "customer"].includes(name)) {
+            if (["minimumPrice", "company"].includes(name)) {
                 newValue = value === "" ? "" : parseInt(value, 10);
             }
 
@@ -36,8 +32,6 @@ const AddProduct = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        console.log("Submitting minimumPrice:", formData.minimumPrice);
 
         const currentDate = new Date();
         const auctionDate = new Date(formData.auctionDate);
@@ -47,22 +41,14 @@ const AddProduct = () => {
             return;
         }
 
-        if (formData.minimumPrice > formData.startPrice) {
-            setMessage("De minimumprijs kan niet hoger zijn dan de startprijs!");
-            return;
-        }
-
-        console.log(currentDate);
         const data = new FormData();
         data.append("name", formData.name);
         data.append("description", formData.description);
-        data.append("startPrice", formData.startPrice);
         data.append("minimumPrice", formData.minimumPrice);
         data.append("auctionDate", formData.auctionDate);
         data.append("company", formData.company);
 
         try {
-
             const response = await fetch("http://localhost:5164/api/products/create-product", {
                 method: "POST",
                 body: data,
@@ -81,20 +67,12 @@ const AddProduct = () => {
                 });
             }
 
-                if (response.ok) {
-                    setMessage("Product succesvol toegevoegd!");
-                    setFormData({
-                        name: "",
-                        description: "",
-                        startPrice: 0,
-                        minimumPrice: 0,    
-                        auctionDate: "",
-                        company: 0,
-                        photo: null,
-                    });
-                } else {
-                    setMessage("Er ging iets mis bij het toevoegen van het product.");
-                }
+            if (response.ok) {
+                navigate(`/add-auction-time/${productId}`);
+            } else {
+                setMessage("Er ging iets mis bij het toevoegen van het product.");
+            }
+
         } catch (error) {
             console.error(error);
             setMessage("Fout bij het verbinden met de server.");
@@ -111,22 +89,19 @@ const AddProduct = () => {
     };
 
     return (
-        <>
         <div style={styles.page}>
             <div style={styles.card}>
                 <h2 style={styles.title}>Nieuw Product Aanmaken</h2>
+
                 <form onSubmit={handleSubmit}>
                     <label style={styles.label}>Naam:</label>
-                    <input name="name" type="text" value={formData.name} onChange={handleChange} placeholder="Productnaam" style={styles.input} required />
+                    <input name="name" value={formData.name} onChange={handleChange} style={styles.input} required />
 
                     <label style={styles.label}>Beschrijving:</label>
-                    <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Korte beschrijving" style={{ ...styles.input, height: "80px" }} />
-
-                    <label style={styles.label}>Startprijs (€):</label>
-                    <input name="startPrice" type="number" step="1" value={formData.startPrice} onChange={handleChange} placeholder="Bijv. 49" style={styles.input} required />
+                    <textarea name="description" value={formData.description} onChange={handleChange} style={{ ...styles.input, height: "80px" }} />
 
                     <label style={styles.label}>Minimumprijs (€):</label>
-                    <input name="minimumPrice" type="number" step="1" value={formData.minimumPrice} onChange={handleChange} placeholder="Bijv. 25" style={styles.input} required />
+                    <input name="minimumPrice" type="number" value={formData.minimumPrice} onChange={handleChange} style={styles.input} required />
 
                     <label style={styles.label}>Veilingdatum:</label>
                     <input name="auctionDate" type="date" value={formData.auctionDate} onChange={handleChange} style={styles.input} required />
@@ -137,14 +112,13 @@ const AddProduct = () => {
                     <label style={styles.label}>Foto uploaden:</label>
                     <input name="photo" type="file" accept="image/*" onChange={handleChange} style={styles.input} />
 
-                    <button type="submit" className="btn form-btn">Product Toevoegen</button>
+                    <button type="submit" className="btn form-btn">Product opslaan</button>
                 </form>
+
                 {message && <p style={styles.message}>{message}</p>}
             </div>
-            </div>
-        </>
+        </div>
     );
 };
 
 export default AddProduct;
- 
