@@ -47,6 +47,35 @@ namespace AuctionClock.Api.Migrations
                     b.ToTable("Auctions");
                 });
 
+            modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.BidHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Verkoper")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("BidHistories");
+                });
+
             modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.Company", b =>
                 {
                     b.Property<int?>("CompanyId")
@@ -351,6 +380,17 @@ namespace AuctionClock.Api.Migrations
                         .IsRequired();
 
                     b.Navigation("Auctioneer");
+                });
+
+            modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.BidHistory", b =>
+                {
+                    b.HasOne("Auction_Clock___SE2_Klas4_Groep6.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.Product", b =>

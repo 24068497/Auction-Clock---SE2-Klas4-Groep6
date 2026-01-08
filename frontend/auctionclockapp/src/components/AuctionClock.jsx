@@ -2,23 +2,24 @@
 import "../AuctionClock.css";
 
 export default function AuctionClock({
-    role = "customer",
-    startPrice = 10,
-    minimumPrice = 0,
-    duration = 20,        
-    onBuy,
-}) {
-    const [timeLeft, setTimeLeft] = useState(duration);  
+                                         role = "customer",
+                                         startPrice = 10,
+                                         minimumPrice = 0,
+                                         duration = 20,
+                                         onBuy,
+                                     }) {
+    const [timeLeft, setTimeLeft] = useState(duration);
     const [price, setPrice] = useState(startPrice);
     const [running, setRunning] = useState(false);
 
     useEffect(() => {
         setTimeLeft(duration);
         setPrice(startPrice);
-        setRunning(role === "customer"); 
+        setRunning(role === "customer");
     }, [startPrice, duration, role]);
 
-  useEffect(() => {
+    // Prijsverloop
+    useEffect(() => {
         if (!running) return;
 
         const totalMs = duration * 1000;
@@ -26,19 +27,13 @@ export default function AuctionClock({
             const fraction = Math.max(0, timeLeft * 1000 / totalMs);
             const newPrice = Math.max(startPrice * fraction, minimumPrice);
 
-            setPrice(currentPrice => {
-                if (currentPrice <= minimumPrice) {
-                    return minimumPrice;
-                }
-                return newPrice;
-            })
-        }, 50); 
+            setPrice(currentPrice => currentPrice <= minimumPrice ? minimumPrice : newPrice);
+        }, 50);
 
-      return () => clearInterval(interval);
-  }, [running, timeLeft, startPrice, duration, minimumPrice]);
+        return () => clearInterval(interval);
+    }, [running, timeLeft, startPrice, duration, minimumPrice]);
 
-
-    // Timer 
+    // Timer
     useEffect(() => {
         if (!running) return;
         if (timeLeft <= 0) {
@@ -48,7 +43,7 @@ export default function AuctionClock({
 
         const id = setTimeout(() => {
             setTimeLeft(prev => (prev > 0 ? prev - 1 : 0));
-        }, 1000); 
+        }, 1000);
 
         return () => clearTimeout(id);
     }, [running, timeLeft]);
@@ -77,8 +72,7 @@ export default function AuctionClock({
         <div className="auction-clock-container">
             <div className="clock-circle">
                 <div className="clock-inner">
-                    <h1 className="price">€ {price.toFixed(2)}</h1>
-
+                    <h1 className="price">€ {Number(price).toFixed(2)}</h1>
                 </div>
             </div>
 
@@ -86,7 +80,6 @@ export default function AuctionClock({
                 {running ? "⏱ Veiling loopt…" : "⏸ Veiling gepauzeerd"}
             </p>
 
-            {/* KOPER KNOP */}
             {role === "customer" && (
                 <button
                     className="buy-btn"
@@ -97,18 +90,11 @@ export default function AuctionClock({
                 </button>
             )}
 
-            {/* ADMIN KNOPPEN */}
             {role === "admin" && (
                 <div className="admin-controls">
-                    <button onClick={startClock} disabled={running || timeLeft === 0}>
-                        Start
-                    </button>
-                    <button onClick={stopClock} disabled={!running}>
-                        Pauze
-                    </button>
-                    <button onClick={resetClock}>
-                        Reset
-                    </button>
+                    <button onClick={startClock} disabled={running || timeLeft === 0}>Start</button>
+                    <button onClick={stopClock} disabled={!running}>Pauze</button>
+                    <button onClick={resetClock}>Reset</button>
                 </div>
             )}
         </div>
