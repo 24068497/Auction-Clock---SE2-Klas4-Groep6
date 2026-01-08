@@ -10,8 +10,5 @@
 
         [Required]
         public DateTime EndTime { get; set; }
-
-        [Required]
-        public int Auctioneer { get; set; }
     }
 }

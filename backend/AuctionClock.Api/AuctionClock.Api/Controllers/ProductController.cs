@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Auction_Clock___SE2_Klas4_Groep6.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Auction_Clock___SE2_Klas4_Groep6.Models;
 using AuctionClock.Api.Models.DTO_s;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
 {
@@ -10,10 +14,13 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public ProductsController(AppDbContext context)
+
+        public ProductsController(AppDbContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: api/products
@@ -44,7 +51,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
         {
 
             productaddDTO.AuctionDate = productaddDTO.AuctionDate.Date;
-            
+
             var product = new Product
             {
                 Name = productaddDTO.Name,
@@ -85,32 +92,51 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             return Ok(product.ImagePath);
         }
 
-
-        // POST: api/auction/addtime/{id}
-        [HttpPost("create-auction-time")]
+        //POST: api/auction/addtime/{id}
+        [Authorize]
+        [HttpPost("create-auction-time/{id}")]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> CreateAuctionTime(int id, [FromForm] AuctionTimeDTO auctionTimeDTO)
         {
-            var product = await _context.Products
-                            .FirstOrDefaultAsync(p => p.ProductId == id);
-            
-            if (product == null)
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                         ?? User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+
+
+            if (userId == null)
             {
-                return NotFound();
+                return Unauthorized();
             }
-
-            var auction = new Auction
+            else
             {
-                StartTime = auctionTimeDTO.StartTime,
-                EndTime = auctionTimeDTO.EndTime,
-                Auctioneer = auctionTimeDTO.Auctioneer,
-            };
+                var user = await _userManager.FindByIdAsync(userId);
 
-            product.SetAuction(auction);
+                var product = await _context.Products
+                                    .FirstOrDefaultAsync(p => p.ProductId == id);
 
-            await _context.Auctions.AddAsync(auction);
-            await _context.SaveChangesAsync();
-            return Ok(auction);
+                if (product == null)
+                {
+                    return NotFound();
+                }
+                if (user == null)
+                {
+                    return BadRequest();
+                }
+                else
+                {
+                    var auction = new Auction
+                    {
+                        StartTime = auctionTimeDTO.StartTime,
+                        EndTime = auctionTimeDTO.EndTime,
+                        AuctioneerId = user.Id,
+                    };
+
+                    product.SetAuction(auction);
+
+                    await _context.Auctions.AddAsync(auction);
+                    await _context.SaveChangesAsync();
+                    return Ok(auction);
+                }
+            }
         }
     }
 }

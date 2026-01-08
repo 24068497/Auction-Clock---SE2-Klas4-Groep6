@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuctionClock.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260105103436_DatabaseEnviroment")]
-    partial class DatabaseEnviroment
+    [Migration("20260108085403_Database")]
+    partial class Database
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,8 +33,9 @@ namespace AuctionClock.Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AuctionId"));
 
-                    b.Property<int>("Auctioneer")
-                        .HasColumnType("int");
+                    b.Property<string>("AuctioneerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
@@ -42,10 +43,9 @@ namespace AuctionClock.Api.Migrations
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("User")
-                        .HasColumnType("int");
-
                     b.HasKey("AuctionId");
+
+                    b.HasIndex("AuctioneerId");
 
                     b.ToTable("Auctions");
                 });
@@ -140,6 +140,9 @@ namespace AuctionClock.Api.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -195,6 +198,8 @@ namespace AuctionClock.Api.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -340,6 +345,17 @@ namespace AuctionClock.Api.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.Auction", b =>
+                {
+                    b.HasOne("Auction_Clock___SE2_Klas4_Groep6.Models.User", "Auctioneer")
+                        .WithMany()
+                        .HasForeignKey("AuctioneerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Auctioneer");
+                });
+
             modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.Product", b =>
                 {
                     b.HasOne("Auction_Clock___SE2_Klas4_Groep6.Models.Auction", "Auction")
@@ -355,6 +371,17 @@ namespace AuctionClock.Api.Migrations
                     b.Navigation("Auction");
 
                     b.Navigation("CompanyNav");
+                });
+
+            modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.User", b =>
+                {
+                    b.HasOne("Auction_Clock___SE2_Klas4_Groep6.Models.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

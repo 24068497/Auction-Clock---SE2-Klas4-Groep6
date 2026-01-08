@@ -7,10 +7,8 @@ class Registreren extends React.Component {
         this.state = {
             firstname: "",
             lastname: "",
-            company: "",
-            kvk: "",
-            adres: "",
-            plaats: "",
+            companyName: "",
+            companyAddress: "",
             telNr: "",
             email: "",
             password: "",
@@ -31,6 +29,8 @@ class Registreren extends React.Component {
         const errors = {};
         if (!this.state.firstname) errors.firstname = "Voornaam is verplicht";
         if (!this.state.lastname) errors.lastname = "Achternaam is verplicht";
+        if (!this.state.companyName) errors.companyName = "Bedrijfsnaam is verplicht";
+        if (!this.state.companyAddress) errors.companyAddress = "Bedrijfsadres is verplicht";
         if (!this.state.telNr) errors.telNr = "Telefoonnummer is verplicht";
         if (!this.state.email) errors.email = "E-mailadres is verplicht";
         if (!this.state.password) errors.password = "Wachtwoord is verplicht";
@@ -51,7 +51,9 @@ class Registreren extends React.Component {
             email: this.state.email,
             password: this.state.password,
             telNr: this.state.telNr,
-            role: this.state.role
+            role: this.state.role,
+            companyName: this.state.companyName,
+            companyAddress: this.state.companyAddress
         };
 
         try {
@@ -142,6 +144,14 @@ class Registreren extends React.Component {
                     <input id="lastname" style={styles.input} placeholder="Uw achternaam"
                            value={this.state.lastname} onChange={this.handleChange} />
                     {errors.lastname && <div style={styles.error}>{errors.lastname}</div>}
+
+                    <input id="companyName" style={styles.input} placeholder="Bedrijfsnaam"
+                           value={this.state.companyName} onChange={this.handleChange} />
+                    {errors.companyName && <div style={styles.error}>{errors.companyName}</div>}
+
+                    <input id="companyAddress" style={styles.input} placeholder="Bedrijfsadres"
+                           value={this.state.companyAddress} onChange={this.handleChange} />
+                    {errors.companyAddress && <div style={styles.error}>{errors.companyAddress}</div>}
 
                     <input id="telNr" style={styles.input} placeholder="Uw telefoonnummer"
                            value={this.state.telNr} onChange={this.handleChange} />

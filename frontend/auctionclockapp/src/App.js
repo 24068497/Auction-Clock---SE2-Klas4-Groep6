@@ -35,9 +35,7 @@ function App() {
                         <Route path='/products' element={<Products />} />
                         <Route path='/*' element={<NotFound />} />
 
-                        <Route path='/product/add' element={<AddProduct />} />
                         <Route path='/product/:id' element={<ProductOverview />} />
-                        <Route path='/auction/addtime/:id' element={<AddAuctionTime />} />
                         <Route path='/auction/Customer' element={<CustomerAuction />} />
 
 
@@ -62,28 +60,34 @@ function App() {
                             </PrivateRoute>
                         } />
 
+                        <Route path='/auction/addtime/:id' element={
+                            <PrivateRoute allowedRoles={['Auctioneer']}>
+                                <AddAuctionTime />
+                            </PrivateRoute>
+                        } />
+
+
+                        {/* Beveiligde Verkoper routes */}
                         <Route path='/Verkoper/dashboard' element={
                             <PrivateRoute allowedRoles={['Verkoper']} >
                                 <SellerDashboard />
                             </PrivateRoute>
                         } />
 
+                        <Route path='/product/add' element={
+                            <PrivateRoute allowedRoles={['Verkoper']} >
+                                <AddProduct />
+                            </PrivateRoute>
+                        } />
+
+                        {/* Beveiligde Koper routes */}
                         <Route path='/Koper/dashboard' element={
                             <PrivateRoute allowedRoles={['Koper']} >
                                 <UserDashboard />
                             </PrivateRoute>
-                        } />
-
-                        <Route path='/Verkoper/dashboard' element={
-                            <PrivateRoute allowedRoles={['Verkoper']} >
-                                <verkoperDashboard />
-                            </PrivateRoute>
-                        } />
-                        
-                        
+                        } />                        
                     </Routes>
-
-                    
+              
                 </main>
 
                 <Footer />
