@@ -33,7 +33,6 @@ public class Product
 
     public int? Customer { get; set; }
     
-    [JsonIgnore]
     [ForeignKey("AuctionId")]
     public Auction? Auction { get; set; }
 

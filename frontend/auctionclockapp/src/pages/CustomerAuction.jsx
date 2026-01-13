@@ -65,7 +65,7 @@ export default function CustomerAuction() {
 
                     {/* Product details */}
                     {activeProduct && (
-                        <div className="card p-3  mt-4 shadow" style={{ width: "350px" }}>
+                        <div className="card p-3 mt-4 shadow" style={{ width: "350px" }}>
                             <h4>{activeProduct.name}</h4>
 
                             {activeProduct.imagePath && (
@@ -90,6 +90,10 @@ export default function CustomerAuction() {
                         productName={activeProduct?.name || ""}
                         role="customer"
                         onBuy={handleBuy}
+
+                        auctionDate={activeProduct?.auctionDate}
+                        startTime={activeProduct?.auction?.startTime}
+                        endTime={activeProduct?.auction?.endTime}
                     />
                 </div>
             </div>
