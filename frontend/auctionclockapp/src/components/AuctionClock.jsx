@@ -48,8 +48,10 @@ export default function AuctionClock({
         return () => clearInterval(interval);
     }, [running, timeLeft, startPrice, duration, minimumPrice]);
 
+        return () => clearInterval(interval);
+    }, [running, timeLeft, startPrice, duration, minimumPrice]);
 
-    // Timer 
+    // Timer
     useEffect(() => {
         if (!running) return;
         if (timeLeft <= 0) {
@@ -121,7 +123,7 @@ export default function AuctionClock({
         <div className="auction-clock-container">
             <div className="clock-circle">
                 <div className="clock-inner">
-                    <h1 className="price">€ {price.toFixed(2)}</h1>
+                    <h1 className="price">€ {Number(price).toFixed(2)}</h1>
                 </div>
             </div>
 
@@ -130,7 +132,6 @@ export default function AuctionClock({
                 {running ? "⏱ Veiling loopt…" : "⏸ Veiling gepauzeerd"}
             </p>
 
-            {/* KOPER KNOP */}
             {role === "customer" && (
                 <button
                     className="buy-btn"
@@ -141,7 +142,6 @@ export default function AuctionClock({
                 </button>
             )}
 
-            {/* ADMIN KNOPPEN */}
             {role === "admin" && (
                 <div className="admin-controls">
                     <button onClick={stopClock} disabled={!running}>
