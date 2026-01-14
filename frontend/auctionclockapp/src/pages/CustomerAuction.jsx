@@ -137,7 +137,6 @@ export default function CustomerAuction() {
                         startPrice={activeProduct?.startPrice || 0}
                         minimumPrice={activeProduct?.minimumPrice || 0}
                         productName={activeProduct?.name || ""}
-                        role="customer"
                         onBuy={handleBuy}
 
                         auctionDate={activeProduct?.auctionDate}
