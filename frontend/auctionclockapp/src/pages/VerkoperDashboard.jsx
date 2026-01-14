@@ -7,7 +7,6 @@ class VerkoperDashboard extends React.Component {
         this.state = {
             name: "",
             role: "",
-            companyId: "" // toegevoegd
         };
     }
 
