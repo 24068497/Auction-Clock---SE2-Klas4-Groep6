@@ -93,7 +93,7 @@ export default function CustomerAuction() {
                 <div className="col-md-9 d-flex justify-content-center align-items-start gap-4">
 
                     {activeProduct && (
-                        <>
+ <>
                             {/* Product details */}
                             <div className="card p-3 mt-4 shadow" style={{ width: "350px" }}>
                                 <h4>{activeProduct.name}</h4>
@@ -131,15 +131,19 @@ export default function CustomerAuction() {
                                 )}
                             </div>
 
-                            {/* Klantenklok */}
-                            <AuctionClock
-                                key={activeProduct.productId}
-                                startPrice={activeProduct.startPrice || 0}
-                                minimumPrice={activeProduct.minimumPrice || 0}
-                                productName={activeProduct.name || ""}
-                                role="customer"
-                                onBuy={handleBuy}
-                            />
+                    {/* Klantenklok  */}
+                    <AuctionClock
+                        key={activeProduct?.productId}
+                        startPrice={activeProduct?.startPrice || 0}
+                        minimumPrice={activeProduct?.minimumPrice || 0}
+                        productName={activeProduct?.name || ""}
+                        role="customer"
+                        onBuy={handleBuy}
+
+                        auctionDate={activeProduct?.auctionDate}
+                        startTime={activeProduct?.auction?.startTime}
+                        endTime={activeProduct?.auction?.endTime}
+                    />
                         </>
                     )}
                 </div>
