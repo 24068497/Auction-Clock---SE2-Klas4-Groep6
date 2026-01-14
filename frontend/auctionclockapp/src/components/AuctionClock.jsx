@@ -48,9 +48,6 @@ export default function AuctionClock({
         return () => clearInterval(interval);
     }, [running, timeLeft, startPrice, duration, minimumPrice]);
 
-        return () => clearInterval(interval);
-    }, [running, timeLeft, startPrice, duration, minimumPrice]);
-
     // Timer
     useEffect(() => {
         if (!running) return;

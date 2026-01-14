@@ -33,6 +33,9 @@ const AddProduct = () => {
         const currentDate = new Date();
         const auctionDate = new Date(formData.auctionDate);
 
+        currentDate.setHours(0, 0, 0, 0);
+        auctionDate.setHours(0, 0, 0, 0);
+
         if (auctionDate < currentDate) {
             setMessage("Geef een geldige datum mee. Let op dat de datum nog niet verstreken is!");
             return;
