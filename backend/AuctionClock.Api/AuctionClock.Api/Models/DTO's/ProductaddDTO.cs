@@ -19,7 +19,5 @@ public class ProductaddDTO
     [DataType(DataType.Date)]
     public DateTime AuctionDate { get; set; }
 
-    public int Company { get; set; }
-
     public string? ImagePath { get; set; }
 }

@@ -29,16 +29,16 @@ public class Product
 
     public int? AuctionId { get; set; }
 
-    public int Company { get; set; }
 
     public int? Customer { get; set; }
     
     [ForeignKey("AuctionId")]
     public Auction? Auction { get; set; }
 
-    [JsonIgnore]
-    [ForeignKey("Company")]
-    public Company? CompanyNav { get; set; }
+    public int CompanyId { get; set; }
+
+    [ForeignKey(nameof(CompanyId))]
+    public Company Company { get; set; }
 
     [JsonIgnore]
     [ForeignKey("Customer")]

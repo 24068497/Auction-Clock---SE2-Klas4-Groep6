@@ -44,10 +44,21 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             return Ok(product);
         }
 
+        [Authorize]
         [HttpPost("create-product")]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> CreateProduct([FromForm] ProductaddDTO dto)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                     ?? User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+
+            if (userId == null)
+                return Unauthorized();
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                return BadRequest();
+
             dto.AuctionDate = dto.AuctionDate.Date;
 
             var product = new Product
@@ -56,7 +67,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
                 Description = dto.Description,
                 MinimumPrice = dto.MinimumPrice,
                 AuctionDate = dto.AuctionDate,
-                Company = dto.Company,
+                CompanyId = user.CompanyId,
                 StartPrice = 0
             };
 
@@ -66,7 +77,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
         }
 
         [HttpPost("upload-photo")]
-        public async Task<IActionResult> UploadPhoto(int productId, IFormFile photo)
+        public async Task<IActionResult> UploadPhoto([FromQuery]int productId, IFormFile photo)
         {
             var product = await _context.Products.FindAsync(productId);
             if (product == null)
