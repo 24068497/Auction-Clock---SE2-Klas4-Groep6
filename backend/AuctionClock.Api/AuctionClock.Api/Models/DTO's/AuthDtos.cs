@@ -8,7 +8,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Models.DTO_s
         public string Name { get; set; }
 
         [Required]
-        [EmailAddress]
+        [EmailAddress ]
         public string Email { get; set; }
 
         [Required]

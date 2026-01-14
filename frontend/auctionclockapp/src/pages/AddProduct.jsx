@@ -1,5 +1,4 @@
 ﻿import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
     const [formData, setFormData] = useState({
@@ -7,11 +6,9 @@ const AddProduct = () => {
         description: "",
         minimumPrice: 0,
         auctionDate: "",
-        company: 0,
         photo: null,
     });
 
-    const navigate = useNavigate();
     const [message, setMessage] = useState("");
 
     const handleChange = (e) => {
@@ -22,7 +19,7 @@ const AddProduct = () => {
         } else {
             let newValue = value;
 
-            if (["minimumPrice", "company"].includes(name)) {
+            if (["minimumPrice"].includes(name)) {
                 newValue = value === "" ? "" : parseInt(value, 10);
             }
 
@@ -36,23 +33,36 @@ const AddProduct = () => {
         const currentDate = new Date();
         const auctionDate = new Date(formData.auctionDate);
 
+        currentDate.setHours(0, 0, 0, 0);
+        auctionDate.setHours(0, 0, 0, 0);
+
         if (auctionDate < currentDate) {
             setMessage("Geef een geldige datum mee. Let op dat de datum nog niet verstreken is!");
             return;
         }
+
+        const token = localStorage.getItem("token"); 
 
         const data = new FormData();
         data.append("name", formData.name);
         data.append("description", formData.description);
         data.append("minimumPrice", formData.minimumPrice);
         data.append("auctionDate", formData.auctionDate);
-        data.append("company", formData.company);
 
         try {
             const response = await fetch("http://localhost:5164/api/products/create-product", {
                 method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
                 body: data,
             });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                setMessage(`Fout bij het aanmaken van product: ${errorData.title || 'Onbekende fout'}`);
+                return;
+            }
 
             const result = await response.json();
             const productId = result.productId;
@@ -63,6 +73,9 @@ const AddProduct = () => {
 
                 await fetch(`http://localhost:5164/api/products/upload-photo?productId=${productId}`, {
                     method: "POST",
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    },
                     body: photo
                 });
             }
@@ -105,9 +118,6 @@ const AddProduct = () => {
 
                     <label style={styles.label}>Veilingdatum:</label>
                     <input name="auctionDate" type="date" value={formData.auctionDate} onChange={handleChange} style={styles.input} required />
-
-                    <label style={styles.label}>Bedrijf (Company ID):</label>
-                    <input name="company" type="number" value={formData.company} onChange={handleChange} style={styles.input} required />
 
                     <label style={styles.label}>Foto uploaden:</label>
                     <input name="photo" type="file" accept="image/*" onChange={handleChange} style={styles.input} />

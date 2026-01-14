@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuctionClock.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260108085403_Database")]
-    partial class Database
+    [Migration("20260114120937_BidHistory")]
+    partial class BidHistory
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,6 +48,32 @@ namespace AuctionClock.Api.Migrations
                     b.HasIndex("AuctioneerId");
 
                     b.ToTable("Auctions");
+                });
+
+            modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.BidHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Verkoper")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BidHistories");
                 });
 
             modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.Company", b =>
@@ -96,7 +122,7 @@ namespace AuctionClock.Api.Migrations
                     b.Property<int?>("AuctionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Company")
+                    b.Property<int>("CompanyId")
                         .HasColumnType("int");
 
                     b.Property<int?>("Customer")
@@ -127,7 +153,7 @@ namespace AuctionClock.Api.Migrations
 
                     b.HasIndex("AuctionId");
 
-                    b.HasIndex("Company");
+                    b.HasIndex("CompanyId");
 
                     b.ToTable("Products");
                 });
@@ -362,15 +388,15 @@ namespace AuctionClock.Api.Migrations
                         .WithMany("Products")
                         .HasForeignKey("AuctionId");
 
-                    b.HasOne("Auction_Clock___SE2_Klas4_Groep6.Models.Company", "CompanyNav")
+                    b.HasOne("Auction_Clock___SE2_Klas4_Groep6.Models.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("Company")
+                        .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Auction");
 
-                    b.Navigation("CompanyNav");
+                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.User", b =>

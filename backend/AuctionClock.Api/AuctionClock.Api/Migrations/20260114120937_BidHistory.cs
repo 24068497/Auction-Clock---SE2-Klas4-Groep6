@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AuctionClock.Api.Migrations
 {
     /// <inheritdoc />
-    public partial class Database : Migration
+    public partial class BidHistory : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -23,6 +23,22 @@ namespace AuctionClock.Api.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BidHistories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    Verkoper = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BidHistories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -214,8 +230,8 @@ namespace AuctionClock.Api.Migrations
                     MinimumPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     AuctionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AuctionId = table.Column<int>(type: "int", nullable: true),
-                    Company = table.Column<int>(type: "int", nullable: false),
                     Customer = table.Column<int>(type: "int", nullable: true),
+                    CompanyId = table.Column<int>(type: "int", nullable: false),
                     CustomerNav = table.Column<int>(type: "int", nullable: true),
                     ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -228,8 +244,8 @@ namespace AuctionClock.Api.Migrations
                         principalTable: "Auctions",
                         principalColumn: "AuctionId");
                     table.ForeignKey(
-                        name: "FK_Products_company_Company",
-                        column: x => x.Company,
+                        name: "FK_Products_company_CompanyId",
+                        column: x => x.CompanyId,
                         principalTable: "company",
                         principalColumn: "companyid",
                         onDelete: ReferentialAction.Cascade);
@@ -290,9 +306,9 @@ namespace AuctionClock.Api.Migrations
                 column: "AuctionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_Company",
+                name: "IX_Products_CompanyId",
                 table: "Products",
-                column: "Company");
+                column: "CompanyId");
         }
 
         /// <inheritdoc />
@@ -312,6 +328,9 @@ namespace AuctionClock.Api.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "BidHistories");
 
             migrationBuilder.DropTable(
                 name: "Products");

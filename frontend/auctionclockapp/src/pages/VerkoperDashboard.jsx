@@ -7,7 +7,6 @@ class VerkoperDashboard extends React.Component {
         this.state = {
             name: "",
             role: "",
-            companyId: "" // toegevoegd
         };
     }
 
@@ -24,7 +23,6 @@ class VerkoperDashboard extends React.Component {
             this.setState({
                 name: decoded["name"] || "",
                 role: decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] || "",
-                companyId: decoded["companyId"] || "" // toegevoegd
             });
         } catch (err) {
             console.error("Fout bij decoderen token", err);
@@ -36,12 +34,7 @@ class VerkoperDashboard extends React.Component {
             <div className="container mt-5">
                 <h1>Verkoper Dashboard</h1>
                 <p>Welkom, {this.state.name}!</p>
-                <p>Jouw rol: {this.state.role}</p>
-                <p>Bedrijf ID: {this.state.companyId}</p> {/* toegevoegd */}
-
-                
-
-                
+                <p>Jouw rol: {this.state.role}</p>    
             </div>
         );
     }
