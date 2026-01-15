@@ -1,13 +1,14 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import ProductDetails from '../ProductDetails';
 
 // Mock react-router id
 vi.mock('react-router-dom', () => ({
     useParams: () => ({ id: '1' }),
 }));
 
-import ProductDetails from '../ProductDetails';
+
 
 describe('ProductDetails', () => {
     beforeEach(() => {
