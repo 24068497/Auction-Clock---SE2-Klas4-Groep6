@@ -2,6 +2,7 @@
 using Auction_Clock___SE2_Klas4_Groep6.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
 {
@@ -16,7 +17,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             _context = context;
         }
 
-        // POST: api/bids/{productId} -> Plaats een bod
+        // POST: api/bids/{productId}
         [HttpPost("{productId}")]
         public async Task<IActionResult> PlaatsBod(int productId, [FromBody] BidDTO bidDto)
         {
@@ -28,7 +29,8 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             {
                 ProductId = productId,
                 Verkoper = bidDto.Verkoper,
-                Price = bidDto.Price
+                Price = bidDto.Price,
+                CreatedAt = DateTime.UtcNow
             };
 
             _context.BidHistories.Add(bid);
@@ -37,45 +39,60 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             return Ok(bid);
         }
 
-        // GET: api/bids/price-history/{productId} -> Haal prijshistorie op
+        // GET: api/bids/price-history/{productId}
         [HttpGet("price-history/{productId}")]
         public async Task<IActionResult> HaalPrijshistorieOp(int productId)
         {
-            var bids = await _context.BidHistories
-                .Where(b => b.ProductId == productId)
-                .ToListAsync();
+            var result = new PriceHistoryDTO();
 
-            if (!bids.Any())
-                return Ok(new PriceHistoryDTO());
-
-            var overallAverage = bids.Average(b => b.Price);
-
-            var last10 = bids
-                .OrderByDescending(b => b.CreatedAt)
-                .Take(10)
-                .Select(b => b.Price)
-                .ToList();
-
-            var byVerkoper = bids
-                .GroupBy(b => b.Verkoper)
-                .Select(g => new VerkoperHistory
-                {
-                    Verkoper = g.Key,
-                    AveragePrice = g.Average(x => x.Price),
-                    Last10Prices = g
-                        .OrderByDescending(x => x.CreatedAt)
-                        .Take(10)
-                        .Select(x => x.Price)
-                        .ToList()
-                })
-                .ToList();
-
-            var result = new PriceHistoryDTO
+            using (var connection = _context.Database.GetDbConnection())
             {
-                OverallAverage = overallAverage,
-                Last10 = last10,
-                ByVerkoper = byVerkoper
-            };
+                await connection.OpenAsync();
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "GetPriceHistory";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    var param = command.CreateParameter();
+                    param.ParameterName = "@ProductId";
+                    param.Value = productId;
+                    command.Parameters.Add(param);
+
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        // Gemiddelde
+                        if (await reader.ReadAsync())
+                        {
+                            result.OverallAverage = reader.IsDBNull(0)
+                                ? 0
+                                : reader.GetDecimal(0);
+                        }
+
+                        // Laatste 10 prijzen
+                        if (await reader.NextResultAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                result.Last10.Add(reader.GetDecimal(0));
+                            }
+                        }
+
+                        // Gemiddelde per verkoper
+                        if (await reader.NextResultAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                result.ByVerkoper.Add(new VerkoperHistory
+                                {
+                                    Verkoper = reader.GetString(0),
+                                    AveragePrice = reader.GetDecimal(1)
+                                });
+                            }
+                        }
+                    }
+                }
+            }
 
             return Ok(result);
         }

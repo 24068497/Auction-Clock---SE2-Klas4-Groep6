@@ -66,12 +66,9 @@ namespace AuctionClock.Api.Migrations
 
                     b.Property<string>("Verkoper")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("BidHistories");
                 });
@@ -380,17 +377,6 @@ namespace AuctionClock.Api.Migrations
                         .IsRequired();
 
                     b.Navigation("Auctioneer");
-                });
-
-            modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.BidHistory", b =>
-                {
-                    b.HasOne("Auction_Clock___SE2_Klas4_Groep6.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Auction_Clock___SE2_Klas4_Groep6.Models.Product", b =>
