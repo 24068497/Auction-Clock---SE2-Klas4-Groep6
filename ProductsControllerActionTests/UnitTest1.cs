@@ -41,7 +41,7 @@ public class ProductsControllerActionTests
 
         var identity = new ClaimsIdentity(new[]
         {
-            // jouw controller pakt NameIdentifier of sub
+            // Controller pakt NameIdentifier of sub //
             new Claim(ClaimTypes.NameIdentifier, userId)
         }, "TestAuth");
 
@@ -59,7 +59,7 @@ public class ProductsControllerActionTests
     [Fact]
     public async Task CreateAuctionTime_StartPriceBelowMinimum_ReturnsBadRequest()
     {
-        // Arrange
+        // Arrange //
         var db = CreateDb(nameof(CreateAuctionTime_StartPriceBelowMinimum_ReturnsBadRequest));
 
         db.Products.Add(new Product
@@ -86,24 +86,24 @@ public class ProductsControllerActionTests
         {
             StartTime = DateTime.UtcNow.AddHours(1),
             EndTime = DateTime.UtcNow.AddHours(2),
-            StartPrice = 50 // lager dan MinimumPrice (100)
+            StartPrice = 50 // lager dan MinimumPrice (100) //
         };
 
-        // Act
+        // Act //
         var result = await sut.CreateAuctionTime(10, dto);
 
-        // Assert
+        // Assert //
         var bad = Assert.IsType<BadRequestObjectResult>(result);
         Assert.Equal("Startprijs mag niet lager zijn dan minimumprijs.", bad.Value);
 
-        // Extra: er mag geen auction zijn aangemaakt
+        // Extra: er mag geen auction zijn aangemaakt //
         Assert.Equal(0, await db.Auctions.CountAsync());
     }
 
     [Fact]
     public async Task CreateProduct_ValidClaim_SavesProductWithCompanyId_AndReturnsOk()
     {
-        // Arrange
+        // Arrange //
         var db = CreateDb(nameof(CreateProduct_ValidClaim_SavesProductWithCompanyId_AndReturnsOk));
 
         var userManagerMock = CreateUserManagerMock();
@@ -126,10 +126,10 @@ public class ProductsControllerActionTests
             AuctionDate = new DateTime(2026, 01, 15, 13, 45, 00) // tijddeel moet weg
         };
 
-        // Act
+        // Act //
         var result = await sut.CreateProduct(dto);
 
-        // Assert
+        // Assert //
         var ok = Assert.IsType<OkObjectResult>(result);
         var returned = Assert.IsType<Product>(ok.Value);
 
@@ -137,22 +137,22 @@ public class ProductsControllerActionTests
         Assert.Equal("Mock Desc", returned.Description);
         Assert.Equal(10, returned.MinimumPrice);
 
-        // Belangrijk: CompanyId komt van user
+        // CompanyId komt van user //
         Assert.Equal(42, returned.CompanyId);
 
-        // StartPrice hardcoded 0 bij create
+        // StartPrice hardcoded 0 bij create //
         Assert.Equal(0, returned.StartPrice);
 
-        // AuctionDate wordt genormaliseerd naar datum (tijd 00:00:00)
+        // AuctionDate wordt genormaliseerd naar datum (tijd 00:00:00) //
         Assert.Equal(dto.AuctionDate.Date, returned.AuctionDate);
 
-        // En hij moet echt in de DB staan
+        // En hij moet echt in de DB staan //
         var saved = await db.Products.SingleAsync(p => p.Name == "Mock Product");
         Assert.Equal(42, saved.CompanyId);
         Assert.Equal(0, saved.StartPrice);
         Assert.Equal(dto.AuctionDate.Date, saved.AuctionDate);
 
-        // Verify FindByIdAsync is gebruikt
+        // Verify FindByIdAsync is gebruikt //
         userManagerMock.Verify(m => m.FindByIdAsync("user-123"), Times.Once);
     }
 }

@@ -1,5 +1,6 @@
 ﻿import React, { useState } from "react";
 
+// Het aanmaken van een nieuw product // 
 const AddProduct = () => {
     const [formData, setFormData] = useState({
         name: "",
@@ -50,6 +51,7 @@ const AddProduct = () => {
         data.append("auctionDate", formData.auctionDate);
 
         try {
+            // Product aanmaken via de API //
             const response = await fetch("http://localhost:5164/api/products/create-product", {
                 method: "POST",
                 headers: {

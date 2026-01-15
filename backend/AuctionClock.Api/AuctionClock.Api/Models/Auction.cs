@@ -1,6 +1,5 @@
     namespace Auction_Clock___SE2_Klas4_Groep6.Models;
-
-    using Microsoft.AspNetCore.Identity;
+    
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -23,7 +22,7 @@
         [ForeignKey(nameof(AuctioneerId))]
         public User Auctioneer { get; set; }
 
-        // Navigatie
+        // Navigatie //
         [JsonIgnore]
         public ICollection<Product> Products { get; set; } = new List<Product>();
     }

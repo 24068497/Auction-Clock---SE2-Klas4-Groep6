@@ -15,14 +15,14 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             _context = context;
         }
  
-        // GET: api/company
+        // GET: api/company 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Company>>> GetAll()
         {
             return await _context.Companies.ToListAsync();
         }
  
-        // GET: api/company/1
+        // GET: api/company/1 
         [HttpGet("{id}")]
         public async Task<ActionResult<Company>> GetById(int id)
         {
@@ -32,7 +32,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             return company;
         }
  
-        // POST: api/company
+        // POST: api/company 
         [HttpPost]
         public async Task<ActionResult<Company>> AddCompany([FromBody] Company newCompany)
         {
@@ -41,7 +41,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             return CreatedAtAction(nameof(GetById), new { id = newCompany.CompanyId }, newCompany);
         }
  
-        // PUT: api/company/1
+        // PUT: api/company/1 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCompany(int id, [FromBody] Company updatedCompany)
         {
@@ -53,7 +53,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             return NoContent();
         }
  
-        // DELETE: api/company/1
+        // DELETE: api/company/1 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCompany(int id)
         {

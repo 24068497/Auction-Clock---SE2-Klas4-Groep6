@@ -30,8 +30,9 @@ const AddAuctionTime = () => {
         data.append("StartTime", formData.startTime);
         data.append("EndTime", formData.endTime);
         data.append("StartPrice", formData.startPrice);
-
+        
         try {
+            // Huidige JWT token wordt opgehaald //
             const token = localStorage.getItem("token");
 
             const response = await fetch(`http://localhost:5164/api/products/create-auction-time/${id}`, {

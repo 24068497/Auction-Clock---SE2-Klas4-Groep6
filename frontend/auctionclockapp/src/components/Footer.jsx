@@ -27,7 +27,7 @@ class Footer extends React.Component {
                             <h6>Contactgegevens FloraBid:</h6>
                             <p>
                                 Tel:  +31 12 345 67 89<br />
-                                Adres: LaanVanSlechtOnderwijs 1<br />
+                                Adres: Bloemstraat 1<br />
                                 Afdeling: SE
                             </p>
                         </div>

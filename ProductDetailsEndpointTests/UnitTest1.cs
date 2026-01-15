@@ -33,7 +33,7 @@ public class ProductsControllerUnitTests
     [Fact]
     public async Task GetProducts_ReturnsOk_WithSeededProducts_AndAuctionIncluded()
     {
-        // Arrange
+        // Arrange //
         var db = CreateDb(nameof(GetProducts_ReturnsOk_WithSeededProducts_AndAuctionIncluded));
 
         var auction = new Auction
@@ -76,27 +76,27 @@ public class ProductsControllerUnitTests
         var userManager = CreateUserManagerMock();
         var sut = new ProductsController(db, userManager.Object);
 
-        // Act
+        // Act //
         var result = await sut.GetProducts();
 
-        // Assert
+        // Assert //
         var ok = Assert.IsType<OkObjectResult>(result);
 
-        // Ok(...) bevat object -> cast naar List<Product>
+        // Ok(...) bevat object -> cast naar List<Product> //
         var products = Assert.IsAssignableFrom<List<Product>>(ok.Value);
 
         Assert.Equal(2, products.Count);
         Assert.Contains(products, p => p.Name == "Mock Product 1");
         Assert.Contains(products, p => p.Name == "Mock Product 2");
 
-        // Bewijs dat Include(p => p.Auction) werkte voor product 1
+        // Bewijs dat Include(p => p.Auction) werkte voor product 1 //
         Assert.True(products.Any(p => p.ProductId == 1 && p.Auction != null));
     }
 
     [Fact]
     public async Task GetProduct_Existing_ReturnsOk_WithProduct()
     {
-        // Arrange
+        // Arrange //
         var db = CreateDb(nameof(GetProduct_Existing_ReturnsOk_WithProduct));
 
         db.Products.Add(new Product
@@ -116,10 +116,10 @@ public class ProductsControllerUnitTests
         var userManager = CreateUserManagerMock();
         var sut = new ProductsController(db, userManager.Object);
 
-        // Act
+        // Act //
         var result = await sut.GetProduct(1);
 
-        // Assert
+        // Assert //
         var ok = Assert.IsType<OkObjectResult>(result);
         var product = Assert.IsType<Product>(ok.Value);
 
@@ -131,16 +131,16 @@ public class ProductsControllerUnitTests
     [Fact]
     public async Task GetProduct_Unknown_ReturnsNotFound()
     {
-        // Arrange
+        // Arrange //
         var db = CreateDb(nameof(GetProduct_Unknown_ReturnsNotFound));
 
         var userManager = CreateUserManagerMock();
         var sut = new ProductsController(db, userManager.Object);
 
-        // Act
+        // Act //
         var result = await sut.GetProduct(999);
 
-        // Assert
+        // Assert //
         Assert.IsType<NotFoundResult>(result);
     }
 }

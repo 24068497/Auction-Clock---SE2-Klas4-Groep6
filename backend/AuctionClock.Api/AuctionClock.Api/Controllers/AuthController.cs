@@ -34,17 +34,17 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             _context = context;
         }
 
-        // ================= REGISTER =================
+        // REGISTER //
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDto dto)
         {
-            // 1️⃣ Zoek bestaande company (naam + adres)
+            // Zoek bestaande company (naam + adres) 
             var company = await _context.Companies
                 .FirstOrDefaultAsync(c =>
                     c.Name == dto.CompanyName &&
                     c.Address == dto.CompanyAddress);
 
-            // 2️⃣ Bestaat niet → nieuwe company
+            // Bestaat niet → nieuwe company 
             if (company == null)
             {
                 company = new Company
@@ -57,7 +57,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
                 await _context.SaveChangesAsync();
             }
 
-            // 3️⃣ Maak user + koppel company
+            // Maak user + koppel company 
             var user = new User
             {
                 UserName = dto.Email,
@@ -71,7 +71,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
 
-            // 4️⃣ Rol toewijzen
+            // Rol toewijzen 
             var roleToAssign = string.IsNullOrEmpty(dto.Role) ? "Koper" : dto.Role;
 
             if (!await _roleManager.RoleExistsAsync(roleToAssign))
@@ -82,7 +82,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             return Ok("User registered successfully.");
         }
 
-        // ================= LOGIN =================
+        // LOGIN 
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDto dto)
         {
@@ -98,7 +98,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             return Ok(new { token });
         }
 
-        // ================= JWT =================
+        // JWT 
         private async Task<string> GenerateJwtToken(User user)
         {
             var roles = await _userManager.GetRolesAsync(user);

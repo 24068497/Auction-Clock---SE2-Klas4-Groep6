@@ -49,7 +49,7 @@ class Login extends React.Component {
             const decoded = jwtDecode(token);
             const role = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
 
-            // Redirect op basis van rol
+            // Redirect op basis van rol //
             if (role === "Admin") {
                 window.location.href = "/admin/dashboard";
             } else if (role === "Auctioneer") {

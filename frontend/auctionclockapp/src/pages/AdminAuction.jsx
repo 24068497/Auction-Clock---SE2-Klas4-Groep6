@@ -34,7 +34,7 @@ export default function AdminAuction() {
         <div className="container-fluid mt-4">
             <div className="row">
 
-                {/* === PRODUCT LIJST LINKS === */}
+                {/* Product lijst opgehaald uit database */}
                 <div className="col-md-3 border-end" style={{ maxHeight: "90vh", overflowY: "auto" }}>
                     <h4 className="text-center mb-3">Kavel Volgorde</h4>
 
@@ -57,7 +57,7 @@ export default function AdminAuction() {
                     </ul>
                 </div>
 
-                {/* === RECHTER KANT: PRODUCT INFO + KLOK === */}
+                {/* Product informatie + klok */}
                 <div className="col-md-9 d-flex justify-content-center align-items-start gap-4">
 
                     {/* Groot product detail */}

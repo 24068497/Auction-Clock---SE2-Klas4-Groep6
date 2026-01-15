@@ -17,7 +17,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             _context = context;
         }
 
-        // POST: api/bids/{productId}
+        // POST: api/bids/{productId} 
         [HttpPost("{productId}")]
         public async Task<IActionResult> PlaatsBod(int productId, [FromBody] BidDTO bidDto)
         {
@@ -39,7 +39,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             return Ok(bid);
         }
 
-        // GET: api/bids/price-history/{productId}
+        // GET: api/bids/price-history/{productId} 
         [HttpGet("price-history/{productId}")]
         public async Task<IActionResult> HaalPrijshistorieOp(int productId)
         {
@@ -61,7 +61,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
 
                     using (var reader = await command.ExecuteReaderAsync())
                     {
-                        // Gemiddelde
+                        // Gemiddelde 
                         if (await reader.ReadAsync())
                         {
                             result.OverallAverage = reader.IsDBNull(0)
@@ -69,7 +69,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
                                 : reader.GetDecimal(0);
                         }
 
-                        // Laatste 10 prijzen
+                        // Laatste 10 prijzen 
                         if (await reader.NextResultAsync())
                         {
                             while (await reader.ReadAsync())
@@ -78,7 +78,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
                             }
                         }
 
-                        // Gemiddelde per verkoper
+                        // Gemiddelde per verkoper 
                         if (await reader.NextResultAsync())
                         {
                             while (await reader.ReadAsync())

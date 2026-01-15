@@ -29,11 +29,6 @@ class Home extends React.Component {
         }
     };
 
-    handleLogout = () => {
-        localStorage.removeItem("token");
-        window.location.reload(); 
-    };
-
     render() {
         return (
             <>

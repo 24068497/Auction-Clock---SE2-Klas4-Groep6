@@ -24,7 +24,7 @@ function VisitorHeader() {
     const handleLogout = () => {
         localStorage.removeItem("token");
         setUser(null);
-        navigate("/"); // terug naar home
+        navigate("/"); // terug naar home //
     };
 
     const Logo = () => {
@@ -32,6 +32,7 @@ function VisitorHeader() {
             <img src="/img/Logo_Florabid-png.png" width="100px" alt="Logo" />
         )
     }
+    // Roept dashboard aan op basis van rol //
     const handleImageLinks = () => {
         if (user && user.role === "Koper") {
             return (

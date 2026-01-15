@@ -16,7 +16,7 @@ public class DashboardController : ControllerBase
     {
         _userManager = userManager;
     }
-
+    // Haalt de gebruiker + rol op // 
     [HttpGet]
     public async Task<IActionResult> GetDashboard()
     {

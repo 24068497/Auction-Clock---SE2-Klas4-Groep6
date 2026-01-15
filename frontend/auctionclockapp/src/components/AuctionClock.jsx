@@ -11,7 +11,7 @@ function formatDate(dateString) {
 }
 
 export default function AuctionClock({
-    role = "customer",
+    role = "customer", 
     startPrice = 10,
     minimumPrice = 0,
     duration = 20,
@@ -19,7 +19,7 @@ export default function AuctionClock({
     auctionDate,
     startTime,
     endTime
-}) {
+    }) {
     const [timeLeft, setTimeLeft] = useState(duration);
     const [price, setPrice] = useState(startPrice);
     const [running, setRunning] = useState(false);
@@ -48,7 +48,7 @@ export default function AuctionClock({
         return () => clearInterval(interval);
     }, [running, timeLeft, startPrice, duration, minimumPrice]);
 
-    // Timer
+    // Timer //
     useEffect(() => {
         if (!running) return;
         if (timeLeft <= 0) {
@@ -63,7 +63,7 @@ export default function AuctionClock({
         return () => clearTimeout(id);
     }, [running, timeLeft]);
 
-    // refresed de klok om te checken of het tijd is
+    // refresed de klok om te checken of het tijd is //
     useEffect(() => {
         const interval = setInterval(() => {
             if (!auctionDate || !startTime || !endTime) return;
@@ -73,7 +73,7 @@ export default function AuctionClock({
             const auctionDay = new Date(auctionDate);
             auctionDay.setHours(0, 0, 0, 0);
 
-            // starttijd van de veiling
+            // starttijd van de veiling //
             const startTimeDate = new Date(startTime);
             const start = new Date(auctionDay);
             start.setHours(
@@ -83,7 +83,7 @@ export default function AuctionClock({
                 0
             );
 
-            // eindtijd van de veiling
+            // eindtijd van de veiling //
             const endTimeDate = new Date(endTime);
             const end = new Date(auctionDay);
             end.setHours(
@@ -126,7 +126,7 @@ export default function AuctionClock({
 
             <p className="status-text">
                 <p>Veildatum: {formatDate(auctionDate)}</p>
-                {running ? "⏱ Veiling loopt…" : "⏸ Veiling gepauzeerd"}
+                {running ? "Veiling loopt…" : "Veiling gepauzeerd"}
             </p>
 
             {role === "customer" && (

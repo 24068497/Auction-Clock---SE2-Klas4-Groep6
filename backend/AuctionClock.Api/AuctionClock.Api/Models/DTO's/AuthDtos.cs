@@ -18,8 +18,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Models.DTO_s
         public string TelNr { get; set; }
 
         public string? Role { get; set; }
-
-        // 🔽 NIEUW: bedrijfsgegevens
+        
         [Required]
         [MaxLength(100)]
         public string CompanyName { get; set; }

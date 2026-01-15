@@ -3,6 +3,6 @@
     public class BidDTO
     {
         public decimal Price { get; set; }
-        public string Verkoper { get; set; } = string.Empty; // Verkoper
+        public string Verkoper { get; set; } = string.Empty; 
     }
 }

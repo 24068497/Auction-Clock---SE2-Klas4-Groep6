@@ -26,6 +26,7 @@ class Registreren extends React.Component {
     };
 
     validateForm = () => {
+        // Alles moet worden ingevuld //
         const errors = {};
         if (!this.state.firstname) errors.firstname = "Voornaam is verplicht";
         if (!this.state.lastname) errors.lastname = "Achternaam is verplicht";
@@ -43,7 +44,7 @@ class Registreren extends React.Component {
 
     handleRegister = async () => {
         this.setState({ serverError: "", successMessage: "" });
-
+        // Formulier wordt niet verwerkt niet alles klopt // 
         if (!this.validateForm()) return;
 
         const dto = {

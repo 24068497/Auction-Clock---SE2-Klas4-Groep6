@@ -1,19 +1,17 @@
 using Auction_Clock___SE2_Klas4_Groep6.Models;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ------------------ DbContext ------------------
+// DbContext //
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// ------------------ Identity ------------------
+// Identity //
 builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
     options.Password.RequireNonAlphanumeric = false;
@@ -22,7 +20,7 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 .AddEntityFrameworkStores<AppDbContext>()
 .AddDefaultTokenProviders();
 
-// ------------------ JWT Authentication ------------------
+// JWT Authentication //
 var jwtKey = builder.Configuration["Jwt:Key"] ?? "SuperSecretTestingKey123!";
 var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? "AuctionClockAPI";
 var jwtAudience = builder.Configuration["Jwt:Audience"] ?? "AuctionClockClient";

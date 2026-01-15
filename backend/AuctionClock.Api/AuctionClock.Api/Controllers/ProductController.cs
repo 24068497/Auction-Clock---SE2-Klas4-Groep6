@@ -21,7 +21,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             _context = context;
             _userManager = userManager;
         }
-
+        // Haalt producten op uit database //
         [HttpGet]
         public async Task<IActionResult> GetProducts()
         {
@@ -31,7 +31,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
 
             return Ok(products);
         }
-
+        // Haalt een product op op basis van ID //
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProduct(int id)
         {
@@ -43,7 +43,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
 
             return Ok(product);
         }
-
+        // Alleen ingelogde gebruikers mogen een product aanmaken //
         [Authorize]
         [HttpPost("create-product")]
         [Consumes("multipart/form-data")]
@@ -75,7 +75,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
             await _context.SaveChangesAsync();
             return Ok(product);
         }
-
+        // Uploadt een foto bij het aanmaken van een product // 
         [HttpPost("upload-photo")]
         public async Task<IActionResult> UploadPhoto([FromQuery]int productId, IFormFile photo)
         {
@@ -98,7 +98,7 @@ namespace Auction_Clock___SE2_Klas4_Groep6.Controllers
 
             return Ok(product.ImagePath);
         }
-
+        // Veiling tijd aanmaken voor een product door de auctioneer //
         [Authorize]
         [HttpPost("create-auction-time/{id}")]
         [Consumes("multipart/form-data")]

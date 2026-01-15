@@ -12,7 +12,7 @@ export default function ProductDetails() {
     const [error, setError] = useState('');
 
     useEffect(() => {
-
+        // Haalt producten op uit database //
         async function loadProduct() {
             setLoading(true);
             setError('');

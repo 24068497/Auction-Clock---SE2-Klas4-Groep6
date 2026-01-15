@@ -65,7 +65,7 @@ public class AuthControllerTests
     [Fact]
     public async Task Register_Then_Login_Succeeds_And_ReturnsToken()
     {
-        // Arrange
+        // Arrange //
         var db = CreateInMemoryDb(nameof(Register_Then_Login_Succeeds_And_ReturnsToken));
         var config = CreateTestConfig();
 
@@ -77,7 +77,7 @@ public class AuthControllerTests
             .Setup(m => m.CreateAsync(It.IsAny<User>(), It.IsAny<string>()))
             .Callback<User, string>((u, pw) =>
             {
-                u.Id = "user-123"; // simuleer Identity Id
+                u.Id = "user-123"; // simuleer Identity Id //
                 createdUser = u;
             })
             .ReturnsAsync(IdentityResult.Success);
@@ -126,17 +126,17 @@ public class AuthControllerTests
             Role = null
         };
 
-        // Act: Register
+        // Act: Register //
         var registerResult = await sut.Register(registerDto);
 
-        // Assert: Register OK
+        // Assert: Register OK //
         var okRegister = Assert.IsType<OkObjectResult>(registerResult);
         Assert.Equal(200, okRegister.StatusCode);
 
         Assert.NotNull(createdUser);
         Assert.Equal("test@demo.com", createdUser!.Email);
 
-        // Act: Login
+        // Act: Login //
         var loginDto = new LoginDto
         {
             Email = "test@demo.com",
@@ -145,7 +145,7 @@ public class AuthControllerTests
 
         var loginResult = await sut.Login(loginDto);
 
-        // Assert: Login OK + token
+        // Assert: Login OK + token // 
         var okLogin = Assert.IsType<OkObjectResult>(loginResult);
         Assert.Equal(200, okLogin.StatusCode);
 
@@ -155,7 +155,7 @@ public class AuthControllerTests
         var token = tokenProp!.GetValue(okLogin.Value) as string;
         Assert.False(string.IsNullOrWhiteSpace(token));
 
-        // Verify belangrijke calls
+        // Verify belangrijke calls //
         userManager.Verify(m => m.CreateAsync(It.IsAny<User>(), "P@ssw0rd!"), Times.Once);
         userManager.Verify(m => m.AddToRoleAsync(It.IsAny<User>(), "Koper"), Times.Once);
         userManager.Verify(m => m.FindByEmailAsync("test@demo.com"), Times.Once);
