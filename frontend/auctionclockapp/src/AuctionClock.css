@@ -1,0 +1,85 @@
+﻿.auction-clock-container {
+    text-align: center;
+    margin: 20px auto;
+    padding: 25px;
+    width: 380px;
+    background: #C8DFC8; /* lichtgroen - matcht header BG */
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    border: 2px solid #314A40;
+}
+
+.clock-circle {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    border-radius: 50%;
+    border: 10px solid #314A40; /* donkergroen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock-inner {
+    width: 160px;
+    height: 160px;
+    background: #314A40; /* donkergroen */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock-time {
+    font-size: 40px;
+    font-weight: bold;
+    color: #ffffff;
+    font-family: "Roboto", sans-serif;
+}
+
+.price {
+    font-size: 30px;
+    font-weight: bold;
+    color: #3DA35D; /* frisse plant-groen tint */
+    margin-top: 18px;
+    font-family: "Roboto", sans-serif;
+}
+
+.status-text {
+    margin: 8px 0;
+    font-size: 15px;
+    color: #314A40;
+    font-family: "Roboto", sans-serif;
+}
+
+.buy-btn {
+    margin-top: 15px;
+    font-size: 20px;
+    padding: 12px;
+    width: 100%;
+    background: #3DA35D; /* groen zoals call-to-action */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.buy-btn:hover {
+    background: #2E8A47;
+}
+
+.admin-controls button {
+    margin: 8px;
+    padding: 10px 18px;
+    border: none;
+    background: #314A40;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.admin-controls button:hover {
+    background: #1E3029;
+}
